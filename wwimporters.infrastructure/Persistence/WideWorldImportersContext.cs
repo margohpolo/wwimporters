@@ -22,40 +22,40 @@ namespace wwimporters.infrastructure.Persistence
         {
 
         }
-        public virtual DbSet<BuyingGroup> BuyingGroups { get; set; } = null!;
-        public virtual DbSet<City> Cities { get; set; } = null!;
-        public virtual DbSet<ColdRoomTemperature> ColdRoomTemperatures { get; set; } = null!;
-        public virtual DbSet<Color> Colors { get; set; } = null!;
-        public virtual DbSet<Country> Countries { get; set; } = null!;
-        public virtual DbSet<Customer> Customers { get; set; } = null!;
-        public virtual DbSet<Customer1> Customers1 { get; set; } = null!;
-        public virtual DbSet<CustomerCategory> CustomerCategories { get; set; } = null!;
-        public virtual DbSet<CustomerTransaction> CustomerTransactions { get; set; } = null!;
-        public virtual DbSet<DeliveryMethod> DeliveryMethods { get; set; } = null!;
-        public virtual DbSet<Invoice> Invoices { get; set; } = null!;
-        public virtual DbSet<InvoiceLine> InvoiceLines { get; set; } = null!;
-        public virtual DbSet<Order> Orders { get; set; } = null!;
-        public virtual DbSet<OrderLine> OrderLines { get; set; } = null!;
-        public virtual DbSet<PackageType> PackageTypes { get; set; } = null!;
-        public virtual DbSet<PaymentMethod> PaymentMethods { get; set; } = null!;
-        public virtual DbSet<Person> People { get; set; } = null!;
-        public virtual DbSet<PurchaseOrder> PurchaseOrders { get; set; } = null!;
-        public virtual DbSet<PurchaseOrderLine> PurchaseOrderLines { get; set; } = null!;
-        public virtual DbSet<SpecialDeal> SpecialDeals { get; set; } = null!;
-        public virtual DbSet<StateProvince> StateProvinces { get; set; } = null!;
-        public virtual DbSet<StockGroup> StockGroups { get; set; } = null!;
-        public virtual DbSet<StockItem> StockItems { get; set; } = null!;
-        public virtual DbSet<StockItemHolding> StockItemHoldings { get; set; } = null!;
-        public virtual DbSet<StockItemStockGroup> StockItemStockGroups { get; set; } = null!;
-        public virtual DbSet<StockItemTransaction> StockItemTransactions { get; set; } = null!;
-        public virtual DbSet<Supplier> Suppliers { get; set; } = null!;
-        public virtual DbSet<Supplier1> Suppliers1 { get; set; } = null!;
-        public virtual DbSet<SupplierCategory> SupplierCategories { get; set; } = null!;
-        public virtual DbSet<SupplierTransaction> SupplierTransactions { get; set; } = null!;
-        public virtual DbSet<SystemParameter> SystemParameters { get; set; } = null!;
-        public virtual DbSet<TransactionType> TransactionTypes { get; set; } = null!;
-        public virtual DbSet<VehicleTemperature> VehicleTemperatures { get; set; } = null!;
-        public virtual DbSet<VehicleTemperature1> VehicleTemperatures1 { get; set; } = null!;
+        public virtual DbSet<BuyingGroup> BuyingGroups => Set<BuyingGroup>();
+        public virtual DbSet<City> Cities => Set<City>();
+        public virtual DbSet<ColdRoomTemperature> ColdRoomTemperatures => Set<ColdRoomTemperature>();
+        public virtual DbSet<Color> Colors => Set<Color>();
+        public virtual DbSet<Country> Countries => Set<Country>();
+        public virtual DbSet<Customer> Customers => Set<Customer>();
+        public virtual DbSet<Customer1> Customers1 => Set<Customer1>();
+        public virtual DbSet<CustomerCategory> CustomerCategories => Set<CustomerCategory>();
+        public virtual DbSet<CustomerTransaction> CustomerTransactions => Set<CustomerTransaction>();
+        public virtual DbSet<DeliveryMethod> DeliveryMethods => Set<DeliveryMethod>();
+        public virtual DbSet<Invoice> Invoices => Set<Invoice>();
+        public virtual DbSet<InvoiceLine> InvoiceLines => Set<InvoiceLine>();
+        public virtual DbSet<Order> Orders => Set<Order>();
+        public virtual DbSet<OrderLine> OrderLines => Set<OrderLine>();
+        public virtual DbSet<PackageType> PackageTypes => Set<PackageType>();
+        public virtual DbSet<PaymentMethod> PaymentMethods => Set<PaymentMethod>();
+        public virtual DbSet<Person> People => Set<Person>();
+        public virtual DbSet<PurchaseOrder> PurchaseOrders => Set<PurchaseOrder>();
+        public virtual DbSet<PurchaseOrderLine> PurchaseOrderLines => Set<PurchaseOrderLine>();
+        public virtual DbSet<SpecialDeal> SpecialDeals => Set<SpecialDeal>();
+        public virtual DbSet<StateProvince> StateProvinces => Set<StateProvince>();
+        public virtual DbSet<StockGroup> StockGroups => Set<StockGroup>();
+        public virtual DbSet<StockItem> StockItems => Set<StockItem>();
+        public virtual DbSet<StockItemHolding> StockItemHoldings => Set<StockItemHolding>();
+        public virtual DbSet<StockItemStockGroup> StockItemStockGroups => Set<StockItemStockGroup>();
+        public virtual DbSet<StockItemTransaction> StockItemTransactions => Set<StockItemTransaction>();
+        public virtual DbSet<Supplier> Suppliers => Set<Supplier>();
+        public virtual DbSet<Supplier1> Suppliers1 => Set<Supplier1>();
+        public virtual DbSet<SupplierCategory> SupplierCategories => Set<SupplierCategory>();
+        public virtual DbSet<SupplierTransaction> SupplierTransactions => Set<SupplierTransaction>();
+        public virtual DbSet<SystemParameter> SystemParameters => Set<SystemParameter>();
+        public virtual DbSet<TransactionType> TransactionTypes => Set<TransactionType>();
+        public virtual DbSet<VehicleTemperature> VehicleTemperatures => Set<VehicleTemperature>();
+        public virtual DbSet<VehicleTemperature1> VehicleTemperatures1 => Set<VehicleTemperature1>();
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -65,39 +65,6 @@ namespace wwimporters.infrastructure.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.UseCollation("Latin1_General_100_CI_AS");
-
-            //modelBuilder.ApplyConfiguration(new BuyingGroupEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new CityEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new ColdRoomTemperatureEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new ColorEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new CountryEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new CustomerEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new Customer1EntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new CustomerTransactionEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new DeliveryMethodEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new InvoiceEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new InvoiceLineEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new OrderEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new OrderLineEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new PaymentMethodEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new PersonEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new PurchaseOrderEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new PurchaseOrderLineEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new SpecialDealEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new StateProvinceEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new StockGroupEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new StockItemEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new StockItemHoldingEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new StockItemStockGroupEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new StockItemTransactionEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new Supplier1EntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new SupplierCategoryEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new SupplierEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new SupplierTransactionEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new SystemParameterEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new TransactionTypeEntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new VehicleTemperature1EntityConfiguration());
-            //modelBuilder.ApplyConfiguration(new VehicleTemperatureEntityConfiguration());
 
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
