@@ -1,5 +1,6 @@
 using Microsoft.OpenApi.Models;
 using wwimporters.infrastructure;
+using wwimporters.infrastructure.Persistence;
 
 namespace wwimporters.api
 {
@@ -7,7 +8,7 @@ namespace wwimporters.api
     {
         public Startup(IConfiguration configuration)
         {
-            configuration = configuration;
+            Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
@@ -26,6 +27,23 @@ namespace wwimporters.api
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //TODO: Is there a cleaner way to handle seeding in Startup?
+            #if DEBUG
+                using (var scope = app.ApplicationServices.CreateScope())
+                {
+                    try
+                    {
+                        var initialiser = scope.ServiceProvider.GetRequiredService<WideWorldImportersContextInitialiser>();
+                        initialiser.Initialise();
+                        initialiser.Seed();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"An error occurred during database initialisation: {ex}");
+                    }
+                }
+            #endif
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

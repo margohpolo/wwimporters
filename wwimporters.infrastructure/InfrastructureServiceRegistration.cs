@@ -11,7 +11,10 @@ namespace wwimporters.infrastructure
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<WideWorldImportersContext>(options => 
-                options.UseSqlServer(configuration.GetConnectionString("WWIConnectionString")));
+                options.UseSqlServer(configuration.GetConnectionString("WWIConnectionString"),
+                EF => EF.MigrationsAssembly(typeof(WideWorldImportersContext).Assembly.FullName).UseNetTopologySuite()));
+
+            services.AddScoped<WideWorldImportersContextInitialiser>();
 
             return services;
         }
