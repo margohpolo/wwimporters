@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wwimporters.infrastructure"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wwimporters.efmigrations", "efmigrations\wwimporters.efmigrations.csproj", "{47A7C36D-7A12-4CB7-B937-B00BF56B8507}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wwimporters.UnitTests", "wwimporters.UnitTests\wwimporters.UnitTests.csproj", "{EB73FED2-D141-4F94-BADC-3CF089BE8AC8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{47A7C36D-7A12-4CB7-B937-B00BF56B8507}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47A7C36D-7A12-4CB7-B937-B00BF56B8507}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47A7C36D-7A12-4CB7-B937-B00BF56B8507}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB73FED2-D141-4F94-BADC-3CF089BE8AC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB73FED2-D141-4F94-BADC-3CF089BE8AC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB73FED2-D141-4F94-BADC-3CF089BE8AC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB73FED2-D141-4F94-BADC-3CF089BE8AC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
