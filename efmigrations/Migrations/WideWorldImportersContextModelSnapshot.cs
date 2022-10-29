@@ -9,7 +9,7 @@ using wwimporters.infrastructure.Persistence;
 
 #nullable disable
 
-namespace wwimporters.infrastructure.Migrations
+namespace wwimporters.efmigrations.Migrations
 {
     [DbContext(typeof(WideWorldImportersContext))]
     partial class WideWorldImportersContextModelSnapshot : ModelSnapshot
@@ -19,7 +19,7 @@ namespace wwimporters.infrastructure.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .UseCollation("Latin1_General_100_CI_AS")
-                .HasAnnotation("ProductVersion", "6.0.7")
+                .HasAnnotation("ProductVersion", "6.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);

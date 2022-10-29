@@ -4,7 +4,7 @@ using NetTopologySuite.Geometries;
 
 #nullable disable
 
-namespace wwimporters.infrastructure.Migrations
+namespace wwimporters.efmigrations.Migrations
 {
     public partial class InitialCreate : Migration
     {

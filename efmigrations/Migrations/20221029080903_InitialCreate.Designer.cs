@@ -10,10 +10,10 @@ using wwimporters.infrastructure.Persistence;
 
 #nullable disable
 
-namespace wwimporters.infrastructure.Migrations
+namespace wwimporters.efmigrations.Migrations
 {
     [DbContext(typeof(WideWorldImportersContext))]
-    [Migration("20220830140448_InitialCreate")]
+    [Migration("20221029080903_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace wwimporters.infrastructure.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .UseCollation("Latin1_General_100_CI_AS")
-                .HasAnnotation("ProductVersion", "6.0.7")
+                .HasAnnotation("ProductVersion", "6.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
