@@ -5,10 +5,10 @@ services:
     container_name: sql-server-wwimporters
     image: mcr.microsoft.com/mssql/server:2019-CU15-ubuntu-20.04
     ports:
-      - '1433:1433'
+      - '1435:1433'
     environment:
       ACCEPT_EULA: "Y"
       MSSQL_PID: "Express"
       SA_PASSWORD: 'SA__passw07d123'
     volumes:
-      - './drive:/var/opt/mssql/data'
+      - 'drive/var/opt/mssql/data'
