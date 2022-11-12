@@ -285,7 +285,8 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Application",
                         principalTable: "People",
                         principalColumn: "PersonID");
-                })
+                },
+                comment: "Customer organizations can be part of groups that exert greater buying power")
                 .Annotation("SqlServer:IsTemporal", true)
                 .Annotation("SqlServer:TemporalHistoryTableName", "BuyingGroups_Archive")
                 .Annotation("SqlServer:TemporalHistoryTableSchema", "Sales")
@@ -647,11 +648,11 @@ namespace wwimporters.efmigrations.Migrations
                 schema: "Application",
                 columns: table => new
                 {
-                    CityID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[CityID])"),
-                    CityName = table.Column<string>(type: "nvarchar(58)", maxLength: 58, nullable: false),
-                    StateProvinceID = table.Column<int>(type: "int", nullable: false),
-                    Location = table.Column<Geometry>(type: "geography", nullable: true),
-                    LatestRecordedPopulation = table.Column<long>(type: "bigint", nullable: true),
+                    CityID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[CityID])", comment: "Numeric ID used for reference to a city within the database"),
+                    CityName = table.Column<string>(type: "nvarchar(58)", maxLength: 58, nullable: false, comment: "Formal name of the city"),
+                    StateProvinceID = table.Column<int>(type: "int", nullable: false, comment: "State or province for this city. Has a foreign key"),
+                    Location = table.Column<Geometry>(type: "geography", nullable: true, comment: "Geographic location of the city"),
+                    LatestRecordedPopulation = table.Column<long>(type: "bigint", nullable: true, comment: "Latest available population for the City"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false)
                         .Annotation("SqlServer:IsTemporal", true)
@@ -677,7 +678,8 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Application",
                         principalTable: "StateProvinces",
                         principalColumn: "StateProvinceID");
-                })
+                },
+                comment: "Cities that are part of any address (including geographic location)")
                 .Annotation("SqlServer:IsTemporal", true)
                 .Annotation("SqlServer:TemporalHistoryTableName", "Cities_Archive")
                 .Annotation("SqlServer:TemporalHistoryTableSchema", "Application")

@@ -19,7 +19,7 @@ namespace wwimporters.efmigrations.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .UseCollation("Latin1_General_100_CI_AS")
-                .HasAnnotation("ProductVersion", "6.0.10")
+                .HasAnnotation("ProductVersion", "6.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -137,7 +137,9 @@ namespace wwimporters.efmigrations.Migrations
 
                     b.ToTable("BuyingGroups", "Sales");
 
-                    b.ToTable(tb => tb.IsTemporal(ttb =>
+                    b
+                        .HasComment("Customer organizations can be part of groups that exert greater buying power")
+                        .ToTable(tb => tb.IsTemporal(ttb =>
                         {
                             ttb.UseHistoryTable("BuyingGroups_Archive", "Sales");
                             ttb
@@ -156,25 +158,30 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("CityID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[CityID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[CityID])")
+                        .HasComment("Numeric ID used for reference to a city within the database");
 
                     b.Property<string>("CityName")
                         .IsRequired()
                         .HasMaxLength(58)
-                        .HasColumnType("nvarchar(58)");
+                        .HasColumnType("nvarchar(58)")
+                        .HasComment("Formal name of the city");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
 
                     b.Property<long?>("LatestRecordedPopulation")
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasComment("Latest available population for the City");
 
                     b.Property<Geometry>("Location")
-                        .HasColumnType("geography");
+                        .HasColumnType("geography")
+                        .HasComment("Geographic location of the city");
 
                     b.Property<int>("StateProvinceId")
                         .HasColumnType("int")
-                        .HasColumnName("StateProvinceID");
+                        .HasColumnName("StateProvinceID")
+                        .HasComment("State or province for this city. Has a foreign key");
 
                     b.Property<DateTime>("ValidFrom")
                         .ValueGeneratedOnAddOrUpdate()
@@ -194,7 +201,9 @@ namespace wwimporters.efmigrations.Migrations
 
                     b.ToTable("Cities", "Application");
 
-                    b.ToTable(tb => tb.IsTemporal(ttb =>
+                    b
+                        .HasComment("Cities that are part of any address (including geographic location)")
+                        .ToTable(tb => tb.IsTemporal(ttb =>
                         {
                             ttb.UseHistoryTable("Cities_Archive", "Application");
                             ttb
