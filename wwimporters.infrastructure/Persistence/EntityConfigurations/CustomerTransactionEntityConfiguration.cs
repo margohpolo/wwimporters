@@ -19,6 +19,8 @@ namespace wwimporters.infrastructure.Persistence.EntityConfigurations
 
             builder.ToTable("CustomerTransactions", "Sales");
 
+            builder.HasComment("All financial transactions that are customer-related");
+
             builder.HasIndex(e => e.TransactionDate, "CX_Sales_CustomerTransactions")
                 .IsClustered();
 
@@ -32,33 +34,59 @@ namespace wwimporters.infrastructure.Persistence.EntityConfigurations
 
             builder.HasIndex(e => new { e.TransactionDate, e.IsFinalized }, "IX_Sales_CustomerTransactions_IsFinalized");
 
+
+
             builder.Property(e => e.CustomerTransactionId)
                 .HasColumnName("CustomerTransactionID")
-                .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[TransactionID])");
+                .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[TransactionID])")
+                .HasComment("Numeric ID used to refer to a customer transaction within the database");
 
-            builder.Property(e => e.AmountExcludingTax).HasColumnType("decimal(18, 2)");
+            builder.Property(e => e.CustomerId)
+                .HasColumnName("CustomerID")
+                .HasComment("Customer for this transaction");
 
-            builder.Property(e => e.CustomerId).HasColumnName("CustomerID");
+            builder.Property(e => e.TransactionTypeId)
+                .HasColumnName("TransactionTypeID")
+                .HasComment("Type of transaction");
 
-            builder.Property(e => e.FinalizationDate).HasColumnType("date");
+            builder.Property(e => e.InvoiceId)
+                .HasColumnName("InvoiceID")
+                .HasComment("ID of an invoice (for transactions associated with an invoice)");
 
-            builder.Property(e => e.InvoiceId).HasColumnName("InvoiceID");
+            builder.Property(e => e.PaymentMethodId)
+                .HasColumnName("PaymentMethodID")
+                .HasComment("ID of a payment method (for transactions involving payments)");
 
-            builder.Property(e => e.IsFinalized).HasComputedColumnSql("(case when [FinalizationDate] IS NULL then CONVERT([bit],(0)) else CONVERT([bit],(1)) end)", true);
+            builder.Property(e => e.TransactionDate)
+                .HasColumnType("date")
+                .HasComment("Date for the transaction");
 
-            builder.Property(e => e.LastEditedWhen).HasDefaultValueSql("(sysdatetime())");
+            builder.Property(e => e.AmountExcludingTax)
+                .HasColumnType("decimal(18, 2)")
+                .HasComment("Transaction amount (excluding tax)");
 
-            builder.Property(e => e.OutstandingBalance).HasColumnType("decimal(18, 2)");
+            builder.Property(e => e.TaxAmount)
+                .HasColumnType("decimal(18, 2)")
+                .HasComment("Tax amount calculated");
 
-            builder.Property(e => e.PaymentMethodId).HasColumnName("PaymentMethodID");
+            builder.Property(e => e.TransactionAmount)
+                .HasColumnType("decimal(18, 2)")
+                .HasComment("Transaction amount (including tax)");
 
-            builder.Property(e => e.TaxAmount).HasColumnType("decimal(18, 2)");
+            builder.Property(e => e.OutstandingBalance)
+                .HasColumnType("decimal(18, 2)")
+                .HasComment("Amount still outstanding for this transaction");
 
-            builder.Property(e => e.TransactionAmount).HasColumnType("decimal(18, 2)");
+            builder.Property(e => e.FinalizationDate)
+                .HasColumnType("date")
+                .HasComment("Date that this transaction was finalized (if it has been)");
 
-            builder.Property(e => e.TransactionDate).HasColumnType("date");
+            builder.Property(e => e.IsFinalized)
+                .HasComputedColumnSql("(case when [FinalizationDate] IS NULL then CONVERT([bit],(0)) else CONVERT([bit],(1)) end)", true)
+                .HasComment("Is this transaction finalized (invoices, credits and payments have been matched)");
 
-            builder.Property(e => e.TransactionTypeId).HasColumnName("TransactionTypeID");
+            builder.Property(e => e.LastEditedWhen)
+                .HasDefaultValueSql("(sysdatetime())");
         }
     }
 }

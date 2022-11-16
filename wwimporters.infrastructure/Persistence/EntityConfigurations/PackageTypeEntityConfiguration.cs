@@ -21,14 +21,19 @@ namespace wwimporters.infrastructure.Persistence.EntityConfigurations
                 ttb.HasPeriodEnd("ValidTo").HasColumnName("ValidTo");
             }));
 
+            builder.HasComment("Ways that stock items can be packaged (ie: each, box, carton, pallet, kg, etc.");
+
             builder.HasIndex(e => e.PackageTypeName, "UQ_Warehouse_PackageTypes_PackageTypeName")
                 .IsUnique();
 
             builder.Property(e => e.PackageTypeId)
                 .HasColumnName("PackageTypeID")
-                .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[PackageTypeID])");
+                .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[PackageTypeID])")
+                .HasComment("Numeric ID used for reference to a package type within the database");
 
-            builder.Property(e => e.PackageTypeName).HasMaxLength(58);
+            builder.Property(e => e.PackageTypeName)
+                .HasMaxLength(50)
+                .HasComment("Full name of package types that stock items can be purchased in or sold in");
         }
     }
 }

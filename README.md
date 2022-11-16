@@ -18,8 +18,13 @@ Since then:
 - SQL Bundle Command (Run on same Layer as Program/StartUp; generate bundle on Migrations Layer):
 
 ```
-dotnet ef migrations script ../efmigrations/initial_idempotent.sql --idempotent
+dotnet ef migrations script -o ../efmigrations/initial_idempotent.sql --idempotent
 ```
+
+<h3>16 Nov 2022 Commit</h3>
+
+- Added original table & column comments from the original DB
+- Also noted that reverse-scaffolding might have led to incorrect max char length declarations in EntityConfigurations for nVarChar columns (e.g. 10 -> 18, 100 -> 107, 256 -> 264) => TODO: Explore SQL Server Schema Compare in Azure Data Studio
 
 <br />
 <br />

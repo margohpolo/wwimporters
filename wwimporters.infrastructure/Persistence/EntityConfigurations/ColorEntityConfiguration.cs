@@ -21,14 +21,19 @@ namespace wwimporters.infrastructure.Persistence.EntityConfigurations
                 ttb.HasPeriodEnd("ValidTo").HasColumnName("ValidTo");
             }));
 
+            builder.HasComment("Stock items can (optionally) have colors");
+
             builder.HasIndex(e => e.ColorName, "UQ_Warehouse_Colors_ColorName")
                 .IsUnique();
 
             builder.Property(e => e.ColorId)
                 .HasColumnName("ColorID")
-                .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[ColorID])");
+                .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[ColorID])")
+                .HasComment("Numeric ID used for reference to a color within the database");
 
-            builder.Property(e => e.ColorName).HasMaxLength(28);
+            builder.Property(e => e.ColorName)
+                .HasMaxLength(20)
+                .HasComment("Full name of a color that can be used to describe stock items");
         }
     }
 }

@@ -193,24 +193,24 @@ namespace wwimporters.efmigrations.Migrations
                 schema: "Application",
                 columns: table => new
                 {
-                    PersonID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[PersonID])"),
-                    FullName = table.Column<string>(type: "nvarchar(58)", maxLength: 58, nullable: false),
-                    PreferredName = table.Column<string>(type: "nvarchar(58)", maxLength: 58, nullable: false),
-                    SearchName = table.Column<string>(type: "nvarchar(107)", maxLength: 107, nullable: false, computedColumnSql: "(concat([PreferredName],N' ',[FullName]))", stored: true),
-                    IsPermittedToLogon = table.Column<bool>(type: "bit", nullable: false),
-                    LogonName = table.Column<string>(type: "nvarchar(58)", maxLength: 58, nullable: true),
-                    IsExternalLogonProvider = table.Column<bool>(type: "bit", nullable: false),
-                    HashedPassword = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
-                    IsSystemUser = table.Column<bool>(type: "bit", nullable: false),
-                    IsEmployee = table.Column<bool>(type: "bit", nullable: false),
-                    IsSalesperson = table.Column<bool>(type: "bit", nullable: false),
-                    UserPreferences = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(28)", maxLength: 28, nullable: true),
-                    FaxNumber = table.Column<string>(type: "nvarchar(28)", maxLength: 28, nullable: true),
-                    EmailAddress = table.Column<string>(type: "nvarchar(264)", maxLength: 264, nullable: true),
-                    Photo = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
-                    CustomFields = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    OtherLanguages = table.Column<string>(type: "nvarchar(max)", nullable: true, computedColumnSql: "(json_query([CustomFields],N'$.OtherLanguages'))", stored: false),
+                    PersonID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[PersonID])", comment: "Numeric ID used for reference to a person within the database"),
+                    FullName = table.Column<string>(type: "nvarchar(58)", maxLength: 58, nullable: false, comment: "Full name for this person"),
+                    PreferredName = table.Column<string>(type: "nvarchar(58)", maxLength: 58, nullable: false, comment: "Name that this person prefers to be called"),
+                    SearchName = table.Column<string>(type: "nvarchar(107)", maxLength: 107, nullable: false, computedColumnSql: "(concat([PreferredName],N' ',[FullName]))", stored: true, comment: "Name to build full text search on (computed column)"),
+                    IsPermittedToLogon = table.Column<bool>(type: "bit", nullable: false, comment: "Is this person permitted to log on?"),
+                    LogonName = table.Column<string>(type: "nvarchar(58)", maxLength: 58, nullable: true, comment: "Person's system logon name"),
+                    IsExternalLogonProvider = table.Column<bool>(type: "bit", nullable: false, comment: "Is logon token provided by an external system?"),
+                    HashedPassword = table.Column<byte[]>(type: "varbinary(max)", nullable: true, comment: "Hash of password for users without external logon tokens"),
+                    IsSystemUser = table.Column<bool>(type: "bit", nullable: false, comment: "Is the currently permitted to make online access?"),
+                    IsEmployee = table.Column<bool>(type: "bit", nullable: false, comment: "Is this person an employee?"),
+                    IsSalesperson = table.Column<bool>(type: "bit", nullable: false, comment: "Is this person a staff salesperson?"),
+                    UserPreferences = table.Column<string>(type: "nvarchar(max)", nullable: true, comment: "User preferences related to the website (holds JSON data)"),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(28)", maxLength: 28, nullable: true, comment: "Phone number"),
+                    FaxNumber = table.Column<string>(type: "nvarchar(28)", maxLength: 28, nullable: true, comment: "Fax number"),
+                    EmailAddress = table.Column<string>(type: "nvarchar(264)", maxLength: 264, nullable: true, comment: "Email address for this person"),
+                    Photo = table.Column<byte[]>(type: "varbinary(max)", nullable: true, comment: "Photo of this person"),
+                    CustomFields = table.Column<string>(type: "nvarchar(max)", nullable: true, comment: "Custom fields for employees and salespeople"),
+                    OtherLanguages = table.Column<string>(type: "nvarchar(max)", nullable: true, computedColumnSql: "(json_query([CustomFields],N'$.OtherLanguages'))", stored: false, comment: "Other languages spoken (computed column from custom fields)"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false)
                         .Annotation("SqlServer:IsTemporal", true)
@@ -230,7 +230,8 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Application",
                         principalTable: "People",
                         principalColumn: "PersonID");
-                })
+                },
+                comment: "People known to the application (staff, customer contacts, supplier contacts)")
                 .Annotation("SqlServer:IsTemporal", true)
                 .Annotation("SqlServer:TemporalHistoryTableName", "People_Archive")
                 .Annotation("SqlServer:TemporalHistoryTableSchema", "Application")
@@ -264,8 +265,8 @@ namespace wwimporters.efmigrations.Migrations
                 schema: "Sales",
                 columns: table => new
                 {
-                    BuyingGroupID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[BuyingGroupID])"),
-                    BuyingGroupName = table.Column<string>(type: "nvarchar(58)", maxLength: 58, nullable: false),
+                    BuyingGroupID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[BuyingGroupID])", comment: "Numeric ID used for reference to a buying group within the database"),
+                    BuyingGroupName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, comment: "Full name of a buying group that customers can be members of"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false)
                         .Annotation("SqlServer:IsTemporal", true)
@@ -298,8 +299,8 @@ namespace wwimporters.efmigrations.Migrations
                 schema: "Warehouse",
                 columns: table => new
                 {
-                    ColorID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[ColorID])"),
-                    ColorName = table.Column<string>(type: "nvarchar(28)", maxLength: 28, nullable: false),
+                    ColorID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[ColorID])", comment: "Numeric ID used for reference to a color within the database"),
+                    ColorName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false, comment: "Full name of a color that can be used to describe stock items"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false)
                         .Annotation("SqlServer:IsTemporal", true)
@@ -319,7 +320,8 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Application",
                         principalTable: "People",
                         principalColumn: "PersonID");
-                })
+                },
+                comment: "Stock items can (optionally) have colors")
                 .Annotation("SqlServer:IsTemporal", true)
                 .Annotation("SqlServer:TemporalHistoryTableName", "Colors_Archive")
                 .Annotation("SqlServer:TemporalHistoryTableSchema", "Warehouse")
@@ -331,17 +333,17 @@ namespace wwimporters.efmigrations.Migrations
                 schema: "Application",
                 columns: table => new
                 {
-                    CountryID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[CountryID])"),
-                    CountryName = table.Column<string>(type: "nvarchar(68)", maxLength: 68, nullable: false),
-                    FormalName = table.Column<string>(type: "nvarchar(68)", maxLength: 68, nullable: false),
-                    IsoAlpha3Code = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: true),
-                    IsoNumericCode = table.Column<int>(type: "int", nullable: true),
-                    CountryType = table.Column<string>(type: "nvarchar(28)", maxLength: 28, nullable: true),
-                    LatestRecordedPopulation = table.Column<long>(type: "bigint", nullable: true),
-                    Continent = table.Column<string>(type: "nvarchar(38)", maxLength: 38, nullable: false),
-                    Region = table.Column<string>(type: "nvarchar(38)", maxLength: 38, nullable: false),
-                    Subregion = table.Column<string>(type: "nvarchar(38)", maxLength: 38, nullable: false),
-                    Border = table.Column<Geometry>(type: "geography", nullable: true),
+                    CountryID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[CountryID])", comment: "Numeric ID used for reference to a country within the database"),
+                    CountryName = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false, comment: "Name of the country"),
+                    FormalName = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false, comment: "Full formal name of the country as agreed by United Nations"),
+                    IsoAlpha3Code = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: true, comment: "3 letter alphabetic code assigned to the country by ISO"),
+                    IsoNumericCode = table.Column<int>(type: "int", nullable: true, comment: "Numeric code assigned to the country by ISO"),
+                    CountryType = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true, comment: "Type of country or administrative region"),
+                    LatestRecordedPopulation = table.Column<long>(type: "bigint", nullable: true, comment: "Latest available population for the country"),
+                    Continent = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false, comment: "Name of the continent"),
+                    Region = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false, comment: "Name of the region"),
+                    Subregion = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false, comment: "Name of the subregion"),
+                    Border = table.Column<Geometry>(type: "geography", nullable: true, comment: "Geographic border of the country as described by the United Nations"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false)
                         .Annotation("SqlServer:IsTemporal", true)
@@ -361,7 +363,8 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Application",
                         principalTable: "People",
                         principalColumn: "PersonID");
-                })
+                },
+                comment: "Countries that contain the states or provinces (including geographic boundaries)")
                 .Annotation("SqlServer:IsTemporal", true)
                 .Annotation("SqlServer:TemporalHistoryTableName", "Countries_Archive")
                 .Annotation("SqlServer:TemporalHistoryTableSchema", "Application")
@@ -373,8 +376,8 @@ namespace wwimporters.efmigrations.Migrations
                 schema: "Sales",
                 columns: table => new
                 {
-                    CustomerCategoryID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[CustomerCategoryID])"),
-                    CustomerCategoryName = table.Column<string>(type: "nvarchar(58)", maxLength: 58, nullable: false),
+                    CustomerCategoryID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[CustomerCategoryID])", comment: "Numeric ID used for reference to a customer category within the database"),
+                    CustomerCategoryName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, comment: "Full name of the category that customers can be assigned to"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false)
                         .Annotation("SqlServer:IsTemporal", true)
@@ -394,7 +397,8 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Application",
                         principalTable: "People",
                         principalColumn: "PersonID");
-                })
+                },
+                comment: "Categories for customers (ie restaurants, cafes, supermarkets, etc.)")
                 .Annotation("SqlServer:IsTemporal", true)
                 .Annotation("SqlServer:TemporalHistoryTableName", "CustomerCategories_Archive")
                 .Annotation("SqlServer:TemporalHistoryTableSchema", "Sales")
@@ -406,8 +410,8 @@ namespace wwimporters.efmigrations.Migrations
                 schema: "Application",
                 columns: table => new
                 {
-                    DeliveryMethodID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[DeliveryMethodID])"),
-                    DeliveryMethodName = table.Column<string>(type: "nvarchar(58)", maxLength: 58, nullable: false),
+                    DeliveryMethodID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[DeliveryMethodID])", comment: "Numeric ID used for reference to a delivery method within the database"),
+                    DeliveryMethodName = table.Column<string>(type: "nvarchar(58)", maxLength: 58, nullable: false, comment: "Full name of methods that can be used for delivery of customer orders"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false)
                         .Annotation("SqlServer:IsTemporal", true)
@@ -427,7 +431,8 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Application",
                         principalTable: "People",
                         principalColumn: "PersonID");
-                })
+                },
+                comment: "Ways that stock items can be delivered (ie: truck/van, post, pickup, courier, etc.")
                 .Annotation("SqlServer:IsTemporal", true)
                 .Annotation("SqlServer:TemporalHistoryTableName", "DeliveryMethods_Archive")
                 .Annotation("SqlServer:TemporalHistoryTableSchema", "Application")
@@ -439,8 +444,8 @@ namespace wwimporters.efmigrations.Migrations
                 schema: "Warehouse",
                 columns: table => new
                 {
-                    PackageTypeID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[PackageTypeID])"),
-                    PackageTypeName = table.Column<string>(type: "nvarchar(58)", maxLength: 58, nullable: false),
+                    PackageTypeID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[PackageTypeID])", comment: "Numeric ID used for reference to a package type within the database"),
+                    PackageTypeName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, comment: "Full name of package types that stock items can be purchased in or sold in"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false)
                         .Annotation("SqlServer:IsTemporal", true)
@@ -460,7 +465,8 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Application",
                         principalTable: "People",
                         principalColumn: "PersonID");
-                })
+                },
+                comment: "Ways that stock items can be packaged (ie: each, box, carton, pallet, kg, etc.")
                 .Annotation("SqlServer:IsTemporal", true)
                 .Annotation("SqlServer:TemporalHistoryTableName", "PackageTypes_Archive")
                 .Annotation("SqlServer:TemporalHistoryTableSchema", "Warehouse")
@@ -472,8 +478,8 @@ namespace wwimporters.efmigrations.Migrations
                 schema: "Application",
                 columns: table => new
                 {
-                    PaymentMethodID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[PaymentMethodID])"),
-                    PaymentMethodName = table.Column<string>(type: "nvarchar(58)", maxLength: 58, nullable: false),
+                    PaymentMethodID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[PaymentMethodID])", comment: "Numeric ID used for reference to a payment type within the database"),
+                    PaymentMethodName = table.Column<string>(type: "nvarchar(58)", maxLength: 58, nullable: false, comment: "Full name of ways that customers can make payments or that suppliers can be paid"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false)
                         .Annotation("SqlServer:IsTemporal", true)
@@ -493,7 +499,8 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Application",
                         principalTable: "People",
                         principalColumn: "PersonID");
-                })
+                },
+                comment: "Ways that payments can be made (ie: cash, check, EFT, etc.")
                 .Annotation("SqlServer:IsTemporal", true)
                 .Annotation("SqlServer:TemporalHistoryTableName", "PaymentMethods_Archive")
                 .Annotation("SqlServer:TemporalHistoryTableSchema", "Application")
@@ -505,8 +512,8 @@ namespace wwimporters.efmigrations.Migrations
                 schema: "Warehouse",
                 columns: table => new
                 {
-                    StockGroupID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[StockGroupID])"),
-                    StockGroupName = table.Column<string>(type: "nvarchar(58)", maxLength: 58, nullable: false),
+                    StockGroupID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[StockGroupID])", comment: "Numeric ID used for reference to a stock group within the database"),
+                    StockGroupName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, comment: "Full name of groups used to categorize stock items"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false)
                         .Annotation("SqlServer:IsTemporal", true)
@@ -526,7 +533,8 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Application",
                         principalTable: "People",
                         principalColumn: "PersonID");
-                })
+                },
+                comment: "Groups for categorizing stock items (ie: novelties, toys, edible novelties, etc.)")
                 .Annotation("SqlServer:IsTemporal", true)
                 .Annotation("SqlServer:TemporalHistoryTableName", "StockGroups_Archive")
                 .Annotation("SqlServer:TemporalHistoryTableSchema", "Warehouse")
@@ -538,8 +546,8 @@ namespace wwimporters.efmigrations.Migrations
                 schema: "Purchasing",
                 columns: table => new
                 {
-                    SupplierCategoryID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[SupplierCategoryID])"),
-                    SupplierCategoryName = table.Column<string>(type: "nvarchar(58)", maxLength: 58, nullable: false),
+                    SupplierCategoryID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[SupplierCategoryID])", comment: "Numeric ID used for reference to a supplier category within the database"),
+                    SupplierCategoryName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, comment: "Full name of the category that suppliers can be assigned to"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false)
                         .Annotation("SqlServer:IsTemporal", true)
@@ -559,7 +567,8 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Application",
                         principalTable: "People",
                         principalColumn: "PersonID");
-                })
+                },
+                comment: "Categories for suppliers (ie novelties, toys, clothing, packaging, etc.)")
                 .Annotation("SqlServer:IsTemporal", true)
                 .Annotation("SqlServer:TemporalHistoryTableName", "SupplierCategories_Archive")
                 .Annotation("SqlServer:TemporalHistoryTableSchema", "Purchasing")
@@ -571,8 +580,8 @@ namespace wwimporters.efmigrations.Migrations
                 schema: "Application",
                 columns: table => new
                 {
-                    TransactionTypeID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[TransactionTypeID])"),
-                    TransactionTypeName = table.Column<string>(type: "nvarchar(58)", maxLength: 58, nullable: false),
+                    TransactionTypeID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[TransactionTypeID])", comment: "Numeric ID used for reference to a transaction type within the database"),
+                    TransactionTypeName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, comment: "Full name of the transaction type"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false)
                         .Annotation("SqlServer:IsTemporal", true)
@@ -592,7 +601,8 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Application",
                         principalTable: "People",
                         principalColumn: "PersonID");
-                })
+                },
+                comment: "Types of customer, supplier, or stock transactions (ie: invoice, credit note, etc.)")
                 .Annotation("SqlServer:IsTemporal", true)
                 .Annotation("SqlServer:TemporalHistoryTableName", "TransactionTypes_Archive")
                 .Annotation("SqlServer:TemporalHistoryTableSchema", "Application")
@@ -604,13 +614,13 @@ namespace wwimporters.efmigrations.Migrations
                 schema: "Application",
                 columns: table => new
                 {
-                    StateProvinceID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[StateProvinceID])"),
-                    StateProvinceCode = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
-                    StateProvinceName = table.Column<string>(type: "nvarchar(58)", maxLength: 58, nullable: false),
-                    CountryID = table.Column<int>(type: "int", nullable: false),
-                    SalesTerritory = table.Column<string>(type: "nvarchar(58)", maxLength: 58, nullable: false),
-                    Border = table.Column<Geometry>(type: "geography", nullable: true),
-                    LatestRecordedPopulation = table.Column<long>(type: "bigint", nullable: true),
+                    StateProvinceID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[StateProvinceID])", comment: "Numeric ID used for reference to a state or province within the database"),
+                    StateProvinceCode = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false, comment: "Common code for this state or province (such as WA - Washington for the USA)"),
+                    StateProvinceName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, comment: "Formal name of the state or province"),
+                    CountryID = table.Column<int>(type: "int", nullable: false, comment: "Country for this StateProvince"),
+                    SalesTerritory = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, comment: "Sales territory for this StateProvince"),
+                    Border = table.Column<Geometry>(type: "geography", nullable: true, comment: "Geographic boundary of the state or province"),
+                    LatestRecordedPopulation = table.Column<long>(type: "bigint", nullable: true, comment: "Latest available population for the StateProvince"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false)
                         .Annotation("SqlServer:IsTemporal", true)
@@ -636,7 +646,8 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Application",
                         principalTable: "Countries",
                         principalColumn: "CountryID");
-                })
+                },
+                comment: "States or provinces that contain cities (including geographic location)")
                 .Annotation("SqlServer:IsTemporal", true)
                 .Annotation("SqlServer:TemporalHistoryTableName", "StateProvinces_Archive")
                 .Annotation("SqlServer:TemporalHistoryTableSchema", "Application")
@@ -691,34 +702,34 @@ namespace wwimporters.efmigrations.Migrations
                 schema: "Sales",
                 columns: table => new
                 {
-                    CustomerID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[CustomerID])"),
-                    CustomerName = table.Column<string>(type: "nvarchar(107)", maxLength: 107, nullable: false),
-                    BillToCustomerID = table.Column<int>(type: "int", nullable: false),
-                    CustomerCategoryID = table.Column<int>(type: "int", nullable: false),
-                    BuyingGroupID = table.Column<int>(type: "int", nullable: true),
-                    PrimaryContactPersonID = table.Column<int>(type: "int", nullable: false),
-                    AlternateContactPersonID = table.Column<int>(type: "int", nullable: true),
-                    DeliveryMethodID = table.Column<int>(type: "int", nullable: false),
-                    DeliveryCityID = table.Column<int>(type: "int", nullable: false),
-                    PostalCityID = table.Column<int>(type: "int", nullable: false),
-                    CreditLimit = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    AccountOpenedDate = table.Column<DateTime>(type: "date", nullable: false),
-                    StandardDiscountPercentage = table.Column<decimal>(type: "decimal(18,3)", nullable: false),
-                    IsStatementSent = table.Column<bool>(type: "bit", nullable: false),
-                    IsOnCreditHold = table.Column<bool>(type: "bit", nullable: false),
-                    PaymentDays = table.Column<int>(type: "int", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(28)", maxLength: 28, nullable: false),
-                    FaxNumber = table.Column<string>(type: "nvarchar(28)", maxLength: 28, nullable: false),
-                    DeliveryRun = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: true),
-                    RunPosition = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: true),
-                    WebsiteURL = table.Column<string>(type: "nvarchar(264)", maxLength: 264, nullable: false),
-                    DeliveryAddressLine1 = table.Column<string>(type: "nvarchar(68)", maxLength: 68, nullable: false),
-                    DeliveryAddressLine2 = table.Column<string>(type: "nvarchar(68)", maxLength: 68, nullable: true),
-                    DeliveryPostalCode = table.Column<string>(type: "nvarchar(18)", maxLength: 18, nullable: false),
-                    DeliveryLocation = table.Column<Geometry>(type: "geography", nullable: true),
-                    PostalAddressLine1 = table.Column<string>(type: "nvarchar(68)", maxLength: 68, nullable: false),
-                    PostalAddressLine2 = table.Column<string>(type: "nvarchar(68)", maxLength: 68, nullable: true),
-                    PostalPostalCode = table.Column<string>(type: "nvarchar(18)", maxLength: 18, nullable: false),
+                    CustomerID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[CustomerID])", comment: "Numeric ID used for reference to a customer within the database"),
+                    CustomerName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "Customer's full name (usually a trading name)"),
+                    BillToCustomerID = table.Column<int>(type: "int", nullable: false, comment: "Customer that this is billed to (usually the same customer but can be another parent company)"),
+                    CustomerCategoryID = table.Column<int>(type: "int", nullable: false, comment: "Customer's category"),
+                    BuyingGroupID = table.Column<int>(type: "int", nullable: true, comment: "Customer's buying group (optional)"),
+                    PrimaryContactPersonID = table.Column<int>(type: "int", nullable: false, comment: "Primary contact"),
+                    AlternateContactPersonID = table.Column<int>(type: "int", nullable: true, comment: "Alternate contact"),
+                    DeliveryMethodID = table.Column<int>(type: "int", nullable: false, comment: "Standard delivery method for stock items sent to this customer"),
+                    DeliveryCityID = table.Column<int>(type: "int", nullable: false, comment: "ID of the delivery city for this address"),
+                    PostalCityID = table.Column<int>(type: "int", nullable: false, comment: "ID of the postal city for this address"),
+                    CreditLimit = table.Column<decimal>(type: "decimal(18,2)", nullable: true, comment: "Credit limit for this customer (NULL if unlimited)"),
+                    AccountOpenedDate = table.Column<DateTime>(type: "date", nullable: false, comment: "Date this customer account was opened"),
+                    StandardDiscountPercentage = table.Column<decimal>(type: "decimal(18,3)", nullable: false, comment: "Standard discount offered to this customer"),
+                    IsStatementSent = table.Column<bool>(type: "bit", nullable: false, comment: "Is a statement sent to this customer? (Or do they just pay on each invoice?)"),
+                    IsOnCreditHold = table.Column<bool>(type: "bit", nullable: false, comment: "Is this customer on credit hold? (Prevents further deliveries to this customer)"),
+                    PaymentDays = table.Column<int>(type: "int", nullable: false, comment: "Number of days for payment of an invoice (ie payment terms)"),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false, comment: "Phone number"),
+                    FaxNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false, comment: "Fax number"),
+                    DeliveryRun = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: true, comment: "Normal delivery run for this customer"),
+                    RunPosition = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: true, comment: "Normal position in the delivery run for this customer"),
+                    WebsiteURL = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false, comment: "URL for the website for this customer"),
+                    DeliveryAddressLine1 = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false, comment: "First delivery address line for the customer"),
+                    DeliveryAddressLine2 = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: true, comment: "Second delivery address line for the customer"),
+                    DeliveryPostalCode = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false, comment: "Delivery postal code for the customer"),
+                    DeliveryLocation = table.Column<Geometry>(type: "geography", nullable: true, comment: "Geographic location for the customer's office/warehouse"),
+                    PostalAddressLine1 = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false, comment: "First postal address line for the customer"),
+                    PostalAddressLine2 = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: true, comment: "Second postal address line for the customer"),
+                    PostalPostalCode = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false, comment: "Postal code for the customer when sending by mail"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false)
                         .Annotation("SqlServer:IsTemporal", true)
@@ -786,7 +797,8 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Application",
                         principalTable: "People",
                         principalColumn: "PersonID");
-                })
+                },
+                comment: "Main entity tables for customers (organizations or individuals)")
                 .Annotation("SqlServer:IsTemporal", true)
                 .Annotation("SqlServer:TemporalHistoryTableName", "Customers_Archive")
                 .Annotation("SqlServer:TemporalHistoryTableSchema", "Sales")
@@ -798,32 +810,32 @@ namespace wwimporters.efmigrations.Migrations
                 schema: "Purchasing",
                 columns: table => new
                 {
-                    SupplierID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[SupplierID])"),
-                    SupplierName = table.Column<string>(type: "nvarchar(107)", maxLength: 107, nullable: false),
-                    SupplierCategoryID = table.Column<int>(type: "int", nullable: false),
-                    PrimaryContactPersonID = table.Column<int>(type: "int", nullable: false),
-                    AlternateContactPersonID = table.Column<int>(type: "int", nullable: false),
-                    DeliveryMethodID = table.Column<int>(type: "int", nullable: true),
-                    DeliveryCityID = table.Column<int>(type: "int", nullable: false),
-                    PostalCityID = table.Column<int>(type: "int", nullable: false),
-                    SupplierReference = table.Column<string>(type: "nvarchar(28)", maxLength: 28, nullable: true),
-                    BankAccountName = table.Column<string>(type: "nvarchar(58)", maxLength: 58, nullable: true),
-                    BankAccountBranch = table.Column<string>(type: "nvarchar(58)", maxLength: 58, nullable: true),
-                    BankAccountCode = table.Column<string>(type: "nvarchar(28)", maxLength: 28, nullable: true),
-                    BankAccountNumber = table.Column<string>(type: "nvarchar(28)", maxLength: 28, nullable: true),
-                    BankInternationalCode = table.Column<string>(type: "nvarchar(28)", maxLength: 28, nullable: true),
-                    PaymentDays = table.Column<int>(type: "int", nullable: false),
-                    InternalComments = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(28)", maxLength: 28, nullable: false),
-                    FaxNumber = table.Column<string>(type: "nvarchar(28)", maxLength: 28, nullable: false),
-                    WebsiteURL = table.Column<string>(type: "nvarchar(264)", maxLength: 264, nullable: false),
-                    DeliveryAddressLine1 = table.Column<string>(type: "nvarchar(68)", maxLength: 68, nullable: false),
-                    DeliveryAddressLine2 = table.Column<string>(type: "nvarchar(68)", maxLength: 68, nullable: true),
-                    DeliveryPostalCode = table.Column<string>(type: "nvarchar(18)", maxLength: 18, nullable: false),
-                    DeliveryLocation = table.Column<Geometry>(type: "geography", nullable: true),
-                    PostalAddressLine1 = table.Column<string>(type: "nvarchar(68)", maxLength: 68, nullable: false),
-                    PostalAddressLine2 = table.Column<string>(type: "nvarchar(68)", maxLength: 68, nullable: true),
-                    PostalPostalCode = table.Column<string>(type: "nvarchar(18)", maxLength: 18, nullable: false),
+                    SupplierID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[SupplierID])", comment: "Numeric ID used for reference to a supplier within the database"),
+                    SupplierName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "Supplier's full name (usually a trading name)"),
+                    SupplierCategoryID = table.Column<int>(type: "int", nullable: false, comment: "Supplier's category"),
+                    PrimaryContactPersonID = table.Column<int>(type: "int", nullable: false, comment: "Primary contact"),
+                    AlternateContactPersonID = table.Column<int>(type: "int", nullable: false, comment: "Alternate contact"),
+                    DeliveryMethodID = table.Column<int>(type: "int", nullable: true, comment: "Standard delivery method for stock items received from this supplier"),
+                    DeliveryCityID = table.Column<int>(type: "int", nullable: false, comment: "ID of the delivery city for this address"),
+                    PostalCityID = table.Column<int>(type: "int", nullable: false, comment: "ID of the mailing city for this address"),
+                    SupplierReference = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true, comment: "Supplier reference for our organization (might be our account number at the supplier)"),
+                    BankAccountName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, comment: "Supplier's bank account name (ie name on the account)"),
+                    BankAccountBranch = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, comment: "Supplier's bank branch"),
+                    BankAccountCode = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true, comment: "Supplier's bank account code (usually a numeric reference for the bank branch)"),
+                    BankAccountNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true, comment: "Supplier's bank account number"),
+                    BankInternationalCode = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true, comment: "Supplier's bank's international code (such as a SWIFT code)"),
+                    PaymentDays = table.Column<int>(type: "int", nullable: false, comment: "Number of days for payment of an invoice (ie payment terms)"),
+                    InternalComments = table.Column<string>(type: "nvarchar(max)", nullable: true, comment: "Internal comments (not exposed outside organization)"),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false, comment: "Phone number"),
+                    FaxNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false, comment: "Fax number"),
+                    WebsiteURL = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false, comment: "URL for the website for this supplier"),
+                    DeliveryAddressLine1 = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false, comment: "First delivery address line for the supplier"),
+                    DeliveryAddressLine2 = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: true, comment: "Second delivery address line for the supplier"),
+                    DeliveryPostalCode = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false, comment: "Delivery postal code for the supplier"),
+                    DeliveryLocation = table.Column<Geometry>(type: "geography", nullable: true, comment: "Geographic location for the supplier's office/warehouse"),
+                    PostalAddressLine1 = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false, comment: "First postal address line for the supplier"),
+                    PostalAddressLine2 = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: true, comment: "Second postal address line for the supplier"),
+                    PostalPostalCode = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false, comment: "Postal code for the supplier when sending by mail"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false)
                         .Annotation("SqlServer:IsTemporal", true)
@@ -879,7 +891,8 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Purchasing",
                         principalTable: "SupplierCategories",
                         principalColumn: "SupplierCategoryID");
-                })
+                },
+                comment: "Main entity table for suppliers (organizations)")
                 .Annotation("SqlServer:IsTemporal", true)
                 .Annotation("SqlServer:TemporalHistoryTableName", "Suppliers_Archive")
                 .Annotation("SqlServer:TemporalHistoryTableSchema", "Purchasing")
@@ -891,17 +904,17 @@ namespace wwimporters.efmigrations.Migrations
                 schema: "Application",
                 columns: table => new
                 {
-                    SystemParameterID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[SystemParameterID])"),
-                    DeliveryAddressLine1 = table.Column<string>(type: "nvarchar(68)", maxLength: 68, nullable: false),
-                    DeliveryAddressLine2 = table.Column<string>(type: "nvarchar(68)", maxLength: 68, nullable: true),
-                    DeliveryCityID = table.Column<int>(type: "int", nullable: false),
-                    DeliveryPostalCode = table.Column<string>(type: "nvarchar(18)", maxLength: 18, nullable: false),
-                    DeliveryLocation = table.Column<Geometry>(type: "geography", nullable: false),
-                    PostalAddressLine1 = table.Column<string>(type: "nvarchar(68)", maxLength: 68, nullable: false),
-                    PostalAddressLine2 = table.Column<string>(type: "nvarchar(68)", maxLength: 68, nullable: true),
-                    PostalCityID = table.Column<int>(type: "int", nullable: false),
-                    PostalPostalCode = table.Column<string>(type: "nvarchar(18)", maxLength: 18, nullable: false),
-                    ApplicationSettings = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SystemParameterID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[SystemParameterID])", comment: "Numeric ID used for row holding system parameters"),
+                    DeliveryAddressLine1 = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false, comment: "First address line for the company"),
+                    DeliveryAddressLine2 = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: true, comment: "Second address line for the company"),
+                    DeliveryCityID = table.Column<int>(type: "int", nullable: false, comment: "ID of the city for this address"),
+                    DeliveryPostalCode = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false, comment: "Postal code for the company"),
+                    DeliveryLocation = table.Column<Geometry>(type: "geography", nullable: false, comment: "Geographic location for the company office"),
+                    PostalAddressLine1 = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false, comment: "First postal address line for the company"),
+                    PostalAddressLine2 = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: true, comment: "Second postaladdress line for the company"),
+                    PostalCityID = table.Column<int>(type: "int", nullable: false, comment: "ID of the city for this postaladdress"),
+                    PostalPostalCode = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false, comment: "Postal code for the company when sending via mail"),
+                    ApplicationSettings = table.Column<string>(type: "nvarchar(max)", nullable: false, comment: "JSON-structured application settings"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     LastEditedWhen = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "(sysdatetime())")
                 },
@@ -926,27 +939,28 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Application",
                         principalTable: "Cities",
                         principalColumn: "CityID");
-                });
+                },
+                comment: "Any configurable parameters for the whole system");
 
             migrationBuilder.CreateTable(
                 name: "Orders",
                 schema: "Sales",
                 columns: table => new
                 {
-                    OrderID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[OrderID])"),
-                    CustomerID = table.Column<int>(type: "int", nullable: false),
-                    SalespersonPersonID = table.Column<int>(type: "int", nullable: false),
-                    PickedByPersonID = table.Column<int>(type: "int", nullable: true),
-                    ContactPersonID = table.Column<int>(type: "int", nullable: false),
-                    BackorderOrderID = table.Column<int>(type: "int", nullable: true),
-                    OrderDate = table.Column<DateTime>(type: "date", nullable: false),
-                    ExpectedDeliveryDate = table.Column<DateTime>(type: "date", nullable: false),
-                    CustomerPurchaseOrderNumber = table.Column<string>(type: "nvarchar(28)", maxLength: 28, nullable: true),
-                    IsUndersupplyBackordered = table.Column<bool>(type: "bit", nullable: false),
-                    Comments = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DeliveryInstructions = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    InternalComments = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PickingCompletedWhen = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    OrderID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[OrderID])", comment: "Numeric ID used for reference to an order within the database"),
+                    CustomerID = table.Column<int>(type: "int", nullable: false, comment: "Customer for this order"),
+                    SalespersonPersonID = table.Column<int>(type: "int", nullable: false, comment: "Salesperson for this order"),
+                    PickedByPersonID = table.Column<int>(type: "int", nullable: true, comment: "Person who picked this shipment"),
+                    ContactPersonID = table.Column<int>(type: "int", nullable: false, comment: "Customer contact for this order"),
+                    BackorderOrderID = table.Column<int>(type: "int", nullable: true, comment: "If this order is a backorder, this column holds the original order number"),
+                    OrderDate = table.Column<DateTime>(type: "date", nullable: false, comment: "Date that this order was raised"),
+                    ExpectedDeliveryDate = table.Column<DateTime>(type: "date", nullable: false, comment: "Expected delivery date"),
+                    CustomerPurchaseOrderNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true, comment: "Purchase Order Number received from customer"),
+                    IsUndersupplyBackordered = table.Column<bool>(type: "bit", nullable: false, comment: "If items cannot be supplied are they backordered?"),
+                    Comments = table.Column<string>(type: "nvarchar(max)", nullable: true, comment: "Any comments related to this order (sent to customer)"),
+                    DeliveryInstructions = table.Column<string>(type: "nvarchar(max)", nullable: true, comment: "	Any comments related to order delivery (sent to customer)"),
+                    InternalComments = table.Column<string>(type: "nvarchar(max)", nullable: true, comment: "Any internal comments related to this order (not sent to the customer)"),
+                    PickingCompletedWhen = table.Column<DateTime>(type: "datetime2", nullable: true, comment: "When was picking of the entire order completed?"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     LastEditedWhen = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "(sysdatetime())")
                 },
@@ -989,23 +1003,24 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Application",
                         principalTable: "People",
                         principalColumn: "PersonID");
-                });
+                },
+                comment: "Detail of customer orders");
 
             migrationBuilder.CreateTable(
                 name: "PurchaseOrders",
                 schema: "Purchasing",
                 columns: table => new
                 {
-                    PurchaseOrderID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[PurchaseOrderID])"),
-                    SupplierID = table.Column<int>(type: "int", nullable: false),
-                    OrderDate = table.Column<DateTime>(type: "date", nullable: false),
-                    DeliveryMethodID = table.Column<int>(type: "int", nullable: false),
-                    ContactPersonID = table.Column<int>(type: "int", nullable: false),
-                    ExpectedDeliveryDate = table.Column<DateTime>(type: "date", nullable: true),
-                    SupplierReference = table.Column<string>(type: "nvarchar(28)", maxLength: 28, nullable: true),
-                    IsOrderFinalized = table.Column<bool>(type: "bit", nullable: false),
-                    Comments = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    InternalComments = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PurchaseOrderID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[PurchaseOrderID])", comment: "Numeric ID used for reference to a purchase order within the database"),
+                    SupplierID = table.Column<int>(type: "int", nullable: false, comment: "Supplier for this purchase order"),
+                    OrderDate = table.Column<DateTime>(type: "date", nullable: false, comment: "Date that this purchase order was raised"),
+                    DeliveryMethodID = table.Column<int>(type: "int", nullable: false, comment: "How this purchase order should be delivered"),
+                    ContactPersonID = table.Column<int>(type: "int", nullable: false, comment: "The person who is the primary contact for this purchase order"),
+                    ExpectedDeliveryDate = table.Column<DateTime>(type: "date", nullable: true, comment: "Expected delivery date for this purchase order"),
+                    SupplierReference = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true, comment: "Supplier reference for our organization (might be our account number at the supplier)"),
+                    IsOrderFinalized = table.Column<bool>(type: "bit", nullable: false, comment: "Is this purchase order now considered finalized?"),
+                    Comments = table.Column<string>(type: "nvarchar(max)", nullable: true, comment: "Any comments related this purchase order (comments sent to the supplier)"),
+                    InternalComments = table.Column<string>(type: "nvarchar(max)", nullable: true, comment: "Any internal comments related this purchase order (comments for internal reference only and not sent to the supplier)"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     LastEditedWhen = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "(sysdatetime())")
                 },
@@ -1036,35 +1051,36 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Purchasing",
                         principalTable: "Suppliers",
                         principalColumn: "SupplierID");
-                });
+                },
+                comment: "Details of supplier purchase orders");
 
             migrationBuilder.CreateTable(
                 name: "StockItems",
                 schema: "Warehouse",
                 columns: table => new
                 {
-                    StockItemID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[StockItemID])"),
-                    StockItemName = table.Column<string>(type: "nvarchar(107)", maxLength: 107, nullable: false),
-                    SupplierID = table.Column<int>(type: "int", nullable: false),
-                    ColorID = table.Column<int>(type: "int", nullable: true),
-                    UnitPackageID = table.Column<int>(type: "int", nullable: false),
-                    OuterPackageID = table.Column<int>(type: "int", nullable: false),
-                    Brand = table.Column<string>(type: "nvarchar(58)", maxLength: 58, nullable: true),
-                    Size = table.Column<string>(type: "nvarchar(28)", maxLength: 28, nullable: true),
-                    LeadTimeDays = table.Column<int>(type: "int", nullable: false),
-                    QuantityPerOuter = table.Column<int>(type: "int", nullable: false),
-                    IsChillerStock = table.Column<bool>(type: "bit", nullable: false),
-                    Barcode = table.Column<string>(type: "nvarchar(58)", maxLength: 58, nullable: true),
-                    TaxRate = table.Column<decimal>(type: "decimal(18,3)", nullable: false),
-                    UnitPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    RecommendedRetailPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    TypicalWeightPerUnit = table.Column<decimal>(type: "decimal(18,3)", nullable: false),
-                    MarketingComments = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    InternalComments = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Photo = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
-                    CustomFields = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Tags = table.Column<string>(type: "nvarchar(max)", nullable: true, computedColumnSql: "(json_query([CustomFields],N'$.Tags'))", stored: false),
-                    SearchDetails = table.Column<string>(type: "nvarchar(max)", nullable: false, computedColumnSql: "(concat([StockItemName],N' ',[MarketingComments]))", stored: false),
+                    StockItemID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[StockItemID])", comment: "Numeric ID used for reference to a stock item within the database"),
+                    StockItemName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "Full name of a stock item (but not a full description)"),
+                    SupplierID = table.Column<int>(type: "int", nullable: false, comment: "Usual supplier for this stock item"),
+                    ColorID = table.Column<int>(type: "int", nullable: true, comment: "Color (optional) for this stock item"),
+                    UnitPackageID = table.Column<int>(type: "int", nullable: false, comment: "Usual package for selling units of this stock item"),
+                    OuterPackageID = table.Column<int>(type: "int", nullable: false, comment: "Usual package for selling outers of this stock item (ie cartons, boxes, etc.)"),
+                    Brand = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, comment: "Brand for the stock item (if the item is branded)"),
+                    Size = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true, comment: "Size of this item (eg: 100mm)"),
+                    LeadTimeDays = table.Column<int>(type: "int", nullable: false, comment: "Number of days typically taken from order to receipt of this stock item"),
+                    QuantityPerOuter = table.Column<int>(type: "int", nullable: false, comment: "Quantity of the stock item in an outer package"),
+                    IsChillerStock = table.Column<bool>(type: "bit", nullable: false, comment: "Does this stock item need to be in a chiller?"),
+                    Barcode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, comment: "Barcode for this stock item"),
+                    TaxRate = table.Column<decimal>(type: "decimal(18,3)", nullable: false, comment: "Tax rate to be applied"),
+                    UnitPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false, comment: "Selling price (ex-tax) for one unit of this product"),
+                    RecommendedRetailPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true, comment: "Recommended retail price for this stock item"),
+                    TypicalWeightPerUnit = table.Column<decimal>(type: "decimal(18,3)", nullable: false, comment: "Typical weight for one unit of this product (packaged)"),
+                    MarketingComments = table.Column<string>(type: "nvarchar(max)", nullable: true, comment: "Marketing comments for this stock item (shared outside the organization)"),
+                    InternalComments = table.Column<string>(type: "nvarchar(max)", nullable: true, comment: "Internal comments (not exposed outside organization)"),
+                    Photo = table.Column<byte[]>(type: "varbinary(max)", nullable: true, comment: "Photo of the product"),
+                    CustomFields = table.Column<string>(type: "nvarchar(max)", nullable: true, comment: "Custom fields added by system users"),
+                    Tags = table.Column<string>(type: "nvarchar(max)", nullable: true, computedColumnSql: "(json_query([CustomFields],N'$.Tags'))", stored: false, comment: "Advertising tags associated with this stock item (JSON array retrieved from CustomFields)"),
+                    SearchDetails = table.Column<string>(type: "nvarchar(max)", nullable: false, computedColumnSql: "(concat([StockItemName],N' ',[MarketingComments]))", stored: false, comment: "Combination of columns used by full text search"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     ValidFrom = table.Column<DateTime>(type: "datetime2", nullable: false)
                         .Annotation("SqlServer:IsTemporal", true)
@@ -1108,7 +1124,8 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Warehouse",
                         principalTable: "PackageTypes",
                         principalColumn: "PackageTypeID");
-                })
+                },
+                comment: "Main entity table for stock items")
                 .Annotation("SqlServer:IsTemporal", true)
                 .Annotation("SqlServer:TemporalHistoryTableName", "StockItems_Archive")
                 .Annotation("SqlServer:TemporalHistoryTableSchema", "Warehouse")
@@ -1120,29 +1137,29 @@ namespace wwimporters.efmigrations.Migrations
                 schema: "Sales",
                 columns: table => new
                 {
-                    InvoiceID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[InvoiceID])"),
-                    CustomerID = table.Column<int>(type: "int", nullable: false),
-                    BillToCustomerID = table.Column<int>(type: "int", nullable: false),
-                    OrderID = table.Column<int>(type: "int", nullable: true),
-                    DeliveryMethodID = table.Column<int>(type: "int", nullable: false),
-                    ContactPersonID = table.Column<int>(type: "int", nullable: false),
-                    AccountsPersonID = table.Column<int>(type: "int", nullable: false),
-                    SalespersonPersonID = table.Column<int>(type: "int", nullable: false),
-                    PackedByPersonID = table.Column<int>(type: "int", nullable: false),
-                    InvoiceDate = table.Column<DateTime>(type: "date", nullable: false),
-                    CustomerPurchaseOrderNumber = table.Column<string>(type: "nvarchar(28)", maxLength: 28, nullable: true),
-                    IsCreditNote = table.Column<bool>(type: "bit", nullable: false),
-                    CreditNoteReason = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Comments = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DeliveryInstructions = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    InternalComments = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TotalDryItems = table.Column<int>(type: "int", nullable: false),
-                    TotalChillerItems = table.Column<int>(type: "int", nullable: false),
-                    DeliveryRun = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: true),
-                    RunPosition = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: true),
-                    ReturnedDeliveryData = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ConfirmedDeliveryTime = table.Column<DateTime>(type: "datetime2", nullable: true, computedColumnSql: "(TRY_CONVERT([datetime2](7),json_value([ReturnedDeliveryData],N'$.DeliveredWhen'),(126)))", stored: false),
-                    ConfirmedReceivedBy = table.Column<string>(type: "nvarchar(4000)", maxLength: 4000, nullable: true, computedColumnSql: "(json_value([ReturnedDeliveryData],N'$.ReceivedBy'))", stored: false),
+                    InvoiceID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[InvoiceID])", comment: "Numeric ID used for reference to an invoice within the database"),
+                    CustomerID = table.Column<int>(type: "int", nullable: false, comment: "Customer for this invoice"),
+                    BillToCustomerID = table.Column<int>(type: "int", nullable: false, comment: "Bill to customer for this invoice (invoices might be billed to a head office)"),
+                    OrderID = table.Column<int>(type: "int", nullable: true, comment: "Sales order (if any) for this invoice"),
+                    DeliveryMethodID = table.Column<int>(type: "int", nullable: false, comment: "How these stock items are beign delivered"),
+                    ContactPersonID = table.Column<int>(type: "int", nullable: false, comment: "Customer contact for this invoice"),
+                    AccountsPersonID = table.Column<int>(type: "int", nullable: false, comment: "Customer accounts contact for this invoice"),
+                    SalespersonPersonID = table.Column<int>(type: "int", nullable: false, comment: "Salesperson for this invoice"),
+                    PackedByPersonID = table.Column<int>(type: "int", nullable: false, comment: "Person who packed this shipment (or checked the packing)"),
+                    InvoiceDate = table.Column<DateTime>(type: "date", nullable: false, comment: "Date that this invoice was raised"),
+                    CustomerPurchaseOrderNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true, comment: "Purchase Order Number received from customer"),
+                    IsCreditNote = table.Column<bool>(type: "bit", nullable: false, comment: "Is this a credit note (rather than an invoice)"),
+                    CreditNoteReason = table.Column<string>(type: "nvarchar(max)", nullable: true, comment: "Reason that this credit note needed to be generated (if applicable)"),
+                    Comments = table.Column<string>(type: "nvarchar(max)", nullable: true, comment: "Any comments related to this invoice (sent to customer)"),
+                    DeliveryInstructions = table.Column<string>(type: "nvarchar(max)", nullable: true, comment: "Any comments related to delivery (sent to customer)"),
+                    InternalComments = table.Column<string>(type: "nvarchar(max)", nullable: true, comment: "Any internal comments related to this invoice (not sent to the customer)"),
+                    TotalDryItems = table.Column<int>(type: "int", nullable: false, comment: "Total number of dry packages (information for the delivery driver)"),
+                    TotalChillerItems = table.Column<int>(type: "int", nullable: false, comment: "Total number of chiller packages (information for the delivery driver)"),
+                    DeliveryRun = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: true, comment: "Delivery run for this shipment"),
+                    RunPosition = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: true, comment: "Position in the delivery run for this shipment"),
+                    ReturnedDeliveryData = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: true, comment: "JSON-structured data returned from delivery devices for deliveries made directly by the organization"),
+                    ConfirmedDeliveryTime = table.Column<DateTime>(type: "datetime2", nullable: true, computedColumnSql: "(TRY_CONVERT([datetime2](7),json_value([ReturnedDeliveryData],N'$.DeliveredWhen'),(126)))", stored: false, comment: "Confirmed delivery date and time promoted from JSON delivery data"),
+                    ConfirmedReceivedBy = table.Column<string>(type: "nvarchar(4000)", maxLength: 4000, nullable: true, computedColumnSql: "(json_value([ReturnedDeliveryData],N'$.ReceivedBy'))", stored: false, comment: "Confirmed receiver promoted from JSON delivery data"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     LastEditedWhen = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "(sysdatetime())")
                 },
@@ -1203,26 +1220,27 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Application",
                         principalTable: "People",
                         principalColumn: "PersonID");
-                });
+                },
+                comment: "Details of customer invoices");
 
             migrationBuilder.CreateTable(
                 name: "SupplierTransactions",
                 schema: "Purchasing",
                 columns: table => new
                 {
-                    SupplierTransactionID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[TransactionID])"),
-                    SupplierID = table.Column<int>(type: "int", nullable: false),
-                    TransactionTypeID = table.Column<int>(type: "int", nullable: false),
-                    PurchaseOrderID = table.Column<int>(type: "int", nullable: true),
-                    PaymentMethodID = table.Column<int>(type: "int", nullable: true),
-                    SupplierInvoiceNumber = table.Column<string>(type: "nvarchar(28)", maxLength: 28, nullable: true),
-                    TransactionDate = table.Column<DateTime>(type: "date", nullable: false),
-                    AmountExcludingTax = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    TaxAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    TransactionAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    OutstandingBalance = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    FinalizationDate = table.Column<DateTime>(type: "date", nullable: true),
-                    IsFinalized = table.Column<bool>(type: "bit", nullable: true, computedColumnSql: "(case when [FinalizationDate] IS NULL then CONVERT([bit],(0)) else CONVERT([bit],(1)) end)", stored: true),
+                    SupplierTransactionID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[TransactionID])", comment: "Numeric ID used to refer to a supplier transaction within the database"),
+                    SupplierID = table.Column<int>(type: "int", nullable: false, comment: "Supplier for this transaction"),
+                    TransactionTypeID = table.Column<int>(type: "int", nullable: false, comment: "Type of transaction"),
+                    PurchaseOrderID = table.Column<int>(type: "int", nullable: true, comment: "ID of an purchase order (for transactions associated with a purchase order)"),
+                    PaymentMethodID = table.Column<int>(type: "int", nullable: true, comment: "ID of a payment method (for transactions involving payments)"),
+                    SupplierInvoiceNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true, comment: "Invoice number for an invoice received from the supplier"),
+                    TransactionDate = table.Column<DateTime>(type: "date", nullable: false, comment: "Date for the transaction"),
+                    AmountExcludingTax = table.Column<decimal>(type: "decimal(18,2)", nullable: false, comment: "Transaction amount (excluding tax)"),
+                    TaxAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false, comment: "Tax amount calculated"),
+                    TransactionAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false, comment: "Transaction amount (including tax)"),
+                    OutstandingBalance = table.Column<decimal>(type: "decimal(18,2)", nullable: false, comment: "Amount still outstanding for this transaction"),
+                    FinalizationDate = table.Column<DateTime>(type: "date", nullable: true, comment: "Date that this transaction was finalized (if it has been)"),
+                    IsFinalized = table.Column<bool>(type: "bit", nullable: true, computedColumnSql: "(case when [FinalizationDate] IS NULL then CONVERT([bit],(0)) else CONVERT([bit],(1)) end)", stored: true, comment: "Is this transaction finalized (invoices, credits and payments have been matched)"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     LastEditedWhen = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "(sysdatetime())")
                 },
@@ -1260,23 +1278,24 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Application",
                         principalTable: "TransactionTypes",
                         principalColumn: "TransactionTypeID");
-                });
+                },
+                comment: "All financial transactions that are supplier-related");
 
             migrationBuilder.CreateTable(
                 name: "OrderLines",
                 schema: "Sales",
                 columns: table => new
                 {
-                    OrderLineID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[OrderLineID])"),
-                    OrderID = table.Column<int>(type: "int", nullable: false),
-                    StockItemID = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(107)", maxLength: 107, nullable: false),
-                    PackageTypeID = table.Column<int>(type: "int", nullable: false),
-                    Quantity = table.Column<int>(type: "int", nullable: false),
-                    UnitPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    TaxRate = table.Column<decimal>(type: "decimal(18,3)", nullable: false),
-                    PickedQuantity = table.Column<int>(type: "int", nullable: false),
-                    PickingCompletedWhen = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    OrderLineID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[OrderLineID])", comment: "Numeric ID used for reference to a line on an Order within the database"),
+                    OrderID = table.Column<int>(type: "int", nullable: false, comment: "Order that this line is associated with"),
+                    StockItemID = table.Column<int>(type: "int", nullable: false, comment: "Stock item for this order line (FK not indexed as separate index exists)"),
+                    Description = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "Description of the item supplied (Usually the stock item name but can be overridden)"),
+                    PackageTypeID = table.Column<int>(type: "int", nullable: false, comment: "Type of package to be supplied"),
+                    Quantity = table.Column<int>(type: "int", nullable: false, comment: "Quantity to be supplied"),
+                    UnitPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true, comment: "Unit price to be charged"),
+                    TaxRate = table.Column<decimal>(type: "decimal(18,3)", nullable: false, comment: "Tax rate to be applied"),
+                    PickedQuantity = table.Column<int>(type: "int", nullable: false, comment: "Quantity picked from stock"),
+                    PickingCompletedWhen = table.Column<DateTime>(type: "datetime2", nullable: true, comment: "When was picking of this line completed?"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     LastEditedWhen = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "(sysdatetime())")
                 },
@@ -1307,23 +1326,24 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Warehouse",
                         principalTable: "StockItems",
                         principalColumn: "StockItemID");
-                });
+                },
+                comment: "Detail lines from customer orders");
 
             migrationBuilder.CreateTable(
                 name: "PurchaseOrderLines",
                 schema: "Purchasing",
                 columns: table => new
                 {
-                    PurchaseOrderLineID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[PurchaseOrderLineID])"),
-                    PurchaseOrderID = table.Column<int>(type: "int", nullable: false),
-                    StockItemID = table.Column<int>(type: "int", nullable: false),
-                    OrderedOuters = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(107)", maxLength: 107, nullable: false),
-                    ReceivedOuters = table.Column<int>(type: "int", nullable: false),
-                    PackageTypeID = table.Column<int>(type: "int", nullable: false),
-                    ExpectedUnitPricePerOuter = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    LastReceiptDate = table.Column<DateTime>(type: "date", nullable: true),
-                    IsOrderLineFinalized = table.Column<bool>(type: "bit", nullable: false),
+                    PurchaseOrderLineID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[PurchaseOrderLineID])", comment: "Numeric ID used for reference to a line on a purchase order within the database"),
+                    PurchaseOrderID = table.Column<int>(type: "int", nullable: false, comment: "Purchase order that this line is associated with"),
+                    StockItemID = table.Column<int>(type: "int", nullable: false, comment: "Stock item for this purchase order line"),
+                    OrderedOuters = table.Column<int>(type: "int", nullable: false, comment: "Quantity of the stock item that is ordered"),
+                    Description = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "Description of the item to be supplied (Often the stock item name but could be supplier description)"),
+                    ReceivedOuters = table.Column<int>(type: "int", nullable: false, comment: "Total quantity of the stock item that has been received so far"),
+                    PackageTypeID = table.Column<int>(type: "int", nullable: false, comment: "Type of package received"),
+                    ExpectedUnitPricePerOuter = table.Column<decimal>(type: "decimal(18,2)", nullable: true, comment: "The unit price that we expect to be charged"),
+                    LastReceiptDate = table.Column<DateTime>(type: "date", nullable: true, comment: "The last date on which this stock item was received for this purchase order"),
+                    IsOrderLineFinalized = table.Column<bool>(type: "bit", nullable: false, comment: "Is this purchase order line now considered finalized? (Receipted quantities and weights are often not precise)"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     LastEditedWhen = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "(sysdatetime())")
                 },
@@ -1354,25 +1374,26 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Warehouse",
                         principalTable: "StockItems",
                         principalColumn: "StockItemID");
-                });
+                },
+                comment: "Detail lines from supplier purchase orders");
 
             migrationBuilder.CreateTable(
                 name: "SpecialDeals",
                 schema: "Sales",
                 columns: table => new
                 {
-                    SpecialDealID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[SpecialDealID])"),
-                    StockItemID = table.Column<int>(type: "int", nullable: true),
-                    CustomerID = table.Column<int>(type: "int", nullable: true),
-                    BuyingGroupID = table.Column<int>(type: "int", nullable: true),
-                    CustomerCategoryID = table.Column<int>(type: "int", nullable: true),
-                    StockGroupID = table.Column<int>(type: "int", nullable: true),
-                    DealDescription = table.Column<string>(type: "nvarchar(38)", maxLength: 38, nullable: false),
-                    StartDate = table.Column<DateTime>(type: "date", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "date", nullable: false),
-                    DiscountAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    DiscountPercentage = table.Column<decimal>(type: "decimal(18,3)", nullable: true),
-                    UnitPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    SpecialDealID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[SpecialDealID])", comment: "ID (sequence based) for a special deal"),
+                    StockItemID = table.Column<int>(type: "int", nullable: true, comment: "Stock item that the deal applies to (if NULL, then only discounts are permitted not unit prices)"),
+                    CustomerID = table.Column<int>(type: "int", nullable: true, comment: "ID of the customer that the special pricing applies to (if NULL then all customers)"),
+                    BuyingGroupID = table.Column<int>(type: "int", nullable: true, comment: "ID of the buying group that the special pricing applies to (optional)"),
+                    CustomerCategoryID = table.Column<int>(type: "int", nullable: true, comment: "ID of the customer category that the special pricing applies to (optional)"),
+                    StockGroupID = table.Column<int>(type: "int", nullable: true, comment: "ID of the stock group that the special pricing applies to (optional)"),
+                    DealDescription = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false, comment: "Description of the special deal"),
+                    StartDate = table.Column<DateTime>(type: "date", nullable: false, comment: "Date that the special pricing starts from"),
+                    EndDate = table.Column<DateTime>(type: "date", nullable: false, comment: "Date that the special pricing ends on"),
+                    DiscountAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: true, comment: "Discount per unit to be applied to sale price (optional)"),
+                    DiscountPercentage = table.Column<decimal>(type: "decimal(18,3)", nullable: true, comment: "	Discount percentage per unit to be applied to sale price (optional)"),
+                    UnitPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true, comment: "Special price per unit to be applied instead of sale price (optional)"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     LastEditedWhen = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "(sysdatetime())")
                 },
@@ -1415,20 +1436,21 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Warehouse",
                         principalTable: "StockItems",
                         principalColumn: "StockItemID");
-                });
+                },
+                comment: "Special pricing (can include fixed prices, discount $ or discount %)");
 
             migrationBuilder.CreateTable(
                 name: "StockItemHoldings",
                 schema: "Warehouse",
                 columns: table => new
                 {
-                    StockItemID = table.Column<int>(type: "int", nullable: false),
-                    QuantityOnHand = table.Column<int>(type: "int", nullable: false),
-                    BinLocation = table.Column<string>(type: "nvarchar(28)", maxLength: 28, nullable: false),
-                    LastStocktakeQuantity = table.Column<int>(type: "int", nullable: false),
-                    LastCostPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    ReorderLevel = table.Column<int>(type: "int", nullable: false),
-                    TargetStockLevel = table.Column<int>(type: "int", nullable: false),
+                    StockItemID = table.Column<int>(type: "int", nullable: false, comment: "ID of the stock item that this holding relates to (this table holds non-temporal columns for stock)"),
+                    QuantityOnHand = table.Column<int>(type: "int", nullable: false, comment: "Quantity currently on hand (if tracked)"),
+                    BinLocation = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false, comment: "Bin location (ie location of this stock item within the depot)"),
+                    LastStocktakeQuantity = table.Column<int>(type: "int", nullable: false, comment: "Quantity at last stocktake (if tracked)"),
+                    LastCostPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false, comment: "Unit cost price the last time this stock item was purchased"),
+                    ReorderLevel = table.Column<int>(type: "int", nullable: false, comment: "Quantity below which reordering should take place"),
+                    TargetStockLevel = table.Column<int>(type: "int", nullable: false, comment: "Typical quantity ordered"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     LastEditedWhen = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "(sysdatetime())")
                 },
@@ -1447,16 +1469,17 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Warehouse",
                         principalTable: "StockItems",
                         principalColumn: "StockItemID");
-                });
+                },
+                comment: "Non-temporal attributes for stock items");
 
             migrationBuilder.CreateTable(
                 name: "StockItemStockGroups",
                 schema: "Warehouse",
                 columns: table => new
                 {
-                    StockItemStockGroupID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[StockItemStockGroupID])"),
-                    StockItemID = table.Column<int>(type: "int", nullable: false),
-                    StockGroupID = table.Column<int>(type: "int", nullable: false),
+                    StockItemStockGroupID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[StockItemStockGroupID])", comment: "Internal reference for this linking row"),
+                    StockItemID = table.Column<int>(type: "int", nullable: false, comment: "Stock item assigned to this stock group (FK indexed via unique constraint)"),
+                    StockGroupID = table.Column<int>(type: "int", nullable: false, comment: "StockGroup assigned to this stock item (FK indexed via unique constraint)"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     LastEditedWhen = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "(sysdatetime())")
                 },
@@ -1481,25 +1504,26 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Warehouse",
                         principalTable: "StockItems",
                         principalColumn: "StockItemID");
-                });
+                },
+                comment: "Which stock items are in which stock groups");
 
             migrationBuilder.CreateTable(
                 name: "CustomerTransactions",
                 schema: "Sales",
                 columns: table => new
                 {
-                    CustomerTransactionID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[TransactionID])"),
-                    CustomerID = table.Column<int>(type: "int", nullable: false),
-                    TransactionTypeID = table.Column<int>(type: "int", nullable: false),
-                    InvoiceID = table.Column<int>(type: "int", nullable: true),
-                    PaymentMethodID = table.Column<int>(type: "int", nullable: true),
-                    TransactionDate = table.Column<DateTime>(type: "date", nullable: false),
-                    AmountExcludingTax = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    TaxAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    TransactionAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    OutstandingBalance = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    FinalizationDate = table.Column<DateTime>(type: "date", nullable: true),
-                    IsFinalized = table.Column<bool>(type: "bit", nullable: true, computedColumnSql: "(case when [FinalizationDate] IS NULL then CONVERT([bit],(0)) else CONVERT([bit],(1)) end)", stored: true),
+                    CustomerTransactionID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[TransactionID])", comment: "Numeric ID used to refer to a customer transaction within the database"),
+                    CustomerID = table.Column<int>(type: "int", nullable: false, comment: "Customer for this transaction"),
+                    TransactionTypeID = table.Column<int>(type: "int", nullable: false, comment: "Type of transaction"),
+                    InvoiceID = table.Column<int>(type: "int", nullable: true, comment: "ID of an invoice (for transactions associated with an invoice)"),
+                    PaymentMethodID = table.Column<int>(type: "int", nullable: true, comment: "ID of a payment method (for transactions involving payments)"),
+                    TransactionDate = table.Column<DateTime>(type: "date", nullable: false, comment: "Date for the transaction"),
+                    AmountExcludingTax = table.Column<decimal>(type: "decimal(18,2)", nullable: false, comment: "Transaction amount (excluding tax)"),
+                    TaxAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false, comment: "Tax amount calculated"),
+                    TransactionAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false, comment: "Transaction amount (including tax)"),
+                    OutstandingBalance = table.Column<decimal>(type: "decimal(18,2)", nullable: false, comment: "Amount still outstanding for this transaction"),
+                    FinalizationDate = table.Column<DateTime>(type: "date", nullable: true, comment: "Date that this transaction was finalized (if it has been)"),
+                    IsFinalized = table.Column<bool>(type: "bit", nullable: true, computedColumnSql: "(case when [FinalizationDate] IS NULL then CONVERT([bit],(0)) else CONVERT([bit],(1)) end)", stored: true, comment: "Is this transaction finalized (invoices, credits and payments have been matched)"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     LastEditedWhen = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "(sysdatetime())")
                 },
@@ -1537,24 +1561,25 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Application",
                         principalTable: "TransactionTypes",
                         principalColumn: "TransactionTypeID");
-                });
+                },
+                comment: "All financial transactions that are customer-related");
 
             migrationBuilder.CreateTable(
                 name: "InvoiceLines",
                 schema: "Sales",
                 columns: table => new
                 {
-                    InvoiceLineID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[InvoiceLineID])"),
-                    InvoiceID = table.Column<int>(type: "int", nullable: false),
-                    StockItemID = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(107)", maxLength: 107, nullable: false),
-                    PackageTypeID = table.Column<int>(type: "int", nullable: false),
-                    Quantity = table.Column<int>(type: "int", nullable: false),
-                    UnitPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    TaxRate = table.Column<decimal>(type: "decimal(18,3)", nullable: false),
-                    TaxAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    LineProfit = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    ExtendedPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    InvoiceLineID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[InvoiceLineID])", comment: "Numeric ID used for reference to a line on an invoice within the database"),
+                    InvoiceID = table.Column<int>(type: "int", nullable: false, comment: "Invoice that this line is associated with"),
+                    StockItemID = table.Column<int>(type: "int", nullable: false, comment: "Stock item for this invoice line"),
+                    Description = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false, comment: "Description of the item supplied (Usually the stock item name but can be overridden)"),
+                    PackageTypeID = table.Column<int>(type: "int", nullable: false, comment: "Type of package supplied"),
+                    Quantity = table.Column<int>(type: "int", nullable: false, comment: "Quantity supplied"),
+                    UnitPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true, comment: "Unit price charged"),
+                    TaxRate = table.Column<decimal>(type: "decimal(18,3)", nullable: false, comment: "Tax rate to be applied"),
+                    TaxAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false, comment: "Tax amount calculated"),
+                    LineProfit = table.Column<decimal>(type: "decimal(18,2)", nullable: false, comment: "Profit made on this line item at current cost price"),
+                    ExtendedPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false, comment: "Extended line price charged"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     LastEditedWhen = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "(sysdatetime())")
                 },
@@ -1585,22 +1610,23 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Warehouse",
                         principalTable: "StockItems",
                         principalColumn: "StockItemID");
-                });
+                },
+                comment: "Detail lines from customer invoices");
 
             migrationBuilder.CreateTable(
                 name: "StockItemTransactions",
                 schema: "Warehouse",
                 columns: table => new
                 {
-                    StockItemTransactionID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[TransactionID])"),
-                    StockItemID = table.Column<int>(type: "int", nullable: false),
-                    TransactionTypeID = table.Column<int>(type: "int", nullable: false),
-                    CustomerID = table.Column<int>(type: "int", nullable: true),
-                    InvoiceID = table.Column<int>(type: "int", nullable: true),
-                    SupplierID = table.Column<int>(type: "int", nullable: true),
-                    PurchaseOrderID = table.Column<int>(type: "int", nullable: true),
-                    TransactionOccurredWhen = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Quantity = table.Column<decimal>(type: "decimal(18,3)", nullable: false),
+                    StockItemTransactionID = table.Column<int>(type: "int", nullable: false, defaultValueSql: "(NEXT VALUE FOR [Sequences].[TransactionID])", comment: "Numeric ID used to refer to a stock item transaction within the database"),
+                    StockItemID = table.Column<int>(type: "int", nullable: false, comment: "StockItem for this transaction"),
+                    TransactionTypeID = table.Column<int>(type: "int", nullable: false, comment: "Type of transaction"),
+                    CustomerID = table.Column<int>(type: "int", nullable: true, comment: "Customer for this transaction (if applicable)"),
+                    InvoiceID = table.Column<int>(type: "int", nullable: true, comment: "ID of an invoice (for transactions associated with an invoice)"),
+                    SupplierID = table.Column<int>(type: "int", nullable: true, comment: "Supplier for this stock transaction (if applicable)"),
+                    PurchaseOrderID = table.Column<int>(type: "int", nullable: true, comment: "ID of an purchase order (for transactions associated with a purchase order)"),
+                    TransactionOccurredWhen = table.Column<DateTime>(type: "datetime2", nullable: false, comment: "Date and time when the transaction occurred"),
+                    Quantity = table.Column<decimal>(type: "decimal(18,3)", nullable: false, comment: "Quantity of stock movement (positive is incoming stock, negative is outgoing)"),
                     LastEditedBy = table.Column<int>(type: "int", nullable: false),
                     LastEditedWhen = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "(sysdatetime())")
                 },
@@ -1650,7 +1676,8 @@ namespace wwimporters.efmigrations.Migrations
                         principalSchema: "Application",
                         principalTable: "TransactionTypes",
                         principalColumn: "TransactionTypeID");
-                });
+                },
+                comment: "Transactions covering all movements of all stock items");
 
             migrationBuilder.CreateIndex(
                 name: "IX_BuyingGroups_LastEditedBy",

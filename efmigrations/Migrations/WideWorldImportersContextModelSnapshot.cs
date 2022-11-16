@@ -108,12 +108,14 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("BuyingGroupID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[BuyingGroupID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[BuyingGroupID])")
+                        .HasComment("Numeric ID used for reference to a buying group within the database");
 
                     b.Property<string>("BuyingGroupName")
                         .IsRequired()
-                        .HasMaxLength(58)
-                        .HasColumnType("nvarchar(58)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasComment("Full name of a buying group that customers can be members of");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
@@ -272,12 +274,14 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("ColorID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[ColorID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[ColorID])")
+                        .HasComment("Numeric ID used for reference to a color within the database");
 
                     b.Property<string>("ColorName")
                         .IsRequired()
-                        .HasMaxLength(28)
-                        .HasColumnType("nvarchar(28)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasComment("Full name of a color that can be used to describe stock items");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
@@ -301,7 +305,9 @@ namespace wwimporters.efmigrations.Migrations
 
                     b.ToTable("Colors", "Warehouse");
 
-                    b.ToTable(tb => tb.IsTemporal(ttb =>
+                    b
+                        .HasComment("Stock items can (optionally) have colors")
+                        .ToTable(tb => tb.IsTemporal(ttb =>
                         {
                             ttb.UseHistoryTable("Colors_Archive", "Warehouse");
                             ttb
@@ -320,52 +326,63 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("CountryID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[CountryID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[CountryID])")
+                        .HasComment("Numeric ID used for reference to a country within the database");
 
                     b.Property<Geometry>("Border")
-                        .HasColumnType("geography");
+                        .HasColumnType("geography")
+                        .HasComment("Geographic border of the country as described by the United Nations");
 
                     b.Property<string>("Continent")
                         .IsRequired()
-                        .HasMaxLength(38)
-                        .HasColumnType("nvarchar(38)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)")
+                        .HasComment("Name of the continent");
 
                     b.Property<string>("CountryName")
                         .IsRequired()
-                        .HasMaxLength(68)
-                        .HasColumnType("nvarchar(68)");
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)")
+                        .HasComment("Name of the country");
 
                     b.Property<string>("CountryType")
-                        .HasMaxLength(28)
-                        .HasColumnType("nvarchar(28)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasComment("Type of country or administrative region");
 
                     b.Property<string>("FormalName")
                         .IsRequired()
-                        .HasMaxLength(68)
-                        .HasColumnType("nvarchar(68)");
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)")
+                        .HasComment("Full formal name of the country as agreed by United Nations");
 
                     b.Property<string>("IsoAlpha3Code")
-                        .HasMaxLength(11)
-                        .HasColumnType("nvarchar(11)");
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)")
+                        .HasComment("3 letter alphabetic code assigned to the country by ISO");
 
                     b.Property<int?>("IsoNumericCode")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasComment("Numeric code assigned to the country by ISO");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
 
                     b.Property<long?>("LatestRecordedPopulation")
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasComment("Latest available population for the country");
 
                     b.Property<string>("Region")
                         .IsRequired()
-                        .HasMaxLength(38)
-                        .HasColumnType("nvarchar(38)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)")
+                        .HasComment("Name of the region");
 
                     b.Property<string>("Subregion")
                         .IsRequired()
-                        .HasMaxLength(38)
-                        .HasColumnType("nvarchar(38)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)")
+                        .HasComment("Name of the subregion");
 
                     b.Property<DateTime>("ValidFrom")
                         .ValueGeneratedOnAddOrUpdate()
@@ -389,7 +406,9 @@ namespace wwimporters.efmigrations.Migrations
 
                     b.ToTable("Countries", "Application");
 
-                    b.ToTable(tb => tb.IsTemporal(ttb =>
+                    b
+                        .HasComment("Countries that contain the states or provinces (including geographic boundaries)")
+                        .ToTable(tb => tb.IsTemporal(ttb =>
                         {
                             ttb.UseHistoryTable("Countries_Archive", "Application");
                             ttb
@@ -408,114 +427,141 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("CustomerID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[CustomerID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[CustomerID])")
+                        .HasComment("Numeric ID used for reference to a customer within the database");
 
                     b.Property<DateTime>("AccountOpenedDate")
-                        .HasColumnType("date");
+                        .HasColumnType("date")
+                        .HasComment("Date this customer account was opened");
 
                     b.Property<int?>("AlternateContactPersonId")
                         .HasColumnType("int")
-                        .HasColumnName("AlternateContactPersonID");
+                        .HasColumnName("AlternateContactPersonID")
+                        .HasComment("Alternate contact");
 
                     b.Property<int>("BillToCustomerId")
                         .HasColumnType("int")
-                        .HasColumnName("BillToCustomerID");
+                        .HasColumnName("BillToCustomerID")
+                        .HasComment("Customer that this is billed to (usually the same customer but can be another parent company)");
 
                     b.Property<int?>("BuyingGroupId")
                         .HasColumnType("int")
-                        .HasColumnName("BuyingGroupID");
+                        .HasColumnName("BuyingGroupID")
+                        .HasComment("Customer's buying group (optional)");
 
                     b.Property<decimal?>("CreditLimit")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,2)")
+                        .HasComment("Credit limit for this customer (NULL if unlimited)");
 
                     b.Property<int>("CustomerCategoryId")
                         .HasColumnType("int")
-                        .HasColumnName("CustomerCategoryID");
+                        .HasColumnName("CustomerCategoryID")
+                        .HasComment("Customer's category");
 
                     b.Property<string>("CustomerName")
                         .IsRequired()
-                        .HasMaxLength(107)
-                        .HasColumnType("nvarchar(107)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasComment("Customer's full name (usually a trading name)");
 
                     b.Property<string>("DeliveryAddressLine1")
                         .IsRequired()
-                        .HasMaxLength(68)
-                        .HasColumnType("nvarchar(68)");
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)")
+                        .HasComment("First delivery address line for the customer");
 
                     b.Property<string>("DeliveryAddressLine2")
-                        .HasMaxLength(68)
-                        .HasColumnType("nvarchar(68)");
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)")
+                        .HasComment("Second delivery address line for the customer");
 
                     b.Property<int>("DeliveryCityId")
                         .HasColumnType("int")
-                        .HasColumnName("DeliveryCityID");
+                        .HasColumnName("DeliveryCityID")
+                        .HasComment("ID of the delivery city for this address");
 
                     b.Property<Geometry>("DeliveryLocation")
-                        .HasColumnType("geography");
+                        .HasColumnType("geography")
+                        .HasComment("Geographic location for the customer's office/warehouse");
 
                     b.Property<int>("DeliveryMethodId")
                         .HasColumnType("int")
-                        .HasColumnName("DeliveryMethodID");
+                        .HasColumnName("DeliveryMethodID")
+                        .HasComment("Standard delivery method for stock items sent to this customer");
 
                     b.Property<string>("DeliveryPostalCode")
                         .IsRequired()
-                        .HasMaxLength(18)
-                        .HasColumnType("nvarchar(18)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)")
+                        .HasComment("Delivery postal code for the customer");
 
                     b.Property<string>("DeliveryRun")
-                        .HasMaxLength(11)
-                        .HasColumnType("nvarchar(11)");
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)")
+                        .HasComment("Normal delivery run for this customer");
 
                     b.Property<string>("FaxNumber")
                         .IsRequired()
-                        .HasMaxLength(28)
-                        .HasColumnType("nvarchar(28)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasComment("Fax number");
 
                     b.Property<bool>("IsOnCreditHold")
-                        .HasColumnType("bit");
+                        .HasColumnType("bit")
+                        .HasComment("Is this customer on credit hold? (Prevents further deliveries to this customer)");
 
                     b.Property<bool>("IsStatementSent")
-                        .HasColumnType("bit");
+                        .HasColumnType("bit")
+                        .HasComment("Is a statement sent to this customer? (Or do they just pay on each invoice?)");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
 
                     b.Property<int>("PaymentDays")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasComment("Number of days for payment of an invoice (ie payment terms)");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
-                        .HasMaxLength(28)
-                        .HasColumnType("nvarchar(28)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasComment("Phone number");
 
                     b.Property<string>("PostalAddressLine1")
                         .IsRequired()
-                        .HasMaxLength(68)
-                        .HasColumnType("nvarchar(68)");
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)")
+                        .HasComment("First postal address line for the customer");
 
                     b.Property<string>("PostalAddressLine2")
-                        .HasMaxLength(68)
-                        .HasColumnType("nvarchar(68)");
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)")
+                        .HasComment("Second postal address line for the customer");
 
                     b.Property<int>("PostalCityId")
                         .HasColumnType("int")
-                        .HasColumnName("PostalCityID");
+                        .HasColumnName("PostalCityID")
+                        .HasComment("ID of the postal city for this address");
 
                     b.Property<string>("PostalPostalCode")
                         .IsRequired()
-                        .HasMaxLength(18)
-                        .HasColumnType("nvarchar(18)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)")
+                        .HasComment("Postal code for the customer when sending by mail");
 
                     b.Property<int>("PrimaryContactPersonId")
                         .HasColumnType("int")
-                        .HasColumnName("PrimaryContactPersonID");
+                        .HasColumnName("PrimaryContactPersonID")
+                        .HasComment("Primary contact");
 
                     b.Property<string>("RunPosition")
-                        .HasMaxLength(11)
-                        .HasColumnType("nvarchar(11)");
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)")
+                        .HasComment("Normal position in the delivery run for this customer");
 
                     b.Property<decimal>("StandardDiscountPercentage")
-                        .HasColumnType("decimal(18,3)");
+                        .HasColumnType("decimal(18,3)")
+                        .HasComment("Standard discount offered to this customer");
 
                     b.Property<DateTime>("ValidFrom")
                         .ValueGeneratedOnAddOrUpdate()
@@ -529,9 +575,10 @@ namespace wwimporters.efmigrations.Migrations
 
                     b.Property<string>("WebsiteUrl")
                         .IsRequired()
-                        .HasMaxLength(264)
-                        .HasColumnType("nvarchar(264)")
-                        .HasColumnName("WebsiteURL");
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)")
+                        .HasColumnName("WebsiteURL")
+                        .HasComment("URL for the website for this customer");
 
                     b.HasKey("CustomerId");
 
@@ -560,7 +607,9 @@ namespace wwimporters.efmigrations.Migrations
 
                     b.ToTable("Customers", "Sales");
 
-                    b.ToTable(tb => tb.IsTemporal(ttb =>
+                    b
+                        .HasComment("Main entity tables for customers (organizations or individuals)")
+                        .ToTable(tb => tb.IsTemporal(ttb =>
                         {
                             ttb.UseHistoryTable("Customers_Archive", "Sales");
                             ttb
@@ -644,12 +693,14 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("CustomerCategoryID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[CustomerCategoryID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[CustomerCategoryID])")
+                        .HasComment("Numeric ID used for reference to a customer category within the database");
 
                     b.Property<string>("CustomerCategoryName")
                         .IsRequired()
-                        .HasMaxLength(58)
-                        .HasColumnType("nvarchar(58)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasComment("Full name of the category that customers can be assigned to");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
@@ -673,7 +724,9 @@ namespace wwimporters.efmigrations.Migrations
 
                     b.ToTable("CustomerCategories", "Sales");
 
-                    b.ToTable(tb => tb.IsTemporal(ttb =>
+                    b
+                        .HasComment("Categories for customers (ie restaurants, cafes, supermarkets, etc.)")
+                        .ToTable(tb => tb.IsTemporal(ttb =>
                         {
                             ttb.UseHistoryTable("CustomerCategories_Archive", "Sales");
                             ttb
@@ -692,26 +745,32 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("CustomerTransactionID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[TransactionID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[TransactionID])")
+                        .HasComment("Numeric ID used to refer to a customer transaction within the database");
 
                     b.Property<decimal>("AmountExcludingTax")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,2)")
+                        .HasComment("Transaction amount (excluding tax)");
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int")
-                        .HasColumnName("CustomerID");
+                        .HasColumnName("CustomerID")
+                        .HasComment("Customer for this transaction");
 
                     b.Property<DateTime?>("FinalizationDate")
-                        .HasColumnType("date");
+                        .HasColumnType("date")
+                        .HasComment("Date that this transaction was finalized (if it has been)");
 
                     b.Property<int?>("InvoiceId")
                         .HasColumnType("int")
-                        .HasColumnName("InvoiceID");
+                        .HasColumnName("InvoiceID")
+                        .HasComment("ID of an invoice (for transactions associated with an invoice)");
 
                     b.Property<bool?>("IsFinalized")
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("bit")
-                        .HasComputedColumnSql("(case when [FinalizationDate] IS NULL then CONVERT([bit],(0)) else CONVERT([bit],(1)) end)", true);
+                        .HasComputedColumnSql("(case when [FinalizationDate] IS NULL then CONVERT([bit],(0)) else CONVERT([bit],(1)) end)", true)
+                        .HasComment("Is this transaction finalized (invoices, credits and payments have been matched)");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
@@ -722,24 +781,30 @@ namespace wwimporters.efmigrations.Migrations
                         .HasDefaultValueSql("(sysdatetime())");
 
                     b.Property<decimal>("OutstandingBalance")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,2)")
+                        .HasComment("Amount still outstanding for this transaction");
 
                     b.Property<int?>("PaymentMethodId")
                         .HasColumnType("int")
-                        .HasColumnName("PaymentMethodID");
+                        .HasColumnName("PaymentMethodID")
+                        .HasComment("ID of a payment method (for transactions involving payments)");
 
                     b.Property<decimal>("TaxAmount")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,2)")
+                        .HasComment("Tax amount calculated");
 
                     b.Property<decimal>("TransactionAmount")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,2)")
+                        .HasComment("Transaction amount (including tax)");
 
                     b.Property<DateTime>("TransactionDate")
-                        .HasColumnType("date");
+                        .HasColumnType("date")
+                        .HasComment("Date for the transaction");
 
                     b.Property<int>("TransactionTypeId")
                         .HasColumnType("int")
-                        .HasColumnName("TransactionTypeID");
+                        .HasColumnName("TransactionTypeID")
+                        .HasComment("Type of transaction");
 
                     b.HasKey("CustomerTransactionId")
                         .HasName("PK_Sales_CustomerTransactions");
@@ -771,6 +836,8 @@ namespace wwimporters.efmigrations.Migrations
                     b.HasIndex(new[] { "TransactionDate", "IsFinalized" }, "IX_Sales_CustomerTransactions_IsFinalized");
 
                     b.ToTable("CustomerTransactions", "Sales");
+
+                    b.HasComment("All financial transactions that are customer-related");
                 });
 
             modelBuilder.Entity("wwimporters.domain.Entities.DeliveryMethod", b =>
@@ -779,12 +846,14 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("DeliveryMethodID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[DeliveryMethodID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[DeliveryMethodID])")
+                        .HasComment("Numeric ID used for reference to a delivery method within the database");
 
                     b.Property<string>("DeliveryMethodName")
                         .IsRequired()
                         .HasMaxLength(58)
-                        .HasColumnType("nvarchar(58)");
+                        .HasColumnType("nvarchar(58)")
+                        .HasComment("Full name of methods that can be used for delivery of customer orders");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
@@ -808,7 +877,9 @@ namespace wwimporters.efmigrations.Migrations
 
                     b.ToTable("DeliveryMethods", "Application");
 
-                    b.ToTable(tb => tb.IsTemporal(ttb =>
+                    b
+                        .HasComment("Ways that stock items can be delivered (ie: truck/van, post, pickup, courier, etc.")
+                        .ToTable(tb => tb.IsTemporal(ttb =>
                         {
                             ttb.UseHistoryTable("DeliveryMethods_Archive", "Application");
                             ttb
@@ -827,64 +898,80 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("InvoiceID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[InvoiceID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[InvoiceID])")
+                        .HasComment("Numeric ID used for reference to an invoice within the database");
 
                     b.Property<int>("AccountsPersonId")
                         .HasColumnType("int")
-                        .HasColumnName("AccountsPersonID");
+                        .HasColumnName("AccountsPersonID")
+                        .HasComment("Customer accounts contact for this invoice");
 
                     b.Property<int>("BillToCustomerId")
                         .HasColumnType("int")
-                        .HasColumnName("BillToCustomerID");
+                        .HasColumnName("BillToCustomerID")
+                        .HasComment("Bill to customer for this invoice (invoices might be billed to a head office)");
 
                     b.Property<string>("Comments")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("Any comments related to this invoice (sent to customer)");
 
                     b.Property<DateTime?>("ConfirmedDeliveryTime")
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime2")
-                        .HasComputedColumnSql("(TRY_CONVERT([datetime2](7),json_value([ReturnedDeliveryData],N'$.DeliveredWhen'),(126)))", false);
+                        .HasComputedColumnSql("(TRY_CONVERT([datetime2](7),json_value([ReturnedDeliveryData],N'$.DeliveredWhen'),(126)))", false)
+                        .HasComment("Confirmed delivery date and time promoted from JSON delivery data");
 
                     b.Property<string>("ConfirmedReceivedBy")
                         .ValueGeneratedOnAddOrUpdate()
                         .HasMaxLength(4000)
                         .HasColumnType("nvarchar(4000)")
-                        .HasComputedColumnSql("(json_value([ReturnedDeliveryData],N'$.ReceivedBy'))", false);
+                        .HasComputedColumnSql("(json_value([ReturnedDeliveryData],N'$.ReceivedBy'))", false)
+                        .HasComment("Confirmed receiver promoted from JSON delivery data");
 
                     b.Property<int>("ContactPersonId")
                         .HasColumnType("int")
-                        .HasColumnName("ContactPersonID");
+                        .HasColumnName("ContactPersonID")
+                        .HasComment("Customer contact for this invoice");
 
                     b.Property<string>("CreditNoteReason")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("Reason that this credit note needed to be generated (if applicable)");
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int")
-                        .HasColumnName("CustomerID");
+                        .HasColumnName("CustomerID")
+                        .HasComment("Customer for this invoice");
 
                     b.Property<string>("CustomerPurchaseOrderNumber")
-                        .HasMaxLength(28)
-                        .HasColumnType("nvarchar(28)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasComment("Purchase Order Number received from customer");
 
                     b.Property<string>("DeliveryInstructions")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("Any comments related to delivery (sent to customer)");
 
                     b.Property<int>("DeliveryMethodId")
                         .HasColumnType("int")
-                        .HasColumnName("DeliveryMethodID");
+                        .HasColumnName("DeliveryMethodID")
+                        .HasComment("How these stock items are beign delivered");
 
                     b.Property<string>("DeliveryRun")
-                        .HasMaxLength(11)
-                        .HasColumnType("nvarchar(11)");
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)")
+                        .HasComment("Delivery run for this shipment");
 
                     b.Property<string>("InternalComments")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("Any internal comments related to this invoice (not sent to the customer)");
 
                     b.Property<DateTime>("InvoiceDate")
-                        .HasColumnType("date");
+                        .HasColumnType("date")
+                        .HasComment("Date that this invoice was raised");
 
                     b.Property<bool>("IsCreditNote")
-                        .HasColumnType("bit");
+                        .HasColumnType("bit")
+                        .HasComment("Is this a credit note (rather than an invoice)");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
@@ -896,28 +983,36 @@ namespace wwimporters.efmigrations.Migrations
 
                     b.Property<int?>("OrderId")
                         .HasColumnType("int")
-                        .HasColumnName("OrderID");
+                        .HasColumnName("OrderID")
+                        .HasComment("Sales order (if any) for this invoice");
 
                     b.Property<int>("PackedByPersonId")
                         .HasColumnType("int")
-                        .HasColumnName("PackedByPersonID");
+                        .HasColumnName("PackedByPersonID")
+                        .HasComment("Person who packed this shipment (or checked the packing)");
 
                     b.Property<string>("ReturnedDeliveryData")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)")
+                        .HasComment("JSON-structured data returned from delivery devices for deliveries made directly by the organization");
 
                     b.Property<string>("RunPosition")
-                        .HasMaxLength(11)
-                        .HasColumnType("nvarchar(11)");
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)")
+                        .HasComment("Position in the delivery run for this shipment");
 
                     b.Property<int>("SalespersonPersonId")
                         .HasColumnType("int")
-                        .HasColumnName("SalespersonPersonID");
+                        .HasColumnName("SalespersonPersonID")
+                        .HasComment("Salesperson for this invoice");
 
                     b.Property<int>("TotalChillerItems")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasComment("Total number of chiller packages (information for the delivery driver)");
 
                     b.Property<int>("TotalDryItems")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasComment("Total number of dry packages (information for the delivery driver)");
 
                     b.HasKey("InvoiceId");
 
@@ -942,6 +1037,8 @@ namespace wwimporters.efmigrations.Migrations
                     b.HasIndex(new[] { "ConfirmedDeliveryTime" }, "IX_Sales_Invoices_ConfirmedDeliveryTime");
 
                     b.ToTable("Invoices", "Sales");
+
+                    b.HasComment("Details of customer invoices");
                 });
 
             modelBuilder.Entity("wwimporters.domain.Entities.InvoiceLine", b =>
@@ -950,19 +1047,23 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("InvoiceLineID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[InvoiceLineID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[InvoiceLineID])")
+                        .HasComment("Numeric ID used for reference to a line on an invoice within the database");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(107)
-                        .HasColumnType("nvarchar(107)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasComment("Description of the item supplied (Usually the stock item name but can be overridden)");
 
                     b.Property<decimal>("ExtendedPrice")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,2)")
+                        .HasComment("Extended line price charged");
 
                     b.Property<int>("InvoiceId")
                         .HasColumnType("int")
-                        .HasColumnName("InvoiceID");
+                        .HasColumnName("InvoiceID")
+                        .HasComment("Invoice that this line is associated with");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
@@ -973,27 +1074,34 @@ namespace wwimporters.efmigrations.Migrations
                         .HasDefaultValueSql("(sysdatetime())");
 
                     b.Property<decimal>("LineProfit")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,2)")
+                        .HasComment("Profit made on this line item at current cost price");
 
                     b.Property<int>("PackageTypeId")
                         .HasColumnType("int")
-                        .HasColumnName("PackageTypeID");
+                        .HasColumnName("PackageTypeID")
+                        .HasComment("Type of package supplied");
 
                     b.Property<int>("Quantity")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasComment("Quantity supplied");
 
                     b.Property<int>("StockItemId")
                         .HasColumnType("int")
-                        .HasColumnName("StockItemID");
+                        .HasColumnName("StockItemID")
+                        .HasComment("Stock item for this invoice line");
 
                     b.Property<decimal>("TaxAmount")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,2)")
+                        .HasComment("Tax amount calculated");
 
                     b.Property<decimal>("TaxRate")
-                        .HasColumnType("decimal(18,3)");
+                        .HasColumnType("decimal(18,3)")
+                        .HasComment("Tax rate to be applied");
 
                     b.Property<decimal?>("UnitPrice")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,2)")
+                        .HasComment("Unit price charged");
 
                     b.HasKey("InvoiceLineId");
 
@@ -1006,6 +1114,8 @@ namespace wwimporters.efmigrations.Migrations
                     b.HasIndex(new[] { "StockItemId" }, "FK_Sales_InvoiceLines_StockItemID");
 
                     b.ToTable("InvoiceLines", "Sales");
+
+                    b.HasComment("Detail lines from customer invoices");
                 });
 
             modelBuilder.Entity("wwimporters.domain.Entities.Order", b =>
@@ -1014,38 +1124,48 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("OrderID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[OrderID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[OrderID])")
+                        .HasComment("Numeric ID used for reference to an order within the database");
 
                     b.Property<int?>("BackorderOrderId")
                         .HasColumnType("int")
-                        .HasColumnName("BackorderOrderID");
+                        .HasColumnName("BackorderOrderID")
+                        .HasComment("If this order is a backorder, this column holds the original order number");
 
                     b.Property<string>("Comments")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("Any comments related to this order (sent to customer)");
 
                     b.Property<int>("ContactPersonId")
                         .HasColumnType("int")
-                        .HasColumnName("ContactPersonID");
+                        .HasColumnName("ContactPersonID")
+                        .HasComment("Customer contact for this order");
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int")
-                        .HasColumnName("CustomerID");
+                        .HasColumnName("CustomerID")
+                        .HasComment("Customer for this order");
 
                     b.Property<string>("CustomerPurchaseOrderNumber")
-                        .HasMaxLength(28)
-                        .HasColumnType("nvarchar(28)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasComment("Purchase Order Number received from customer");
 
                     b.Property<string>("DeliveryInstructions")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("	Any comments related to order delivery (sent to customer)");
 
                     b.Property<DateTime>("ExpectedDeliveryDate")
-                        .HasColumnType("date");
+                        .HasColumnType("date")
+                        .HasComment("Expected delivery date");
 
                     b.Property<string>("InternalComments")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("Any internal comments related to this order (not sent to the customer)");
 
                     b.Property<bool>("IsUndersupplyBackordered")
-                        .HasColumnType("bit");
+                        .HasColumnType("bit")
+                        .HasComment("If items cannot be supplied are they backordered?");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
@@ -1056,18 +1176,22 @@ namespace wwimporters.efmigrations.Migrations
                         .HasDefaultValueSql("(sysdatetime())");
 
                     b.Property<DateTime>("OrderDate")
-                        .HasColumnType("date");
+                        .HasColumnType("date")
+                        .HasComment("Date that this order was raised");
 
                     b.Property<int?>("PickedByPersonId")
                         .HasColumnType("int")
-                        .HasColumnName("PickedByPersonID");
+                        .HasColumnName("PickedByPersonID")
+                        .HasComment("Person who picked this shipment");
 
                     b.Property<DateTime?>("PickingCompletedWhen")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasComment("When was picking of the entire order completed?");
 
                     b.Property<int>("SalespersonPersonId")
                         .HasColumnType("int")
-                        .HasColumnName("SalespersonPersonID");
+                        .HasColumnName("SalespersonPersonID")
+                        .HasComment("Salesperson for this order");
 
                     b.HasKey("OrderId");
 
@@ -1084,6 +1208,8 @@ namespace wwimporters.efmigrations.Migrations
                     b.HasIndex(new[] { "SalespersonPersonId" }, "FK_Sales_Orders_SalespersonPersonID");
 
                     b.ToTable("Orders", "Sales");
+
+                    b.HasComment("Detail of customer orders");
                 });
 
             modelBuilder.Entity("wwimporters.domain.Entities.OrderLine", b =>
@@ -1092,12 +1218,14 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("OrderLineID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[OrderLineID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[OrderLineID])")
+                        .HasComment("Numeric ID used for reference to a line on an Order within the database");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(107)
-                        .HasColumnType("nvarchar(107)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasComment("Description of the item supplied (Usually the stock item name but can be overridden)");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
@@ -1109,30 +1237,38 @@ namespace wwimporters.efmigrations.Migrations
 
                     b.Property<int>("OrderId")
                         .HasColumnType("int")
-                        .HasColumnName("OrderID");
+                        .HasColumnName("OrderID")
+                        .HasComment("Order that this line is associated with");
 
                     b.Property<int>("PackageTypeId")
                         .HasColumnType("int")
-                        .HasColumnName("PackageTypeID");
+                        .HasColumnName("PackageTypeID")
+                        .HasComment("Type of package to be supplied");
 
                     b.Property<int>("PickedQuantity")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasComment("Quantity picked from stock");
 
                     b.Property<DateTime?>("PickingCompletedWhen")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasComment("When was picking of this line completed?");
 
                     b.Property<int>("Quantity")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasComment("Quantity to be supplied");
 
                     b.Property<int>("StockItemId")
                         .HasColumnType("int")
-                        .HasColumnName("StockItemID");
+                        .HasColumnName("StockItemID")
+                        .HasComment("Stock item for this order line (FK not indexed as separate index exists)");
 
                     b.Property<decimal>("TaxRate")
-                        .HasColumnType("decimal(18,3)");
+                        .HasColumnType("decimal(18,3)")
+                        .HasComment("Tax rate to be applied");
 
                     b.Property<decimal?>("UnitPrice")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,2)")
+                        .HasComment("Unit price to be charged");
 
                     b.HasKey("OrderLineId");
 
@@ -1149,6 +1285,8 @@ namespace wwimporters.efmigrations.Migrations
                     b.HasIndex(new[] { "StockItemId", "PickingCompletedWhen" }, "IX_Sales_OrderLines_Perf_20160301_02");
 
                     b.ToTable("OrderLines", "Sales");
+
+                    b.HasComment("Detail lines from customer orders");
                 });
 
             modelBuilder.Entity("wwimporters.domain.Entities.PackageType", b =>
@@ -1157,15 +1295,17 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("PackageTypeID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[PackageTypeID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[PackageTypeID])")
+                        .HasComment("Numeric ID used for reference to a package type within the database");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
 
                     b.Property<string>("PackageTypeName")
                         .IsRequired()
-                        .HasMaxLength(58)
-                        .HasColumnType("nvarchar(58)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasComment("Full name of package types that stock items can be purchased in or sold in");
 
                     b.Property<DateTime>("ValidFrom")
                         .ValueGeneratedOnAddOrUpdate()
@@ -1186,7 +1326,9 @@ namespace wwimporters.efmigrations.Migrations
 
                     b.ToTable("PackageTypes", "Warehouse");
 
-                    b.ToTable(tb => tb.IsTemporal(ttb =>
+                    b
+                        .HasComment("Ways that stock items can be packaged (ie: each, box, carton, pallet, kg, etc.")
+                        .ToTable(tb => tb.IsTemporal(ttb =>
                         {
                             ttb.UseHistoryTable("PackageTypes_Archive", "Warehouse");
                             ttb
@@ -1205,7 +1347,8 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("PaymentMethodID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[PaymentMethodID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[PaymentMethodID])")
+                        .HasComment("Numeric ID used for reference to a payment type within the database");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
@@ -1213,7 +1356,8 @@ namespace wwimporters.efmigrations.Migrations
                     b.Property<string>("PaymentMethodName")
                         .IsRequired()
                         .HasMaxLength(58)
-                        .HasColumnType("nvarchar(58)");
+                        .HasColumnType("nvarchar(58)")
+                        .HasComment("Full name of ways that customers can make payments or that suppliers can be paid");
 
                     b.Property<DateTime>("ValidFrom")
                         .ValueGeneratedOnAddOrUpdate()
@@ -1234,7 +1378,9 @@ namespace wwimporters.efmigrations.Migrations
 
                     b.ToTable("PaymentMethods", "Application");
 
-                    b.ToTable(tb => tb.IsTemporal(ttb =>
+                    b
+                        .HasComment("Ways that payments can be made (ie: cash, check, EFT, etc.")
+                        .ToTable(tb => tb.IsTemporal(ttb =>
                         {
                             ttb.UseHistoryTable("PaymentMethods_Archive", "Application");
                             ttb
@@ -1253,75 +1399,93 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("PersonID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[PersonID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[PersonID])")
+                        .HasComment("Numeric ID used for reference to a person within the database");
 
                     b.Property<string>("CustomFields")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("Custom fields for employees and salespeople");
 
                     b.Property<string>("EmailAddress")
                         .HasMaxLength(264)
-                        .HasColumnType("nvarchar(264)");
+                        .HasColumnType("nvarchar(264)")
+                        .HasComment("Email address for this person");
 
                     b.Property<string>("FaxNumber")
                         .HasMaxLength(28)
-                        .HasColumnType("nvarchar(28)");
+                        .HasColumnType("nvarchar(28)")
+                        .HasComment("Fax number");
 
                     b.Property<string>("FullName")
                         .IsRequired()
                         .HasMaxLength(58)
-                        .HasColumnType("nvarchar(58)");
+                        .HasColumnType("nvarchar(58)")
+                        .HasComment("Full name for this person");
 
                     b.Property<byte[]>("HashedPassword")
-                        .HasColumnType("varbinary(max)");
+                        .HasColumnType("varbinary(max)")
+                        .HasComment("Hash of password for users without external logon tokens");
 
                     b.Property<bool>("IsEmployee")
-                        .HasColumnType("bit");
+                        .HasColumnType("bit")
+                        .HasComment("Is this person an employee?");
 
                     b.Property<bool>("IsExternalLogonProvider")
-                        .HasColumnType("bit");
+                        .HasColumnType("bit")
+                        .HasComment("Is logon token provided by an external system?");
 
                     b.Property<bool>("IsPermittedToLogon")
-                        .HasColumnType("bit");
+                        .HasColumnType("bit")
+                        .HasComment("Is this person permitted to log on?");
 
                     b.Property<bool>("IsSalesperson")
-                        .HasColumnType("bit");
+                        .HasColumnType("bit")
+                        .HasComment("Is this person a staff salesperson?");
 
                     b.Property<bool>("IsSystemUser")
-                        .HasColumnType("bit");
+                        .HasColumnType("bit")
+                        .HasComment("Is the currently permitted to make online access?");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
 
                     b.Property<string>("LogonName")
                         .HasMaxLength(58)
-                        .HasColumnType("nvarchar(58)");
+                        .HasColumnType("nvarchar(58)")
+                        .HasComment("Person's system logon name");
 
                     b.Property<string>("OtherLanguages")
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("nvarchar(max)")
-                        .HasComputedColumnSql("(json_query([CustomFields],N'$.OtherLanguages'))", false);
+                        .HasComputedColumnSql("(json_query([CustomFields],N'$.OtherLanguages'))", false)
+                        .HasComment("Other languages spoken (computed column from custom fields)");
 
                     b.Property<string>("PhoneNumber")
                         .HasMaxLength(28)
-                        .HasColumnType("nvarchar(28)");
+                        .HasColumnType("nvarchar(28)")
+                        .HasComment("Phone number");
 
                     b.Property<byte[]>("Photo")
-                        .HasColumnType("varbinary(max)");
+                        .HasColumnType("varbinary(max)")
+                        .HasComment("Photo of this person");
 
                     b.Property<string>("PreferredName")
                         .IsRequired()
                         .HasMaxLength(58)
-                        .HasColumnType("nvarchar(58)");
+                        .HasColumnType("nvarchar(58)")
+                        .HasComment("Name that this person prefers to be called");
 
                     b.Property<string>("SearchName")
                         .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasMaxLength(107)
                         .HasColumnType("nvarchar(107)")
-                        .HasComputedColumnSql("(concat([PreferredName],N' ',[FullName]))", true);
+                        .HasComputedColumnSql("(concat([PreferredName],N' ',[FullName]))", true)
+                        .HasComment("Name to build full text search on (computed column)");
 
                     b.Property<string>("UserPreferences")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("User preferences related to the website (holds JSON data)");
 
                     b.Property<DateTime>("ValidFrom")
                         .ValueGeneratedOnAddOrUpdate()
@@ -1347,7 +1511,9 @@ namespace wwimporters.efmigrations.Migrations
 
                     b.ToTable("People", "Application");
 
-                    b.ToTable(tb => tb.IsTemporal(ttb =>
+                    b
+                        .HasComment("People known to the application (staff, customer contacts, supplier contacts)")
+                        .ToTable(tb => tb.IsTemporal(ttb =>
                         {
                             ttb.UseHistoryTable("People_Archive", "Application");
                             ttb
@@ -1366,27 +1532,34 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("PurchaseOrderID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[PurchaseOrderID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[PurchaseOrderID])")
+                        .HasComment("Numeric ID used for reference to a purchase order within the database");
 
                     b.Property<string>("Comments")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("Any comments related this purchase order (comments sent to the supplier)");
 
                     b.Property<int>("ContactPersonId")
                         .HasColumnType("int")
-                        .HasColumnName("ContactPersonID");
+                        .HasColumnName("ContactPersonID")
+                        .HasComment("The person who is the primary contact for this purchase order");
 
                     b.Property<int>("DeliveryMethodId")
                         .HasColumnType("int")
-                        .HasColumnName("DeliveryMethodID");
+                        .HasColumnName("DeliveryMethodID")
+                        .HasComment("How this purchase order should be delivered");
 
                     b.Property<DateTime?>("ExpectedDeliveryDate")
-                        .HasColumnType("date");
+                        .HasColumnType("date")
+                        .HasComment("Expected delivery date for this purchase order");
 
                     b.Property<string>("InternalComments")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("Any internal comments related this purchase order (comments for internal reference only and not sent to the supplier)");
 
                     b.Property<bool>("IsOrderFinalized")
-                        .HasColumnType("bit");
+                        .HasColumnType("bit")
+                        .HasComment("Is this purchase order now considered finalized?");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
@@ -1397,15 +1570,18 @@ namespace wwimporters.efmigrations.Migrations
                         .HasDefaultValueSql("(sysdatetime())");
 
                     b.Property<DateTime>("OrderDate")
-                        .HasColumnType("date");
+                        .HasColumnType("date")
+                        .HasComment("Date that this purchase order was raised");
 
                     b.Property<int>("SupplierId")
                         .HasColumnType("int")
-                        .HasColumnName("SupplierID");
+                        .HasColumnName("SupplierID")
+                        .HasComment("Supplier for this purchase order");
 
                     b.Property<string>("SupplierReference")
-                        .HasMaxLength(28)
-                        .HasColumnType("nvarchar(28)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasComment("Supplier reference for our organization (might be our account number at the supplier)");
 
                     b.HasKey("PurchaseOrderId");
 
@@ -1418,6 +1594,8 @@ namespace wwimporters.efmigrations.Migrations
                     b.HasIndex(new[] { "SupplierId" }, "FK_Purchasing_PurchaseOrders_SupplierID");
 
                     b.ToTable("PurchaseOrders", "Purchasing");
+
+                    b.HasComment("Details of supplier purchase orders");
                 });
 
             modelBuilder.Entity("wwimporters.domain.Entities.PurchaseOrderLine", b =>
@@ -1426,18 +1604,22 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("PurchaseOrderLineID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[PurchaseOrderLineID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[PurchaseOrderLineID])")
+                        .HasComment("Numeric ID used for reference to a line on a purchase order within the database");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(107)
-                        .HasColumnType("nvarchar(107)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasComment("Description of the item to be supplied (Often the stock item name but could be supplier description)");
 
                     b.Property<decimal?>("ExpectedUnitPricePerOuter")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,2)")
+                        .HasComment("The unit price that we expect to be charged");
 
                     b.Property<bool>("IsOrderLineFinalized")
-                        .HasColumnType("bit");
+                        .HasColumnType("bit")
+                        .HasComment("Is this purchase order line now considered finalized? (Receipted quantities and weights are often not precise)");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
@@ -1448,25 +1630,31 @@ namespace wwimporters.efmigrations.Migrations
                         .HasDefaultValueSql("(sysdatetime())");
 
                     b.Property<DateTime?>("LastReceiptDate")
-                        .HasColumnType("date");
+                        .HasColumnType("date")
+                        .HasComment("The last date on which this stock item was received for this purchase order");
 
                     b.Property<int>("OrderedOuters")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasComment("Quantity of the stock item that is ordered");
 
                     b.Property<int>("PackageTypeId")
                         .HasColumnType("int")
-                        .HasColumnName("PackageTypeID");
+                        .HasColumnName("PackageTypeID")
+                        .HasComment("Type of package received");
 
                     b.Property<int>("PurchaseOrderId")
                         .HasColumnType("int")
-                        .HasColumnName("PurchaseOrderID");
+                        .HasColumnName("PurchaseOrderID")
+                        .HasComment("Purchase order that this line is associated with");
 
                     b.Property<int>("ReceivedOuters")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasComment("Total quantity of the stock item that has been received so far");
 
                     b.Property<int>("StockItemId")
                         .HasColumnType("int")
-                        .HasColumnName("StockItemID");
+                        .HasColumnName("StockItemID")
+                        .HasComment("Stock item for this purchase order line");
 
                     b.HasKey("PurchaseOrderLineId");
 
@@ -1481,6 +1669,8 @@ namespace wwimporters.efmigrations.Migrations
                     b.HasIndex(new[] { "IsOrderLineFinalized", "StockItemId" }, "IX_Purchasing_PurchaseOrderLines_Perf_20160301_4");
 
                     b.ToTable("PurchaseOrderLines", "Purchasing");
+
+                    b.HasComment("Detail lines from supplier purchase orders");
                 });
 
             modelBuilder.Entity("wwimporters.domain.Entities.SpecialDeal", b =>
@@ -1489,33 +1679,41 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("SpecialDealID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[SpecialDealID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[SpecialDealID])")
+                        .HasComment("ID (sequence based) for a special deal");
 
                     b.Property<int?>("BuyingGroupId")
                         .HasColumnType("int")
-                        .HasColumnName("BuyingGroupID");
+                        .HasColumnName("BuyingGroupID")
+                        .HasComment("ID of the buying group that the special pricing applies to (optional)");
 
                     b.Property<int?>("CustomerCategoryId")
                         .HasColumnType("int")
-                        .HasColumnName("CustomerCategoryID");
+                        .HasColumnName("CustomerCategoryID")
+                        .HasComment("ID of the customer category that the special pricing applies to (optional)");
 
                     b.Property<int?>("CustomerId")
                         .HasColumnType("int")
-                        .HasColumnName("CustomerID");
+                        .HasColumnName("CustomerID")
+                        .HasComment("ID of the customer that the special pricing applies to (if NULL then all customers)");
 
                     b.Property<string>("DealDescription")
                         .IsRequired()
-                        .HasMaxLength(38)
-                        .HasColumnType("nvarchar(38)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)")
+                        .HasComment("Description of the special deal");
 
                     b.Property<decimal?>("DiscountAmount")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,2)")
+                        .HasComment("Discount per unit to be applied to sale price (optional)");
 
                     b.Property<decimal?>("DiscountPercentage")
-                        .HasColumnType("decimal(18,3)");
+                        .HasColumnType("decimal(18,3)")
+                        .HasComment("	Discount percentage per unit to be applied to sale price (optional)");
 
                     b.Property<DateTime>("EndDate")
-                        .HasColumnType("date");
+                        .HasColumnType("date")
+                        .HasComment("Date that the special pricing ends on");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
@@ -1526,18 +1724,22 @@ namespace wwimporters.efmigrations.Migrations
                         .HasDefaultValueSql("(sysdatetime())");
 
                     b.Property<DateTime>("StartDate")
-                        .HasColumnType("date");
+                        .HasColumnType("date")
+                        .HasComment("Date that the special pricing starts from");
 
                     b.Property<int?>("StockGroupId")
                         .HasColumnType("int")
-                        .HasColumnName("StockGroupID");
+                        .HasColumnName("StockGroupID")
+                        .HasComment("ID of the stock group that the special pricing applies to (optional)");
 
                     b.Property<int?>("StockItemId")
                         .HasColumnType("int")
-                        .HasColumnName("StockItemID");
+                        .HasColumnName("StockItemID")
+                        .HasComment("Stock item that the deal applies to (if NULL, then only discounts are permitted not unit prices)");
 
                     b.Property<decimal?>("UnitPrice")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,2)")
+                        .HasComment("Special price per unit to be applied instead of sale price (optional)");
 
                     b.HasKey("SpecialDealId");
 
@@ -1554,6 +1756,8 @@ namespace wwimporters.efmigrations.Migrations
                     b.HasIndex(new[] { "StockItemId" }, "FK_Sales_SpecialDeals_StockItemID");
 
                     b.ToTable("SpecialDeals", "Sales");
+
+                    b.HasComment("Special pricing (can include fixed prices, discount $ or discount %)");
                 });
 
             modelBuilder.Entity("wwimporters.domain.Entities.StateProvince", b =>
@@ -1562,35 +1766,42 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("StateProvinceID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[StateProvinceID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[StateProvinceID])")
+                        .HasComment("Numeric ID used for reference to a state or province within the database");
 
                     b.Property<Geometry>("Border")
-                        .HasColumnType("geography");
+                        .HasColumnType("geography")
+                        .HasComment("Geographic boundary of the state or province");
 
                     b.Property<int>("CountryId")
                         .HasColumnType("int")
-                        .HasColumnName("CountryID");
+                        .HasColumnName("CountryID")
+                        .HasComment("Country for this StateProvince");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
 
                     b.Property<long?>("LatestRecordedPopulation")
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasComment("Latest available population for the StateProvince");
 
                     b.Property<string>("SalesTerritory")
                         .IsRequired()
-                        .HasMaxLength(58)
-                        .HasColumnType("nvarchar(58)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasComment("Sales territory for this StateProvince");
 
                     b.Property<string>("StateProvinceCode")
                         .IsRequired()
-                        .HasMaxLength(11)
-                        .HasColumnType("nvarchar(11)");
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)")
+                        .HasComment("Common code for this state or province (such as WA - Washington for the USA)");
 
                     b.Property<string>("StateProvinceName")
                         .IsRequired()
-                        .HasMaxLength(58)
-                        .HasColumnType("nvarchar(58)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasComment("Formal name of the state or province");
 
                     b.Property<DateTime>("ValidFrom")
                         .ValueGeneratedOnAddOrUpdate()
@@ -1615,7 +1826,9 @@ namespace wwimporters.efmigrations.Migrations
 
                     b.ToTable("StateProvinces", "Application");
 
-                    b.ToTable(tb => tb.IsTemporal(ttb =>
+                    b
+                        .HasComment("States or provinces that contain cities (including geographic location)")
+                        .ToTable(tb => tb.IsTemporal(ttb =>
                         {
                             ttb.UseHistoryTable("StateProvinces_Archive", "Application");
                             ttb
@@ -1634,15 +1847,17 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("StockGroupID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[StockGroupID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[StockGroupID])")
+                        .HasComment("Numeric ID used for reference to a stock group within the database");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
 
                     b.Property<string>("StockGroupName")
                         .IsRequired()
-                        .HasMaxLength(58)
-                        .HasColumnType("nvarchar(58)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasComment("Full name of groups used to categorize stock items");
 
                     b.Property<DateTime>("ValidFrom")
                         .ValueGeneratedOnAddOrUpdate()
@@ -1663,7 +1878,9 @@ namespace wwimporters.efmigrations.Migrations
 
                     b.ToTable("StockGroups", "Warehouse");
 
-                    b.ToTable(tb => tb.IsTemporal(ttb =>
+                    b
+                        .HasComment("Groups for categorizing stock items (ie: novelties, toys, edible novelties, etc.)")
+                        .ToTable(tb => tb.IsTemporal(ttb =>
                         {
                             ttb.UseHistoryTable("StockGroups_Archive", "Warehouse");
                             ttb
@@ -1682,87 +1899,109 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("StockItemID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[StockItemID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[StockItemID])")
+                        .HasComment("Numeric ID used for reference to a stock item within the database");
 
                     b.Property<string>("Barcode")
-                        .HasMaxLength(58)
-                        .HasColumnType("nvarchar(58)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasComment("Barcode for this stock item");
 
                     b.Property<string>("Brand")
-                        .HasMaxLength(58)
-                        .HasColumnType("nvarchar(58)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasComment("Brand for the stock item (if the item is branded)");
 
                     b.Property<int?>("ColorId")
                         .HasColumnType("int")
-                        .HasColumnName("ColorID");
+                        .HasColumnName("ColorID")
+                        .HasComment("Color (optional) for this stock item");
 
                     b.Property<string>("CustomFields")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("Custom fields added by system users");
 
                     b.Property<string>("InternalComments")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("Internal comments (not exposed outside organization)");
 
                     b.Property<bool>("IsChillerStock")
-                        .HasColumnType("bit");
+                        .HasColumnType("bit")
+                        .HasComment("Does this stock item need to be in a chiller?");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
 
                     b.Property<int>("LeadTimeDays")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasComment("Number of days typically taken from order to receipt of this stock item");
 
                     b.Property<string>("MarketingComments")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("Marketing comments for this stock item (shared outside the organization)");
 
                     b.Property<int>("OuterPackageId")
                         .HasColumnType("int")
-                        .HasColumnName("OuterPackageID");
+                        .HasColumnName("OuterPackageID")
+                        .HasComment("Usual package for selling outers of this stock item (ie cartons, boxes, etc.)");
 
                     b.Property<byte[]>("Photo")
-                        .HasColumnType("varbinary(max)");
+                        .HasColumnType("varbinary(max)")
+                        .HasComment("Photo of the product");
 
                     b.Property<int>("QuantityPerOuter")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasComment("Quantity of the stock item in an outer package");
 
                     b.Property<decimal?>("RecommendedRetailPrice")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,2)")
+                        .HasComment("Recommended retail price for this stock item");
 
                     b.Property<string>("SearchDetails")
                         .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("nvarchar(max)")
-                        .HasComputedColumnSql("(concat([StockItemName],N' ',[MarketingComments]))", false);
+                        .HasComputedColumnSql("(concat([StockItemName],N' ',[MarketingComments]))", false)
+                        .HasComment("Combination of columns used by full text search");
 
                     b.Property<string>("Size")
-                        .HasMaxLength(28)
-                        .HasColumnType("nvarchar(28)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasComment("Size of this item (eg: 100mm)");
 
                     b.Property<string>("StockItemName")
                         .IsRequired()
-                        .HasMaxLength(107)
-                        .HasColumnType("nvarchar(107)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasComment("Full name of a stock item (but not a full description)");
 
                     b.Property<int>("SupplierId")
                         .HasColumnType("int")
-                        .HasColumnName("SupplierID");
+                        .HasColumnName("SupplierID")
+                        .HasComment("Usual supplier for this stock item");
 
                     b.Property<string>("Tags")
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("nvarchar(max)")
-                        .HasComputedColumnSql("(json_query([CustomFields],N'$.Tags'))", false);
+                        .HasComputedColumnSql("(json_query([CustomFields],N'$.Tags'))", false)
+                        .HasComment("Advertising tags associated with this stock item (JSON array retrieved from CustomFields)");
 
                     b.Property<decimal>("TaxRate")
-                        .HasColumnType("decimal(18,3)");
+                        .HasColumnType("decimal(18,3)")
+                        .HasComment("Tax rate to be applied");
 
                     b.Property<decimal>("TypicalWeightPerUnit")
-                        .HasColumnType("decimal(18,3)");
+                        .HasColumnType("decimal(18,3)")
+                        .HasComment("Typical weight for one unit of this product (packaged)");
 
                     b.Property<int>("UnitPackageId")
                         .HasColumnType("int")
-                        .HasColumnName("UnitPackageID");
+                        .HasColumnName("UnitPackageID")
+                        .HasComment("Usual package for selling units of this stock item");
 
                     b.Property<decimal>("UnitPrice")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,2)")
+                        .HasComment("Selling price (ex-tax) for one unit of this product");
 
                     b.Property<DateTime>("ValidFrom")
                         .ValueGeneratedOnAddOrUpdate()
@@ -1791,7 +2030,9 @@ namespace wwimporters.efmigrations.Migrations
 
                     b.ToTable("StockItems", "Warehouse");
 
-                    b.ToTable(tb => tb.IsTemporal(ttb =>
+                    b
+                        .HasComment("Main entity table for stock items")
+                        .ToTable(tb => tb.IsTemporal(ttb =>
                         {
                             ttb.UseHistoryTable("StockItems_Archive", "Warehouse");
                             ttb
@@ -1808,15 +2049,18 @@ namespace wwimporters.efmigrations.Migrations
                 {
                     b.Property<int>("StockItemId")
                         .HasColumnType("int")
-                        .HasColumnName("StockItemID");
+                        .HasColumnName("StockItemID")
+                        .HasComment("ID of the stock item that this holding relates to (this table holds non-temporal columns for stock)");
 
                     b.Property<string>("BinLocation")
                         .IsRequired()
-                        .HasMaxLength(28)
-                        .HasColumnType("nvarchar(28)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasComment("Bin location (ie location of this stock item within the depot)");
 
                     b.Property<decimal>("LastCostPrice")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,2)")
+                        .HasComment("Unit cost price the last time this stock item was purchased");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
@@ -1827,16 +2071,20 @@ namespace wwimporters.efmigrations.Migrations
                         .HasDefaultValueSql("(sysdatetime())");
 
                     b.Property<int>("LastStocktakeQuantity")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasComment("Quantity at last stocktake (if tracked)");
 
                     b.Property<int>("QuantityOnHand")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasComment("Quantity currently on hand (if tracked)");
 
                     b.Property<int>("ReorderLevel")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasComment("Quantity below which reordering should take place");
 
                     b.Property<int>("TargetStockLevel")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasComment("Typical quantity ordered");
 
                     b.HasKey("StockItemId")
                         .HasName("PK_Warehouse_StockItemHoldings");
@@ -1844,6 +2092,8 @@ namespace wwimporters.efmigrations.Migrations
                     b.HasIndex("LastEditedBy");
 
                     b.ToTable("StockItemHoldings", "Warehouse");
+
+                    b.HasComment("Non-temporal attributes for stock items");
                 });
 
             modelBuilder.Entity("wwimporters.domain.Entities.StockItemStockGroup", b =>
@@ -1852,7 +2102,8 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("StockItemStockGroupID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[StockItemStockGroupID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[StockItemStockGroupID])")
+                        .HasComment("Internal reference for this linking row");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
@@ -1864,11 +2115,13 @@ namespace wwimporters.efmigrations.Migrations
 
                     b.Property<int>("StockGroupId")
                         .HasColumnType("int")
-                        .HasColumnName("StockGroupID");
+                        .HasColumnName("StockGroupID")
+                        .HasComment("StockGroup assigned to this stock item (FK indexed via unique constraint)");
 
                     b.Property<int>("StockItemId")
                         .HasColumnType("int")
-                        .HasColumnName("StockItemID");
+                        .HasColumnName("StockItemID")
+                        .HasComment("Stock item assigned to this stock group (FK indexed via unique constraint)");
 
                     b.HasKey("StockItemStockGroupId");
 
@@ -1881,6 +2134,8 @@ namespace wwimporters.efmigrations.Migrations
                         .IsUnique();
 
                     b.ToTable("StockItemStockGroups", "Warehouse");
+
+                    b.HasComment("Which stock items are in which stock groups");
                 });
 
             modelBuilder.Entity("wwimporters.domain.Entities.StockItemTransaction", b =>
@@ -1889,15 +2144,18 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("StockItemTransactionID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[TransactionID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[TransactionID])")
+                        .HasComment("Numeric ID used to refer to a stock item transaction within the database");
 
                     b.Property<int?>("CustomerId")
                         .HasColumnType("int")
-                        .HasColumnName("CustomerID");
+                        .HasColumnName("CustomerID")
+                        .HasComment("Customer for this transaction (if applicable)");
 
                     b.Property<int?>("InvoiceId")
                         .HasColumnType("int")
-                        .HasColumnName("InvoiceID");
+                        .HasColumnName("InvoiceID")
+                        .HasComment("ID of an invoice (for transactions associated with an invoice)");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
@@ -1909,25 +2167,31 @@ namespace wwimporters.efmigrations.Migrations
 
                     b.Property<int?>("PurchaseOrderId")
                         .HasColumnType("int")
-                        .HasColumnName("PurchaseOrderID");
+                        .HasColumnName("PurchaseOrderID")
+                        .HasComment("ID of an purchase order (for transactions associated with a purchase order)");
 
                     b.Property<decimal>("Quantity")
-                        .HasColumnType("decimal(18,3)");
+                        .HasColumnType("decimal(18,3)")
+                        .HasComment("Quantity of stock movement (positive is incoming stock, negative is outgoing)");
 
                     b.Property<int>("StockItemId")
                         .HasColumnType("int")
-                        .HasColumnName("StockItemID");
+                        .HasColumnName("StockItemID")
+                        .HasComment("StockItem for this transaction");
 
                     b.Property<int?>("SupplierId")
                         .HasColumnType("int")
-                        .HasColumnName("SupplierID");
+                        .HasColumnName("SupplierID")
+                        .HasComment("Supplier for this stock transaction (if applicable)");
 
                     b.Property<DateTime>("TransactionOccurredWhen")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasComment("Date and time when the transaction occurred");
 
                     b.Property<int>("TransactionTypeId")
                         .HasColumnType("int")
-                        .HasColumnName("TransactionTypeID");
+                        .HasColumnName("TransactionTypeID")
+                        .HasComment("Type of transaction");
 
                     b.HasKey("StockItemTransactionId")
                         .HasName("PK_Warehouse_StockItemTransactions");
@@ -1949,6 +2213,8 @@ namespace wwimporters.efmigrations.Migrations
                     b.HasIndex(new[] { "TransactionTypeId" }, "FK_Warehouse_StockItemTransactions_TransactionTypeID");
 
                     b.ToTable("StockItemTransactions", "Warehouse");
+
+                    b.HasComment("Transactions covering all movements of all stock items");
                 });
 
             modelBuilder.Entity("wwimporters.domain.Entities.Supplier", b =>
@@ -1957,110 +2223,135 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("SupplierID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[SupplierID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[SupplierID])")
+                        .HasComment("Numeric ID used for reference to a supplier within the database");
 
                     b.Property<int>("AlternateContactPersonId")
                         .HasColumnType("int")
-                        .HasColumnName("AlternateContactPersonID");
+                        .HasColumnName("AlternateContactPersonID")
+                        .HasComment("Alternate contact");
 
                     b.Property<string>("BankAccountBranch")
-                        .HasMaxLength(58)
-                        .HasColumnType("nvarchar(58)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasComment("Supplier's bank branch");
 
                     b.Property<string>("BankAccountCode")
-                        .HasMaxLength(28)
-                        .HasColumnType("nvarchar(28)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasComment("Supplier's bank account code (usually a numeric reference for the bank branch)");
 
                     b.Property<string>("BankAccountName")
-                        .HasMaxLength(58)
-                        .HasColumnType("nvarchar(58)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasComment("Supplier's bank account name (ie name on the account)");
 
                     b.Property<string>("BankAccountNumber")
-                        .HasMaxLength(28)
-                        .HasColumnType("nvarchar(28)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasComment("Supplier's bank account number");
 
                     b.Property<string>("BankInternationalCode")
-                        .HasMaxLength(28)
-                        .HasColumnType("nvarchar(28)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasComment("Supplier's bank's international code (such as a SWIFT code)");
 
                     b.Property<string>("DeliveryAddressLine1")
                         .IsRequired()
-                        .HasMaxLength(68)
-                        .HasColumnType("nvarchar(68)");
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)")
+                        .HasComment("First delivery address line for the supplier");
 
                     b.Property<string>("DeliveryAddressLine2")
-                        .HasMaxLength(68)
-                        .HasColumnType("nvarchar(68)");
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)")
+                        .HasComment("Second delivery address line for the supplier");
 
                     b.Property<int>("DeliveryCityId")
                         .HasColumnType("int")
-                        .HasColumnName("DeliveryCityID");
+                        .HasColumnName("DeliveryCityID")
+                        .HasComment("ID of the delivery city for this address");
 
                     b.Property<Geometry>("DeliveryLocation")
-                        .HasColumnType("geography");
+                        .HasColumnType("geography")
+                        .HasComment("Geographic location for the supplier's office/warehouse");
 
                     b.Property<int?>("DeliveryMethodId")
                         .HasColumnType("int")
-                        .HasColumnName("DeliveryMethodID");
+                        .HasColumnName("DeliveryMethodID")
+                        .HasComment("Standard delivery method for stock items received from this supplier");
 
                     b.Property<string>("DeliveryPostalCode")
                         .IsRequired()
-                        .HasMaxLength(18)
-                        .HasColumnType("nvarchar(18)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)")
+                        .HasComment("Delivery postal code for the supplier");
 
                     b.Property<string>("FaxNumber")
                         .IsRequired()
-                        .HasMaxLength(28)
-                        .HasColumnType("nvarchar(28)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasComment("Fax number");
 
                     b.Property<string>("InternalComments")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("Internal comments (not exposed outside organization)");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
 
                     b.Property<int>("PaymentDays")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasComment("Number of days for payment of an invoice (ie payment terms)");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
-                        .HasMaxLength(28)
-                        .HasColumnType("nvarchar(28)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasComment("Phone number");
 
                     b.Property<string>("PostalAddressLine1")
                         .IsRequired()
-                        .HasMaxLength(68)
-                        .HasColumnType("nvarchar(68)");
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)")
+                        .HasComment("First postal address line for the supplier");
 
                     b.Property<string>("PostalAddressLine2")
-                        .HasMaxLength(68)
-                        .HasColumnType("nvarchar(68)");
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)")
+                        .HasComment("Second postal address line for the supplier");
 
                     b.Property<int>("PostalCityId")
                         .HasColumnType("int")
-                        .HasColumnName("PostalCityID");
+                        .HasColumnName("PostalCityID")
+                        .HasComment("ID of the mailing city for this address");
 
                     b.Property<string>("PostalPostalCode")
                         .IsRequired()
-                        .HasMaxLength(18)
-                        .HasColumnType("nvarchar(18)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)")
+                        .HasComment("Postal code for the supplier when sending by mail");
 
                     b.Property<int>("PrimaryContactPersonId")
                         .HasColumnType("int")
-                        .HasColumnName("PrimaryContactPersonID");
+                        .HasColumnName("PrimaryContactPersonID")
+                        .HasComment("Primary contact");
 
                     b.Property<int>("SupplierCategoryId")
                         .HasColumnType("int")
-                        .HasColumnName("SupplierCategoryID");
+                        .HasColumnName("SupplierCategoryID")
+                        .HasComment("Supplier's category");
 
                     b.Property<string>("SupplierName")
                         .IsRequired()
-                        .HasMaxLength(107)
-                        .HasColumnType("nvarchar(107)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasComment("Supplier's full name (usually a trading name)");
 
                     b.Property<string>("SupplierReference")
-                        .HasMaxLength(28)
-                        .HasColumnType("nvarchar(28)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasComment("Supplier reference for our organization (might be our account number at the supplier)");
 
                     b.Property<DateTime>("ValidFrom")
                         .ValueGeneratedOnAddOrUpdate()
@@ -2074,9 +2365,10 @@ namespace wwimporters.efmigrations.Migrations
 
                     b.Property<string>("WebsiteUrl")
                         .IsRequired()
-                        .HasMaxLength(264)
-                        .HasColumnType("nvarchar(264)")
-                        .HasColumnName("WebsiteURL");
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)")
+                        .HasColumnName("WebsiteURL")
+                        .HasComment("URL for the website for this supplier");
 
                     b.HasKey("SupplierId");
 
@@ -2099,7 +2391,9 @@ namespace wwimporters.efmigrations.Migrations
 
                     b.ToTable("Suppliers", "Purchasing");
 
-                    b.ToTable(tb => tb.IsTemporal(ttb =>
+                    b
+                        .HasComment("Main entity table for suppliers (organizations)")
+                        .ToTable(tb => tb.IsTemporal(ttb =>
                         {
                             ttb.UseHistoryTable("Suppliers_Archive", "Purchasing");
                             ttb
@@ -2175,15 +2469,17 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("SupplierCategoryID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[SupplierCategoryID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[SupplierCategoryID])")
+                        .HasComment("Numeric ID used for reference to a supplier category within the database");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
 
                     b.Property<string>("SupplierCategoryName")
                         .IsRequired()
-                        .HasMaxLength(58)
-                        .HasColumnType("nvarchar(58)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasComment("Full name of the category that suppliers can be assigned to");
 
                     b.Property<DateTime>("ValidFrom")
                         .ValueGeneratedOnAddOrUpdate()
@@ -2204,7 +2500,9 @@ namespace wwimporters.efmigrations.Migrations
 
                     b.ToTable("SupplierCategories", "Purchasing");
 
-                    b.ToTable(tb => tb.IsTemporal(ttb =>
+                    b
+                        .HasComment("Categories for suppliers (ie novelties, toys, clothing, packaging, etc.)")
+                        .ToTable(tb => tb.IsTemporal(ttb =>
                         {
                             ttb.UseHistoryTable("SupplierCategories_Archive", "Purchasing");
                             ttb
@@ -2223,18 +2521,22 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("SupplierTransactionID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[TransactionID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[TransactionID])")
+                        .HasComment("Numeric ID used to refer to a supplier transaction within the database");
 
                     b.Property<decimal>("AmountExcludingTax")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,2)")
+                        .HasComment("Transaction amount (excluding tax)");
 
                     b.Property<DateTime?>("FinalizationDate")
-                        .HasColumnType("date");
+                        .HasColumnType("date")
+                        .HasComment("Date that this transaction was finalized (if it has been)");
 
                     b.Property<bool?>("IsFinalized")
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("bit")
-                        .HasComputedColumnSql("(case when [FinalizationDate] IS NULL then CONVERT([bit],(0)) else CONVERT([bit],(1)) end)", true);
+                        .HasComputedColumnSql("(case when [FinalizationDate] IS NULL then CONVERT([bit],(0)) else CONVERT([bit],(1)) end)", true)
+                        .HasComment("Is this transaction finalized (invoices, credits and payments have been matched)");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
@@ -2245,36 +2547,45 @@ namespace wwimporters.efmigrations.Migrations
                         .HasDefaultValueSql("(sysdatetime())");
 
                     b.Property<decimal>("OutstandingBalance")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,2)")
+                        .HasComment("Amount still outstanding for this transaction");
 
                     b.Property<int?>("PaymentMethodId")
                         .HasColumnType("int")
-                        .HasColumnName("PaymentMethodID");
+                        .HasColumnName("PaymentMethodID")
+                        .HasComment("ID of a payment method (for transactions involving payments)");
 
                     b.Property<int?>("PurchaseOrderId")
                         .HasColumnType("int")
-                        .HasColumnName("PurchaseOrderID");
+                        .HasColumnName("PurchaseOrderID")
+                        .HasComment("ID of an purchase order (for transactions associated with a purchase order)");
 
                     b.Property<int>("SupplierId")
                         .HasColumnType("int")
-                        .HasColumnName("SupplierID");
+                        .HasColumnName("SupplierID")
+                        .HasComment("Supplier for this transaction");
 
                     b.Property<string>("SupplierInvoiceNumber")
-                        .HasMaxLength(28)
-                        .HasColumnType("nvarchar(28)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasComment("Invoice number for an invoice received from the supplier");
 
                     b.Property<decimal>("TaxAmount")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,2)")
+                        .HasComment("Tax amount calculated");
 
                     b.Property<decimal>("TransactionAmount")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,2)")
+                        .HasComment("Transaction amount (including tax)");
 
                     b.Property<DateTime>("TransactionDate")
-                        .HasColumnType("date");
+                        .HasColumnType("date")
+                        .HasComment("Date for the transaction");
 
                     b.Property<int>("TransactionTypeId")
                         .HasColumnType("int")
-                        .HasColumnName("TransactionTypeID");
+                        .HasColumnName("TransactionTypeID")
+                        .HasComment("Type of transaction");
 
                     b.HasKey("SupplierTransactionId")
                         .HasName("PK_Purchasing_SupplierTransactions");
@@ -2306,6 +2617,8 @@ namespace wwimporters.efmigrations.Migrations
                     b.HasIndex(new[] { "TransactionDate", "IsFinalized" }, "IX_Purchasing_SupplierTransactions_IsFinalized");
 
                     b.ToTable("SupplierTransactions", "Purchasing");
+
+                    b.HasComment("All financial transactions that are supplier-related");
                 });
 
             modelBuilder.Entity("wwimporters.domain.Entities.SystemParameter", b =>
@@ -2314,33 +2627,40 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("SystemParameterID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[SystemParameterID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[SystemParameterID])")
+                        .HasComment("Numeric ID used for row holding system parameters");
 
                     b.Property<string>("ApplicationSettings")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasComment("JSON-structured application settings");
 
                     b.Property<string>("DeliveryAddressLine1")
                         .IsRequired()
-                        .HasMaxLength(68)
-                        .HasColumnType("nvarchar(68)");
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)")
+                        .HasComment("First address line for the company");
 
                     b.Property<string>("DeliveryAddressLine2")
-                        .HasMaxLength(68)
-                        .HasColumnType("nvarchar(68)");
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)")
+                        .HasComment("Second address line for the company");
 
                     b.Property<int>("DeliveryCityId")
                         .HasColumnType("int")
-                        .HasColumnName("DeliveryCityID");
+                        .HasColumnName("DeliveryCityID")
+                        .HasComment("ID of the city for this address");
 
                     b.Property<Geometry>("DeliveryLocation")
                         .IsRequired()
-                        .HasColumnType("geography");
+                        .HasColumnType("geography")
+                        .HasComment("Geographic location for the company office");
 
                     b.Property<string>("DeliveryPostalCode")
                         .IsRequired()
-                        .HasMaxLength(18)
-                        .HasColumnType("nvarchar(18)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)")
+                        .HasComment("Postal code for the company");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
@@ -2352,21 +2672,25 @@ namespace wwimporters.efmigrations.Migrations
 
                     b.Property<string>("PostalAddressLine1")
                         .IsRequired()
-                        .HasMaxLength(68)
-                        .HasColumnType("nvarchar(68)");
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)")
+                        .HasComment("First postal address line for the company");
 
                     b.Property<string>("PostalAddressLine2")
-                        .HasMaxLength(68)
-                        .HasColumnType("nvarchar(68)");
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)")
+                        .HasComment("Second postaladdress line for the company");
 
                     b.Property<int>("PostalCityId")
                         .HasColumnType("int")
-                        .HasColumnName("PostalCityID");
+                        .HasColumnName("PostalCityID")
+                        .HasComment("ID of the city for this postaladdress");
 
                     b.Property<string>("PostalPostalCode")
                         .IsRequired()
-                        .HasMaxLength(18)
-                        .HasColumnType("nvarchar(18)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)")
+                        .HasComment("Postal code for the company when sending via mail");
 
                     b.HasKey("SystemParameterId");
 
@@ -2377,6 +2701,8 @@ namespace wwimporters.efmigrations.Migrations
                     b.HasIndex(new[] { "PostalCityId" }, "FK_Application_SystemParameters_PostalCityID");
 
                     b.ToTable("SystemParameters", "Application");
+
+                    b.HasComment("Any configurable parameters for the whole system");
                 });
 
             modelBuilder.Entity("wwimporters.domain.Entities.TransactionType", b =>
@@ -2385,15 +2711,17 @@ namespace wwimporters.efmigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("TransactionTypeID")
-                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[TransactionTypeID])");
+                        .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[TransactionTypeID])")
+                        .HasComment("Numeric ID used for reference to a transaction type within the database");
 
                     b.Property<int>("LastEditedBy")
                         .HasColumnType("int");
 
                     b.Property<string>("TransactionTypeName")
                         .IsRequired()
-                        .HasMaxLength(58)
-                        .HasColumnType("nvarchar(58)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasComment("Full name of the transaction type");
 
                     b.Property<DateTime>("ValidFrom")
                         .ValueGeneratedOnAddOrUpdate()
@@ -2414,7 +2742,9 @@ namespace wwimporters.efmigrations.Migrations
 
                     b.ToTable("TransactionTypes", "Application");
 
-                    b.ToTable(tb => tb.IsTemporal(ttb =>
+                    b
+                        .HasComment("Types of customer, supplier, or stock transactions (ie: invoice, credit note, etc.)")
+                        .ToTable(tb => tb.IsTemporal(ttb =>
                         {
                             ttb.UseHistoryTable("TransactionTypes_Archive", "Application");
                             ttb

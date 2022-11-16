@@ -21,14 +21,19 @@ namespace wwimporters.infrastructure.Persistence.EntityConfigurations
                 ttb.HasPeriodEnd("ValidTo").HasColumnName("ValidTo");
             }));
 
+            builder.HasComment("Categories for customers (ie restaurants, cafes, supermarkets, etc.)");
+
             builder.HasIndex(e => e.CustomerCategoryName, "UQ_Sales_CustomerCategories_CustomerCategoryName")
                 .IsUnique();
 
             builder.Property(e => e.CustomerCategoryId)
                 .HasColumnName("CustomerCategoryID")
-                .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[CustomerCategoryID])");
+                .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[CustomerCategoryID])")
+                .HasComment("Numeric ID used for reference to a customer category within the database");
 
-            builder.Property(e => e.CustomerCategoryName).HasMaxLength(58);
+            builder.Property(e => e.CustomerCategoryName)
+                .HasMaxLength(50)
+                .HasComment("Full name of the category that customers can be assigned to");
         }
     }
 }

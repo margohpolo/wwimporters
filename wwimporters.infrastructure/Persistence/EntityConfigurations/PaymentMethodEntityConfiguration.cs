@@ -21,14 +21,19 @@ namespace wwimporters.infrastructure.Persistence.EntityConfigurations
                 ttb.HasPeriodEnd("ValidTo").HasColumnName("ValidTo");
             }));
 
+            builder.HasComment("Ways that payments can be made (ie: cash, check, EFT, etc.");
+
             builder.HasIndex(e => e.PaymentMethodName, "UQ_Application_PaymentMethods_PaymentMethodName")
                 .IsUnique();
 
             builder.Property(e => e.PaymentMethodId)
                 .HasColumnName("PaymentMethodID")
-                .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[PaymentMethodID])");
+                .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[PaymentMethodID])")
+                .HasComment("Numeric ID used for reference to a payment type within the database");
 
-            builder.Property(e => e.PaymentMethodName).HasMaxLength(58);
+            builder.Property(e => e.PaymentMethodName)
+                .HasMaxLength(58)
+                .HasComment("Full name of ways that customers can make payments or that suppliers can be paid");
         }
     }
 }

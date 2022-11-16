@@ -21,6 +21,8 @@ namespace wwimporters.infrastructure.Persistence.EntityConfigurations
                 ttb.HasPeriodEnd("ValidTo").HasColumnName("ValidTo");
             }));
 
+            builder.HasComment("States or provinces that contain cities (including geographic location)");
+
             builder.HasIndex(e => e.CountryId, "FK_Application_StateProvinces_CountryID");
 
             builder.HasIndex(e => e.SalesTerritory, "IX_Application_StateProvinces_SalesTerritory");
@@ -30,15 +32,32 @@ namespace wwimporters.infrastructure.Persistence.EntityConfigurations
 
             builder.Property(e => e.StateProvinceId)
                 .HasColumnName("StateProvinceID")
-                .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[StateProvinceID])");
+                .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[StateProvinceID])")
+                .HasComment("Numeric ID used for reference to a state or province within the database");
 
-            builder.Property(e => e.CountryId).HasColumnName("CountryID");
+            builder.Property(e => e.StateProvinceCode)
+                .HasMaxLength(5)
+                .HasComment("Common code for this state or province (such as WA - Washington for the USA)");
 
-            builder.Property(e => e.SalesTerritory).HasMaxLength(58);
+            builder.Property(e => e.StateProvinceName)
+                .HasMaxLength(50)
+                .HasComment("Formal name of the state or province");
 
-            builder.Property(e => e.StateProvinceCode).HasMaxLength(11);
+            builder.Property(e => e.CountryId)
+                .HasColumnName("CountryID")
+                .HasComment("Country for this StateProvince");
 
-            builder.Property(e => e.StateProvinceName).HasMaxLength(58);
+            builder.Property(e => e.SalesTerritory)
+                .HasMaxLength(50)
+                .HasComment("Sales territory for this StateProvince");
+
+            builder.Property(e => e.Border)
+                .HasComment("Geographic boundary of the state or province");
+
+            builder.Property(e => e.LatestRecordedPopulation)
+                .HasComment("Latest available population for the StateProvince");
+
+
         }
     }
 }

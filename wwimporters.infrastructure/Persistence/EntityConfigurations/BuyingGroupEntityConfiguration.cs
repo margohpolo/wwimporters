@@ -21,14 +21,19 @@ namespace wwimporters.infrastructure.Persistence.EntityConfigurations
                 ttb.HasPeriodEnd("ValidTo").HasColumnName("ValidTo");
             }));
 
+            builder.HasComment("Customer organizations can be part of groups that exert greater buying power");
+
             builder.HasIndex(e => e.BuyingGroupName, "UQ_Sales_BuyingGroups_BuyingGroupName")
                     .IsUnique();
 
             builder.Property(e => e.BuyingGroupId)
                 .HasColumnName("BuyingGroupID")
-                .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[BuyingGroupID])");
+                .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[BuyingGroupID])")
+                .HasComment("Numeric ID used for reference to a buying group within the database");
 
-            builder.Property(e => e.BuyingGroupName).HasMaxLength(58);
+            builder.Property(e => e.BuyingGroupName)
+                .HasMaxLength(50)
+                .HasComment("Full name of a buying group that customers can be members of");
 
 
         }

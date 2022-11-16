@@ -21,14 +21,19 @@ namespace wwimporters.infrastructure.Persistence.EntityConfigurations
                 ttb.HasPeriodEnd("ValidTo").HasColumnName("ValidTo");
             }));
 
+            builder.HasComment("Ways that stock items can be delivered (ie: truck/van, post, pickup, courier, etc.");
+
             builder.HasIndex(e => e.DeliveryMethodName, "UQ_Application_DeliveryMethods_DeliveryMethodName")
                 .IsUnique();
 
             builder.Property(e => e.DeliveryMethodId)
                 .HasColumnName("DeliveryMethodID")
-                .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[DeliveryMethodID])");
+                .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[DeliveryMethodID])")
+                .HasComment("Numeric ID used for reference to a delivery method within the database");
 
-            builder.Property(e => e.DeliveryMethodName).HasMaxLength(58);
+            builder.Property(e => e.DeliveryMethodName)
+                .HasMaxLength(58)
+                .HasComment("Full name of methods that can be used for delivery of customer orders");
         }
     }
 }

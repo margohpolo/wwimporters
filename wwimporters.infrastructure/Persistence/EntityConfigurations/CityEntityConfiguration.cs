@@ -15,6 +15,8 @@ namespace wwimporters.infrastructure.Persistence.EntityConfigurations
         {
             builder.ToTable("Cities", "Application");
 
+            builder.HasComment("Cities that are part of any address (including geographic location)");
+
             builder.ToTable(tb => tb.IsTemporal(ttb => {
                 ttb.UseHistoryTable("Cities_Archive", "Application");
                 ttb.HasPeriodStart("ValidFrom").HasColumnName("ValidFrom");
@@ -25,11 +27,23 @@ namespace wwimporters.infrastructure.Persistence.EntityConfigurations
 
             builder.Property(e => e.CityId)
                 .HasColumnName("CityID")
-                .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[CityID])");
+                .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[CityID])")
+                .HasComment("Numeric ID used for reference to a city within the database");
 
-            builder.Property(e => e.CityName).HasMaxLength(58);
+            builder.Property(e => e.CityName)
+                .HasMaxLength(58)
+                .HasComment("Formal name of the city");
 
-            builder.Property(e => e.StateProvinceId).HasColumnName("StateProvinceID");
+            builder.Property(e => e.StateProvinceId)
+                .HasColumnName("StateProvinceID")
+                .HasComment("State or province for this city. Has a foreign key");
+
+            builder.Property(e => e.Location)
+                .HasComment("Geographic location of the city");
+
+            builder.Property(e => e.LatestRecordedPopulation)
+                .HasComment("Latest available population for the City");
+
         }
     }
 }

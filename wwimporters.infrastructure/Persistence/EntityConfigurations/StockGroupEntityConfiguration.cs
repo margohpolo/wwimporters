@@ -15,6 +15,8 @@ namespace wwimporters.infrastructure.Persistence.EntityConfigurations
         {
             builder.ToTable("StockGroups", "Warehouse");
 
+            builder.HasComment("Groups for categorizing stock items (ie: novelties, toys, edible novelties, etc.)");
+
             builder.ToTable(tb => tb.IsTemporal(ttb => {
                 ttb.UseHistoryTable("StockGroups_Archive", "Warehouse");
                 ttb.HasPeriodStart("ValidFrom").HasColumnName("ValidFrom");
@@ -26,9 +28,12 @@ namespace wwimporters.infrastructure.Persistence.EntityConfigurations
 
             builder.Property(e => e.StockGroupId)
                 .HasColumnName("StockGroupID")
-                .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[StockGroupID])");
+                .HasDefaultValueSql("(NEXT VALUE FOR [Sequences].[StockGroupID])")
+                .HasComment("Numeric ID used for reference to a stock group within the database");
 
-            builder.Property(e => e.StockGroupName).HasMaxLength(58);
+            builder.Property(e => e.StockGroupName)
+                .HasMaxLength(50)
+                .HasComment("Full name of groups used to categorize stock items");
         }
     }
 }
