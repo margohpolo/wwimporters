@@ -24,6 +24,3 @@ dotnet ef migrations script ../efmigrations/initial_idempotent.sql --idempotent
 <br />
 <br />
 <br />
-
-> <div align="center">"Developers, anywhere can find. Not important..."</br>
-> &minus; Famous last words.</div>
