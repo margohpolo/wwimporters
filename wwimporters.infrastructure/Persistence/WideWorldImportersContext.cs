@@ -68,6 +68,12 @@ namespace wwimporters.infrastructure.Persistence
 
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
+            OnModelCreatingPartial(modelBuilder);
+        }
+
+        //Using OnModelCreatingPartial for defining additional Entity attributes, e.g. Relationships & DB Sequences etc.
+        private void OnModelCreatingPartial(ModelBuilder modelBuilder)
+        {
             modelBuilder.Entity<BuyingGroup>()
                 .HasOne(d => d.LastEditedByNavigation)
                 .WithMany(p => p.BuyingGroups)
@@ -327,7 +333,7 @@ namespace wwimporters.infrastructure.Persistence
                 .HasForeignKey(d => d.StockItemId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Sales_OrderLines_StockItemID_Warehouse_StockItems");
-            
+
             modelBuilder.Entity<PackageType>().HasOne(d => d.LastEditedByNavigation)
                 .WithMany(p => p.PackageTypes)
                 .HasForeignKey(d => d.LastEditedBy)
@@ -694,12 +700,7 @@ namespace wwimporters.infrastructure.Persistence
             modelBuilder.HasSequence<int>("TransactionID", "Sequences").StartsAt(336253);
 
             modelBuilder.HasSequence<int>("TransactionTypeID", "Sequences").StartsAt(14);
-
-
-            OnModelCreatingPartial(modelBuilder);
         }
-
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
     }
 }
