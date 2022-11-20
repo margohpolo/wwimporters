@@ -13,8 +13,8 @@ using wwimporters.infrastructure.Persistence;
 namespace wwimporters.efmigrations.Migrations
 {
     [DbContext(typeof(WideWorldImportersContext))]
-    [Migration("20221116104010_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20221120080257_CreateStoredProcedures")]
+    partial class CreateStoredProcedures
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
