@@ -36,6 +36,7 @@ dotnet ef migrations script -o ../efmigrations/initial_idempotent.sql --idempote
 - Added EF Migration script approach to creating Stored Procedures on Migrate
     => This does <b>not</b> run the said created SPs
     => This is either a <b>risky</b> approach, or error-prone, or both...
+- Tidied up OnModelCreating using the OnModelCreatingPartial auto-generated via DbFirst
 
 <br />
 <br />
