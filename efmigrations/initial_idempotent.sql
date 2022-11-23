@@ -11,31 +11,31 @@ GO
 BEGIN TRANSACTION;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     IF SCHEMA_ID(N'Sales') IS NULL EXEC(N'CREATE SCHEMA [Sales];');
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     IF SCHEMA_ID(N'Application') IS NULL EXEC(N'CREATE SCHEMA [Application];');
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     IF SCHEMA_ID(N'Warehouse') IS NULL EXEC(N'CREATE SCHEMA [Warehouse];');
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     IF SCHEMA_ID(N'Purchasing') IS NULL EXEC(N'CREATE SCHEMA [Purchasing];');
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     IF SCHEMA_ID(N'Sequences') IS NULL EXEC(N'CREATE SCHEMA [Sequences];');
 END;
@@ -44,7 +44,7 @@ GO
 COMMIT;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     IF SERVERPROPERTY('IsXTPSupported') = 1 AND SERVERPROPERTY('EngineEdition') <> 5
         BEGIN
@@ -88,163 +88,163 @@ GO
 BEGIN TRANSACTION;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE SEQUENCE [Sequences].[BuyingGroupID] AS int START WITH 3 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE SEQUENCE [Sequences].[CityID] AS int START WITH 38187 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE SEQUENCE [Sequences].[ColorID] AS int START WITH 37 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE SEQUENCE [Sequences].[CountryID] AS int START WITH 242 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE SEQUENCE [Sequences].[CustomerCategoryID] AS int START WITH 9 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE SEQUENCE [Sequences].[CustomerID] AS int START WITH 1062 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE SEQUENCE [Sequences].[DeliveryMethodID] AS int START WITH 11 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE SEQUENCE [Sequences].[InvoiceID] AS int START WITH 70511 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE SEQUENCE [Sequences].[InvoiceLineID] AS int START WITH 228266 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE SEQUENCE [Sequences].[OrderID] AS int START WITH 73596 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE SEQUENCE [Sequences].[OrderLineID] AS int START WITH 231413 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE SEQUENCE [Sequences].[PackageTypeID] AS int START WITH 15 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE SEQUENCE [Sequences].[PaymentMethodID] AS int START WITH 5 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE SEQUENCE [Sequences].[PersonID] AS int START WITH 3262 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE SEQUENCE [Sequences].[PurchaseOrderID] AS int START WITH 2075 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE SEQUENCE [Sequences].[PurchaseOrderLineID] AS int START WITH 8368 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE SEQUENCE [Sequences].[SpecialDealID] AS int START WITH 3 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE SEQUENCE [Sequences].[StateProvinceID] AS int START WITH 54 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE SEQUENCE [Sequences].[StockGroupID] AS int START WITH 11 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE SEQUENCE [Sequences].[StockItemID] AS int START WITH 228 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE SEQUENCE [Sequences].[StockItemStockGroupID] AS int START WITH 443 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE SEQUENCE [Sequences].[SupplierCategoryID] AS int START WITH 10 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE SEQUENCE [Sequences].[SupplierID] AS int START WITH 14 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE SEQUENCE [Sequences].[SystemParameterID] AS int START WITH 2 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE SEQUENCE [Sequences].[TransactionID] AS int START WITH 336253 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE SEQUENCE [Sequences].[TransactionTypeID] AS int START WITH 14 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Warehouse].[ColdRoomTemperatures] (
         [ColdRoomTemperatureID] bigint NOT NULL IDENTITY,
@@ -259,7 +259,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Application].[People] (
         [PersonID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[PersonID])),
@@ -332,7 +332,7 @@ GO
 COMMIT;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Warehouse].[VehicleTemperatures] (
         [VehicleTemperatureID] bigint NOT NULL IDENTITY,
@@ -353,7 +353,7 @@ GO
 BEGIN TRANSACTION;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Sales].[BuyingGroups] (
         [BuyingGroupID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[BuyingGroupID])),
@@ -375,7 +375,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Warehouse].[Colors] (
         [ColorID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[ColorID])),
@@ -397,7 +397,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Application].[Countries] (
         [CountryID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[CountryID])),
@@ -446,7 +446,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Sales].[CustomerCategories] (
         [CustomerCategoryID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[CustomerCategoryID])),
@@ -468,7 +468,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Application].[DeliveryMethods] (
         [DeliveryMethodID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[DeliveryMethodID])),
@@ -490,7 +490,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Warehouse].[PackageTypes] (
         [PackageTypeID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[PackageTypeID])),
@@ -512,7 +512,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Application].[PaymentMethods] (
         [PaymentMethodID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[PaymentMethodID])),
@@ -534,7 +534,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Warehouse].[StockGroups] (
         [StockGroupID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[StockGroupID])),
@@ -556,7 +556,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Purchasing].[SupplierCategories] (
         [SupplierCategoryID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[SupplierCategoryID])),
@@ -578,7 +578,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Application].[TransactionTypes] (
         [TransactionTypeID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[TransactionTypeID])),
@@ -600,7 +600,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Application].[StateProvinces] (
         [StateProvinceID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[StateProvinceID])),
@@ -638,7 +638,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Application].[Cities] (
         [CityID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[CityID])),
@@ -670,7 +670,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Sales].[Customers] (
         [CustomerID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[CustomerID])),
@@ -778,7 +778,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Purchasing].[Suppliers] (
         [SupplierID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[SupplierID])),
@@ -878,7 +878,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Application].[SystemParameters] (
         [SystemParameterID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[SystemParameterID])),
@@ -927,7 +927,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Sales].[Orders] (
         [OrderID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[OrderID])),
@@ -988,7 +988,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Purchasing].[PurchaseOrders] (
         [PurchaseOrderID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[PurchaseOrderID])),
@@ -1035,7 +1035,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Warehouse].[StockItems] (
         [StockItemID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[StockItemID])),
@@ -1121,7 +1121,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Sales].[Invoices] (
         [InvoiceID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[InvoiceID])),
@@ -1212,7 +1212,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Purchasing].[SupplierTransactions] (
         [SupplierTransactionID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[TransactionID])),
@@ -1269,7 +1269,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Sales].[OrderLines] (
         [OrderLineID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[OrderLineID])),
@@ -1316,7 +1316,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Purchasing].[PurchaseOrderLines] (
         [PurchaseOrderLineID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[PurchaseOrderLineID])),
@@ -1363,7 +1363,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Sales].[SpecialDeals] (
         [SpecialDealID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[SpecialDealID])),
@@ -1418,7 +1418,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Warehouse].[StockItemHoldings] (
         [StockItemID] int NOT NULL,
@@ -1454,7 +1454,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Warehouse].[StockItemStockGroups] (
         [StockItemStockGroupID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[StockItemStockGroupID])),
@@ -1479,7 +1479,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Sales].[CustomerTransactions] (
         [CustomerTransactionID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[TransactionID])),
@@ -1533,7 +1533,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Sales].[InvoiceLines] (
         [InvoiceLineID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[InvoiceLineID])),
@@ -1583,7 +1583,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE TABLE [Warehouse].[StockItemTransactions] (
         [StockItemTransactionID] int NOT NULL DEFAULT ((NEXT VALUE FOR [Sequences].[TransactionID])),
@@ -1630,820 +1630,820 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_BuyingGroups_LastEditedBy] ON [Sales].[BuyingGroups] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE UNIQUE INDEX [UQ_Sales_BuyingGroups_BuyingGroupName] ON [Sales].[BuyingGroups] ([BuyingGroupName]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Application_Cities_StateProvinceID] ON [Application].[Cities] ([StateProvinceID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_Cities_LastEditedBy] ON [Application].[Cities] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_Warehouse_ColdRoomTemperatures_ColdRoomSensorNumber] ON [Warehouse].[ColdRoomTemperatures] ([ColdRoomSensorNumber]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_Colors_LastEditedBy] ON [Warehouse].[Colors] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE UNIQUE INDEX [UQ_Warehouse_Colors_ColorName] ON [Warehouse].[Colors] ([ColorName]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_Countries_LastEditedBy] ON [Application].[Countries] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE UNIQUE INDEX [UQ_Application_Countries_CountryName] ON [Application].[Countries] ([CountryName]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE UNIQUE INDEX [UQ_Application_Countries_FormalName] ON [Application].[Countries] ([FormalName]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_CustomerCategories_LastEditedBy] ON [Sales].[CustomerCategories] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE UNIQUE INDEX [UQ_Sales_CustomerCategories_CustomerCategoryName] ON [Sales].[CustomerCategories] ([CustomerCategoryName]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_Customers_AlternateContactPersonID] ON [Sales].[Customers] ([AlternateContactPersonID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_Customers_BuyingGroupID] ON [Sales].[Customers] ([BuyingGroupID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_Customers_CustomerCategoryID] ON [Sales].[Customers] ([CustomerCategoryID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_Customers_DeliveryCityID] ON [Sales].[Customers] ([DeliveryCityID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_Customers_DeliveryMethodID] ON [Sales].[Customers] ([DeliveryMethodID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_Customers_PostalCityID] ON [Sales].[Customers] ([PostalCityID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_Customers_PrimaryContactPersonID] ON [Sales].[Customers] ([PrimaryContactPersonID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_Customers_BillToCustomerID] ON [Sales].[Customers] ([BillToCustomerID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_Customers_LastEditedBy] ON [Sales].[Customers] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_Sales_Customers_Perf_20160301_06] ON [Sales].[Customers] ([IsOnCreditHold], [CustomerID], [BillToCustomerID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE UNIQUE INDEX [UQ_Sales_Customers_CustomerName] ON [Sales].[Customers] ([CustomerName]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE CLUSTERED INDEX [CX_Sales_CustomerTransactions] ON [Sales].[CustomerTransactions] ([TransactionDate]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_CustomerTransactions_CustomerID] ON [Sales].[CustomerTransactions] ([TransactionDate], [CustomerID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_CustomerTransactions_InvoiceID] ON [Sales].[CustomerTransactions] ([TransactionDate], [InvoiceID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_CustomerTransactions_PaymentMethodID] ON [Sales].[CustomerTransactions] ([TransactionDate], [PaymentMethodID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_CustomerTransactions_TransactionTypeID] ON [Sales].[CustomerTransactions] ([TransactionDate], [TransactionTypeID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_CustomerTransactions_CustomerID] ON [Sales].[CustomerTransactions] ([CustomerID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_CustomerTransactions_InvoiceID] ON [Sales].[CustomerTransactions] ([InvoiceID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_CustomerTransactions_LastEditedBy] ON [Sales].[CustomerTransactions] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_CustomerTransactions_PaymentMethodID] ON [Sales].[CustomerTransactions] ([PaymentMethodID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_CustomerTransactions_TransactionTypeID] ON [Sales].[CustomerTransactions] ([TransactionTypeID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_Sales_CustomerTransactions_IsFinalized] ON [Sales].[CustomerTransactions] ([TransactionDate], [IsFinalized]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_DeliveryMethods_LastEditedBy] ON [Application].[DeliveryMethods] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE UNIQUE INDEX [UQ_Application_DeliveryMethods_DeliveryMethodName] ON [Application].[DeliveryMethods] ([DeliveryMethodName]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_InvoiceLines_InvoiceID] ON [Sales].[InvoiceLines] ([InvoiceID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_InvoiceLines_PackageTypeID] ON [Sales].[InvoiceLines] ([PackageTypeID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_InvoiceLines_StockItemID] ON [Sales].[InvoiceLines] ([StockItemID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_InvoiceLines_LastEditedBy] ON [Sales].[InvoiceLines] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_Invoices_AccountsPersonID] ON [Sales].[Invoices] ([AccountsPersonID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_Invoices_BillToCustomerID] ON [Sales].[Invoices] ([BillToCustomerID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_Invoices_ContactPersonID] ON [Sales].[Invoices] ([ContactPersonID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_Invoices_CustomerID] ON [Sales].[Invoices] ([CustomerID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_Invoices_DeliveryMethodID] ON [Sales].[Invoices] ([DeliveryMethodID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_Invoices_OrderID] ON [Sales].[Invoices] ([OrderID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_Invoices_PackedByPersonID] ON [Sales].[Invoices] ([PackedByPersonID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_Invoices_SalespersonPersonID] ON [Sales].[Invoices] ([SalespersonPersonID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_Invoices_LastEditedBy] ON [Sales].[Invoices] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_Sales_Invoices_ConfirmedDeliveryTime] ON [Sales].[Invoices] ([ConfirmedDeliveryTime]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_OrderLines_OrderID] ON [Sales].[OrderLines] ([OrderID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_OrderLines_PackageTypeID] ON [Sales].[OrderLines] ([PackageTypeID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_OrderLines_LastEditedBy] ON [Sales].[OrderLines] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_Sales_OrderLines_AllocatedStockItems] ON [Sales].[OrderLines] ([StockItemID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_Sales_OrderLines_Perf_20160301_01] ON [Sales].[OrderLines] ([PickingCompletedWhen], [OrderID], [OrderLineID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_Sales_OrderLines_Perf_20160301_02] ON [Sales].[OrderLines] ([StockItemID], [PickingCompletedWhen]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_Orders_ContactPersonID] ON [Sales].[Orders] ([ContactPersonID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_Orders_CustomerID] ON [Sales].[Orders] ([CustomerID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_Orders_PickedByPersonID] ON [Sales].[Orders] ([PickedByPersonID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_Orders_SalespersonPersonID] ON [Sales].[Orders] ([SalespersonPersonID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_Orders_BackorderOrderID] ON [Sales].[Orders] ([BackorderOrderID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_Orders_LastEditedBy] ON [Sales].[Orders] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_PackageTypes_LastEditedBy] ON [Warehouse].[PackageTypes] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE UNIQUE INDEX [UQ_Warehouse_PackageTypes_PackageTypeName] ON [Warehouse].[PackageTypes] ([PackageTypeName]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_PaymentMethods_LastEditedBy] ON [Application].[PaymentMethods] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE UNIQUE INDEX [UQ_Application_PaymentMethods_PaymentMethodName] ON [Application].[PaymentMethods] ([PaymentMethodName]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_Application_People_FullName] ON [Application].[People] ([FullName]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_Application_People_IsEmployee] ON [Application].[People] ([IsEmployee]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_Application_People_IsSalesperson] ON [Application].[People] ([IsSalesperson]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_Application_People_Perf_20160301_05] ON [Application].[People] ([IsPermittedToLogon], [PersonID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_People_LastEditedBy] ON [Application].[People] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Purchasing_PurchaseOrderLines_PackageTypeID] ON [Purchasing].[PurchaseOrderLines] ([PackageTypeID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Purchasing_PurchaseOrderLines_PurchaseOrderID] ON [Purchasing].[PurchaseOrderLines] ([PurchaseOrderID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Purchasing_PurchaseOrderLines_StockItemID] ON [Purchasing].[PurchaseOrderLines] ([StockItemID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_PurchaseOrderLines_LastEditedBy] ON [Purchasing].[PurchaseOrderLines] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_Purchasing_PurchaseOrderLines_Perf_20160301_4] ON [Purchasing].[PurchaseOrderLines] ([IsOrderLineFinalized], [StockItemID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Purchasing_PurchaseOrders_ContactPersonID] ON [Purchasing].[PurchaseOrders] ([ContactPersonID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Purchasing_PurchaseOrders_DeliveryMethodID] ON [Purchasing].[PurchaseOrders] ([DeliveryMethodID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Purchasing_PurchaseOrders_SupplierID] ON [Purchasing].[PurchaseOrders] ([SupplierID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_PurchaseOrders_LastEditedBy] ON [Purchasing].[PurchaseOrders] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_SpecialDeals_BuyingGroupID] ON [Sales].[SpecialDeals] ([BuyingGroupID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_SpecialDeals_CustomerCategoryID] ON [Sales].[SpecialDeals] ([CustomerCategoryID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_SpecialDeals_CustomerID] ON [Sales].[SpecialDeals] ([CustomerID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_SpecialDeals_StockGroupID] ON [Sales].[SpecialDeals] ([StockGroupID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Sales_SpecialDeals_StockItemID] ON [Sales].[SpecialDeals] ([StockItemID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_SpecialDeals_LastEditedBy] ON [Sales].[SpecialDeals] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Application_StateProvinces_CountryID] ON [Application].[StateProvinces] ([CountryID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_Application_StateProvinces_SalesTerritory] ON [Application].[StateProvinces] ([SalesTerritory]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_StateProvinces_LastEditedBy] ON [Application].[StateProvinces] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE UNIQUE INDEX [UQ_Application_StateProvinces_StateProvinceName] ON [Application].[StateProvinces] ([StateProvinceName]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_StockGroups_LastEditedBy] ON [Warehouse].[StockGroups] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE UNIQUE INDEX [UQ_Warehouse_StockGroups_StockGroupName] ON [Warehouse].[StockGroups] ([StockGroupName]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_StockItemHoldings_LastEditedBy] ON [Warehouse].[StockItemHoldings] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Warehouse_StockItems_ColorID] ON [Warehouse].[StockItems] ([ColorID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Warehouse_StockItems_OuterPackageID] ON [Warehouse].[StockItems] ([OuterPackageID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Warehouse_StockItems_SupplierID] ON [Warehouse].[StockItems] ([SupplierID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Warehouse_StockItems_UnitPackageID] ON [Warehouse].[StockItems] ([UnitPackageID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_StockItems_LastEditedBy] ON [Warehouse].[StockItems] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE UNIQUE INDEX [UQ_Warehouse_StockItems_StockItemName] ON [Warehouse].[StockItems] ([StockItemName]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_StockItemStockGroups_LastEditedBy] ON [Warehouse].[StockItemStockGroups] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE UNIQUE INDEX [UQ_StockItemStockGroups_StockGroupID_Lookup] ON [Warehouse].[StockItemStockGroups] ([StockGroupID], [StockItemID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE UNIQUE INDEX [UQ_StockItemStockGroups_StockItemID_Lookup] ON [Warehouse].[StockItemStockGroups] ([StockItemID], [StockGroupID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Warehouse_StockItemTransactions_CustomerID] ON [Warehouse].[StockItemTransactions] ([CustomerID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Warehouse_StockItemTransactions_InvoiceID] ON [Warehouse].[StockItemTransactions] ([InvoiceID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Warehouse_StockItemTransactions_PurchaseOrderID] ON [Warehouse].[StockItemTransactions] ([PurchaseOrderID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Warehouse_StockItemTransactions_StockItemID] ON [Warehouse].[StockItemTransactions] ([StockItemID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Warehouse_StockItemTransactions_SupplierID] ON [Warehouse].[StockItemTransactions] ([SupplierID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Warehouse_StockItemTransactions_TransactionTypeID] ON [Warehouse].[StockItemTransactions] ([TransactionTypeID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_StockItemTransactions_LastEditedBy] ON [Warehouse].[StockItemTransactions] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_SupplierCategories_LastEditedBy] ON [Purchasing].[SupplierCategories] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE UNIQUE INDEX [UQ_Purchasing_SupplierCategories_SupplierCategoryName] ON [Purchasing].[SupplierCategories] ([SupplierCategoryName]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Purchasing_Suppliers_AlternateContactPersonID] ON [Purchasing].[Suppliers] ([AlternateContactPersonID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Purchasing_Suppliers_DeliveryCityID] ON [Purchasing].[Suppliers] ([DeliveryCityID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Purchasing_Suppliers_DeliveryMethodID] ON [Purchasing].[Suppliers] ([DeliveryMethodID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Purchasing_Suppliers_PostalCityID] ON [Purchasing].[Suppliers] ([PostalCityID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Purchasing_Suppliers_PrimaryContactPersonID] ON [Purchasing].[Suppliers] ([PrimaryContactPersonID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Purchasing_Suppliers_SupplierCategoryID] ON [Purchasing].[Suppliers] ([SupplierCategoryID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_Suppliers_LastEditedBy] ON [Purchasing].[Suppliers] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE UNIQUE INDEX [UQ_Purchasing_Suppliers_SupplierName] ON [Purchasing].[Suppliers] ([SupplierName]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE CLUSTERED INDEX [CX_Purchasing_SupplierTransactions] ON [Purchasing].[SupplierTransactions] ([TransactionDate]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Purchasing_SupplierTransactions_PaymentMethodID] ON [Purchasing].[SupplierTransactions] ([TransactionDate], [PaymentMethodID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Purchasing_SupplierTransactions_PurchaseOrderID] ON [Purchasing].[SupplierTransactions] ([TransactionDate], [PurchaseOrderID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Purchasing_SupplierTransactions_SupplierID] ON [Purchasing].[SupplierTransactions] ([TransactionDate], [SupplierID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Purchasing_SupplierTransactions_TransactionTypeID] ON [Purchasing].[SupplierTransactions] ([TransactionDate], [TransactionTypeID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_Purchasing_SupplierTransactions_IsFinalized] ON [Purchasing].[SupplierTransactions] ([TransactionDate], [IsFinalized]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_SupplierTransactions_LastEditedBy] ON [Purchasing].[SupplierTransactions] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_SupplierTransactions_PaymentMethodID] ON [Purchasing].[SupplierTransactions] ([PaymentMethodID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_SupplierTransactions_PurchaseOrderID] ON [Purchasing].[SupplierTransactions] ([PurchaseOrderID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_SupplierTransactions_SupplierID] ON [Purchasing].[SupplierTransactions] ([SupplierID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_SupplierTransactions_TransactionTypeID] ON [Purchasing].[SupplierTransactions] ([TransactionTypeID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Application_SystemParameters_DeliveryCityID] ON [Application].[SystemParameters] ([DeliveryCityID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [FK_Application_SystemParameters_PostalCityID] ON [Application].[SystemParameters] ([PostalCityID]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_SystemParameters_LastEditedBy] ON [Application].[SystemParameters] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE INDEX [IX_TransactionTypes_LastEditedBy] ON [Application].[TransactionTypes] ([LastEditedBy]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     CREATE UNIQUE INDEX [UQ_Application_TransactionTypes_TransactionTypeName] ON [Application].[TransactionTypes] ([TransactionTypeName]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080053_InitialCreate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221123123807_InitialCreate')
 BEGIN
     INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-    VALUES (N'20221120080053_InitialCreate', N'6.0.11');
+    VALUES (N'20221123123807_InitialCreate', N'6.0.11');
 END;
 GO
 
@@ -2453,322 +2453,476 @@ GO
 BEGIN TRANSACTION;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080257_CreateStoredProcedures')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
+BEGIN
+    SET ANSI_NULLS ON
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
+BEGIN
+    SET QUOTED_IDENTIFIER ON
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
 BEGIN
     IF EXISTS (
     	SELECT type_desc
     	FROM sys.procedures
-    	WHERE NAME = 'Configuration_ApplyFullTextIndexing'
+    	WHERE NAME = 'Configuration_ApplyAuditing'
     		AND type = 'P'
+    	)
+    	DROP PROCEDURE [Application].[Configuration_ApplyAuditing];
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
+BEGIN
+    CREATE PROCEDURE [Application].[Configuration_ApplyAuditing]
+    AS
+    BEGIN
+        SET NOCOUNT ON;
+        SET XACT_ABORT ON;
+
+        DECLARE @AreDatabaseAuditSpecificationsSupported bit = 0;
+        DECLARE @SQL nvarchar(max);
+
+        -- TODO !! - currently no separate test for audit
+        -- but same editions with XTP support database audit specs
+        IF SERVERPROPERTY(N'IsXTPSupported') <> 0 SET @AreDatabaseAuditSpecificationsSupported = 1;
+
+        BEGIN TRY;
+
+            IF NOT EXISTS (SELECT 1 FROM sys.server_audits WHERE name = N'WWI_Audit')
+            BEGIN
+                SET @SQL = N'
+    USE master;
+
+    CREATE SERVER AUDIT [WWI_Audit]
+    TO APPLICATION_LOG
+    WITH
+    (
+        QUEUE_DELAY = 1000,
+    	ON_FAILURE = CONTINUE
+    );';
+                EXECUTE (@SQL);
+
+                PRINT N'Server audit WWI_Audit created with Application Log as a target.';
+                PRINT N'For stronger security, redirect the audit to the security log or a text file in a secure folder.';
+                PRINT N'Additional configuration is required when using the security log.';
+                PRINT N'For more information see: https://technet.microsoft.com/en-us/library/cc645889.aspx.';
+            END;
+
+            IF NOT EXISTS (SELECT 1 FROM sys.server_audit_specifications WHERE name = N'WWI_ServerAuditSpecification')
+            BEGIN
+                SET @SQL = N'
+    USE master;
+
+    CREATE SERVER AUDIT SPECIFICATION [WWI_ServerAuditSpecification]
+    FOR SERVER AUDIT [WWI_Audit]
+    ADD (AUDIT_CHANGE_GROUP),
+    ADD (DATABASE_CHANGE_GROUP),
+    ADD (DATABASE_OWNERSHIP_CHANGE_GROUP),
+    ADD (DATABASE_ROLE_MEMBER_CHANGE_GROUP),
+    ADD (FAILED_LOGIN_GROUP),
+    ADD (TRACE_CHANGE_GROUP);';
+                EXECUTE (@SQL);
+            END;
+
+            IF @AreDatabaseAuditSpecificationsSupported <> 0
+            BEGIN
+                IF NOT EXISTS (SELECT 1 FROM sys.database_audit_specifications WHERE name = N'WWI_DatabaseAuditSpecification')
+                BEGIN
+                    SET @SQL = N'
+    CREATE DATABASE AUDIT SPECIFICATION [WWI_DatabaseAuditSpecification]
+    FOR SERVER AUDIT [WWI_Audit]
+    ADD (AUDIT_CHANGE_GROUP),
+    ADD (DATABASE_CHANGE_GROUP),
+    ADD (DATABASE_OWNERSHIP_CHANGE_GROUP),
+    ADD (DATABASE_PRINCIPAL_CHANGE_GROUP),
+    ADD (DATABASE_ROLE_MEMBER_CHANGE_GROUP),
+    ADD (DATABASE_OBJECT_CHANGE_GROUP),
+    ADD (SELECT ON OBJECT::[Sales].[CustomerTransactions] BY [public]),
+    ADD (SELECT ON OBJECT::[Purchasing].[SupplierTransactions] BY [public]);';
+                    EXECUTE (@SQL);
+                END;
+            END;
+
+        END TRY
+        BEGIN CATCH
+            PRINT N'Unable to apply audit';
+            THROW;
+        END CATCH;
+    END;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
+BEGIN
+    SET ANSI_NULLS ON
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
+BEGIN
+    SET QUOTED_IDENTIFIER ON
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
+BEGIN
+    IF EXISTS (
+    	SELECT type_desc
+    FROM sys.procedures
+    WHERE NAME = 'Configuration_ApplyFullTextIndexing'
+    	AND type = 'P'
     	)
     	DROP PROCEDURE [Application].Configuration_ApplyFullTextIndexing
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080257_CreateStoredProcedures')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
 BEGIN
     CREATE PROCEDURE [Application].Configuration_ApplyFullTextIndexing
-    WITH EXECUTE AS OWNER
+    WITH
+    	EXECUTE AS OWNER
     AS
     BEGIN
-     IF SERVERPROPERTY(N'IsFullTextInstalled') = 0
+    	IF SERVERPROPERTY(N'IsFullTextInstalled') = 0
      BEGIN
-     PRINT N'Warning: Full text options cannot be configured because full text indexing is not installed.';
-     END ELSE BEGIN -- if full text is installed
-     DECLARE @SQL nvarchar(max) = N'';
+    		PRINT N'Warning: Full text options cannot be configured because full text indexing is not installed.';
+    	END ELSE BEGIN
+    		-- if full text is installed
+    		DECLARE @SQL nvarchar(max) = N'';
 
-     IF NOT EXISTS (SELECT 1 FROM sys.fulltext_catalogs WHERE name = N'FTCatalog')
+    		IF NOT EXISTS (SELECT 1
+    		FROM sys.fulltext_catalogs
+    		WHERE name = N'FTCatalog')
      BEGIN
-     SET @SQL = N'CREATE FULLTEXT CATALOG FTCatalog AS DEFAULT;'
-     EXECUTE (@SQL);
-     END;
+    			SET @SQL = N'CREATE FULLTEXT CATALOG FTCatalog AS DEFAULT;'
+    			EXECUTE (@SQL);
+    		END;
 
-     IF NOT EXISTS (SELECT 1 FROM sys.fulltext_indexes AS fti WHERE fti.object_id = OBJECT_ID(N'[Application].People'))
+    		IF NOT EXISTS (SELECT 1
+    		FROM sys.fulltext_indexes AS fti
+    		WHERE fti.object_id = OBJECT_ID(N'[Application].People'))
      BEGIN
-     SET @SQL = N'
+    			SET @SQL = N'
     CREATE FULLTEXT INDEX
     ON [Application].People (SearchName, CustomFields, OtherLanguages)
-    KEY INDEX PK_Application_People
+    KEY INDEX PK_People
     WITH CHANGE_TRACKING AUTO;';
-     EXECUTE (@SQL);
-     END;
+    			EXECUTE (@SQL);
+    		END;
 
-     IF NOT EXISTS (SELECT 1 FROM sys.fulltext_indexes AS fti WHERE fti.object_id = OBJECT_ID(N'Sales.Customers'))
+    		IF NOT EXISTS (SELECT 1
+    		FROM sys.fulltext_indexes AS fti
+    		WHERE fti.object_id = OBJECT_ID(N'Sales.Customers'))
      BEGIN
-     SET @SQL = N'
+    			SET @SQL = N'
     CREATE FULLTEXT INDEX
     ON Sales.Customers (CustomerName)
-    KEY INDEX PK_Sales_Customers
+    KEY INDEX PK_Customers
     WITH CHANGE_TRACKING AUTO;';
-     EXECUTE (@SQL);
-     END;
+    			EXECUTE (@SQL);
+    		END;
 
-     IF NOT EXISTS (SELECT 1 FROM sys.fulltext_indexes AS fti WHERE fti.object_id = OBJECT_ID(N'Purchasing.Suppliers'))
+    		IF NOT EXISTS (SELECT 1
+    		FROM sys.fulltext_indexes AS fti
+    		WHERE fti.object_id = OBJECT_ID(N'Purchasing.Suppliers'))
      BEGIN
-     SET @SQL = N'
+    			SET @SQL = N'
     CREATE FULLTEXT INDEX
     ON Purchasing.Suppliers (SupplierName)
-    KEY INDEX PK_Purchasing_Suppliers
+    KEY INDEX PK_Suppliers
     WITH CHANGE_TRACKING AUTO;';
-     EXECUTE (@SQL);
-     END;
+    			EXECUTE (@SQL);
+    		END;
 
 
-     IF NOT EXISTS (SELECT 1 FROM sys.fulltext_indexes AS fti WHERE fti.object_id = OBJECT_ID(N'Warehouse.StockItems'))
+    		IF NOT EXISTS (SELECT 1
+    		FROM sys.fulltext_indexes AS fti
+    		WHERE fti.object_id = OBJECT_ID(N'Warehouse.StockItems'))
      BEGIN
-     SET @SQL = N'CREATE FULLTEXT INDEX
+    			SET @SQL = N'CREATE FULLTEXT INDEX
     ON Warehouse.StockItems (SearchDetails, CustomFields, Tags)
-    KEY INDEX PK_Warehouse_StockItems
+    KEY INDEX PK_StockItems
     WITH CHANGE_TRACKING AUTO;';
-     EXECUTE (@SQL);
-     END;
+    			EXECUTE (@SQL);
+    		END;
 
-     SET @SQL = N'DROP PROCEDURE IF EXISTS Website.SearchForPeople;';
-     EXECUTE (@SQL);
+    		-- 		SET @SQL = N'DROP PROCEDURE IF EXISTS Website.SearchForPeople;';
+    		-- 		EXECUTE (@SQL);
 
-     SET @SQL = N'
-    CREATE PROCEDURE Website.SearchForPeople
-    @SearchText nvarchar(1000),
-    @MaximumRowsToReturn int
-    AS
-    BEGIN
-     SELECT p.PersonID,
-     p.FullName,
-     p.PreferredName,
-     CASE WHEN p.IsSalesperson <> 0 THEN N''Salesperson''
-     WHEN p.IsEmployee <> 0 THEN N''Employee''
-     WHEN c.CustomerID IS NOT NULL THEN N''Customer''
-     WHEN sp.SupplierID IS NOT NULL THEN N''Supplier''
-     WHEN sa.SupplierID IS NOT NULL THEN N''Supplier''
-     END AS Relationship,
-     COALESCE(c.CustomerName, sp.SupplierName, sa.SupplierName, N''WWI'') AS Company
-     FROM [Application].People AS p
-     INNER JOIN FREETEXTTABLE([Application].People, SearchName, @SearchText, @MaximumRowsToReturn) AS ft
-     ON p.PersonID = ft.[KEY]
-     LEFT OUTER JOIN Sales.Customers AS c
-     ON c.PrimaryContactPersonID = p.PersonID
-     LEFT OUTER JOIN Purchasing.Suppliers AS sp
-     ON sp.PrimaryContactPersonID = p.PersonID
-     LEFT OUTER JOIN Purchasing.Suppliers AS sa
-     ON sa.AlternateContactPersonID = p.PersonID
-     ORDER BY ft.[RANK]
-     FOR JSON AUTO, ROOT(N''People'');
-    END;';
-     EXECUTE (@SQL);
+    		-- 		SET @SQL = N'
+    		-- CREATE PROCEDURE Website.SearchForPeople
+    		-- @SearchText nvarchar(1000),
+    		-- @MaximumRowsToReturn int
+    		-- AS
+    		-- BEGIN
+    		--  SELECT p.PersonID,
+    		--  p.FullName,
+    		--  p.PreferredName,
+    		--  CASE WHEN p.IsSalesperson <> 0 THEN N''Salesperson''
+    		--  WHEN p.IsEmployee <> 0 THEN N''Employee''
+    		--  WHEN c.CustomerID IS NOT NULL THEN N''Customer''
+    		--  WHEN sp.SupplierID IS NOT NULL THEN N''Supplier''
+    		--  WHEN sa.SupplierID IS NOT NULL THEN N''Supplier''
+    		--  END AS Relationship,
+    		--  COALESCE(c.CustomerName, sp.SupplierName, sa.SupplierName, N''WWI'') AS Company
+    		--  FROM [Application].People AS p
+    		--  INNER JOIN FREETEXTTABLE([Application].People, SearchName, @SearchText, @MaximumRowsToReturn) AS ft
+    		--  ON p.PersonID = ft.[KEY]
+    		--  LEFT OUTER JOIN Sales.Customers AS c
+    		--  ON c.PrimaryContactPersonID = p.PersonID
+    		--  LEFT OUTER JOIN Purchasing.Suppliers AS sp
+    		--  ON sp.PrimaryContactPersonID = p.PersonID
+    		--  LEFT OUTER JOIN Purchasing.Suppliers AS sa
+    		--  ON sa.AlternateContactPersonID = p.PersonID
+    		--  ORDER BY ft.[RANK]
+    		--  FOR JSON AUTO, ROOT(N''People'');
+    		-- END;';
+    		-- 		EXECUTE (@SQL);
 
-     SET @SQL = N'DROP PROCEDURE IF EXISTS Website.SearchForSuppliers;';
-     EXECUTE (@SQL);
+    		-- 		SET @SQL = N'DROP PROCEDURE IF EXISTS Website.SearchForSuppliers;';
+    		-- 		EXECUTE (@SQL);
 
-     SET @SQL = N'
-    CREATE PROCEDURE Website.SearchForSuppliers
-    @SearchText nvarchar(1000),
-    @MaximumRowsToReturn int
-    AS
-    BEGIN
-     SELECT s.SupplierID,
-     s.SupplierName,
-     c.CityName,
-     s.PhoneNumber,
-     s.FaxNumber ,
-     p.FullName AS PrimaryContactFullName,
-     p.PreferredName AS PrimaryContactPreferredName
-     FROM Purchasing.Suppliers AS s
-     INNER JOIN FREETEXTTABLE(Purchasing.Suppliers, SupplierName, @SearchText, @MaximumRowsToReturn) AS ft
-     ON s.SupplierID = ft.[KEY]
-     INNER JOIN [Application].Cities AS c
-     ON s.DeliveryCityID = c.CityID
-     LEFT OUTER JOIN [Application].People AS p
-     ON s.PrimaryContactPersonID = p.PersonID
-     ORDER BY ft.[RANK]
-     FOR JSON AUTO, ROOT(N''Suppliers'');
-    END;';
-     EXECUTE (@SQL);
+    		-- 		SET @SQL = N'
+    		-- CREATE PROCEDURE Website.SearchForSuppliers
+    		-- @SearchText nvarchar(1000),
+    		-- @MaximumRowsToReturn int
+    		-- AS
+    		-- BEGIN
+    		--  SELECT s.SupplierID,
+    		--  s.SupplierName,
+    		--  c.CityName,
+    		--  s.PhoneNumber,
+    		--  s.FaxNumber ,
+    		--  p.FullName AS PrimaryContactFullName,
+    		--  p.PreferredName AS PrimaryContactPreferredName
+    		--  FROM Purchasing.Suppliers AS s
+    		--  INNER JOIN FREETEXTTABLE(Purchasing.Suppliers, SupplierName, @SearchText, @MaximumRowsToReturn) AS ft
+    		--  ON s.SupplierID = ft.[KEY]
+    		--  INNER JOIN [Application].Cities AS c
+    		--  ON s.DeliveryCityID = c.CityID
+    		--  LEFT OUTER JOIN [Application].People AS p
+    		--  ON s.PrimaryContactPersonID = p.PersonID
+    		--  ORDER BY ft.[RANK]
+    		--  FOR JSON AUTO, ROOT(N''Suppliers'');
+    		-- END;';
+    		-- 		EXECUTE (@SQL);
 
-     SET @SQL = N'DROP PROCEDURE IF EXISTS Website.SearchForCustomers;';
-     EXECUTE (@SQL);
+    		-- 		SET @SQL = N'DROP PROCEDURE IF EXISTS Website.SearchForCustomers;';
+    		-- 		EXECUTE (@SQL);
 
-     SET @SQL = N'
-    CREATE PROCEDURE Website.SearchForCustomers
-    @SearchText nvarchar(1000),
-    @MaximumRowsToReturn int
-    WITH EXECUTE AS OWNER
-    AS
-    BEGIN
-     SELECT c.CustomerID,
-     c.CustomerName,
-     ct.CityName,
-     c.PhoneNumber,
-     c.FaxNumber,
-     p.FullName AS PrimaryContactFullName,
-     p.PreferredName AS PrimaryContactPreferredName
-     FROM Sales.Customers AS c
-     INNER JOIN FREETEXTTABLE(Sales.Customers, CustomerName, @SearchText, @MaximumRowsToReturn) AS ft
-     ON c.CustomerID = ft.[KEY]
-     INNER JOIN [Application].Cities AS ct
-     ON c.DeliveryCityID = ct.CityID
-     LEFT OUTER JOIN [Application].People AS p
-     ON c.PrimaryContactPersonID = p.PersonID
-     ORDER BY ft.[RANK]
-     FOR JSON AUTO, ROOT(N''Customers'');
-    END;';
-     EXECUTE (@SQL);
+    		-- 		SET @SQL = N'
+    		-- CREATE PROCEDURE Website.SearchForCustomers
+    		-- @SearchText nvarchar(1000),
+    		-- @MaximumRowsToReturn int
+    		-- WITH EXECUTE AS OWNER
+    		-- AS
+    		-- BEGIN
+    		--  SELECT c.CustomerID,
+    		--  c.CustomerName,
+    		--  ct.CityName,
+    		--  c.PhoneNumber,
+    		--  c.FaxNumber,
+    		--  p.FullName AS PrimaryContactFullName,
+    		--  p.PreferredName AS PrimaryContactPreferredName
+    		--  FROM Sales.Customers AS c
+    		--  INNER JOIN FREETEXTTABLE(Sales.Customers, CustomerName, @SearchText, @MaximumRowsToReturn) AS ft
+    		--  ON c.CustomerID = ft.[KEY]
+    		--  INNER JOIN [Application].Cities AS ct
+    		--  ON c.DeliveryCityID = ct.CityID
+    		--  LEFT OUTER JOIN [Application].People AS p
+    		--  ON c.PrimaryContactPersonID = p.PersonID
+    		--  ORDER BY ft.[RANK]
+    		--  FOR JSON AUTO, ROOT(N''Customers'');
+    		-- END;';
+    		-- 		EXECUTE (@SQL);
 
-     SET @SQL = N'DROP PROCEDURE IF EXISTS Website.SearchForStockItems;';
-     EXECUTE (@SQL);
+    		-- 		SET @SQL = N'DROP PROCEDURE IF EXISTS Website.SearchForStockItems;';
+    		-- 		EXECUTE (@SQL);
 
-     SET @SQL = N'
-    CREATE PROCEDURE Website.SearchForStockItems
-    @SearchText nvarchar(1000),
-    @MaximumRowsToReturn int
-    WITH EXECUTE AS OWNER
-    AS
-    BEGIN
-     SELECT si.StockItemID,
-     si.StockItemName
-     FROM Warehouse.StockItems AS si
-     INNER JOIN FREETEXTTABLE(Warehouse.StockItems, SearchDetails, @SearchText, @MaximumRowsToReturn) AS ft
-     ON si.StockItemID = ft.[KEY]
-     ORDER BY ft.[RANK]
-     FOR JSON AUTO, ROOT(N''StockItems'');
-    END;';
-     EXECUTE (@SQL);
+    		-- 		SET @SQL = N'
+    		-- CREATE PROCEDURE Website.SearchForStockItems
+    		-- @SearchText nvarchar(1000),
+    		-- @MaximumRowsToReturn int
+    		-- WITH EXECUTE AS OWNER
+    		-- AS
+    		-- BEGIN
+    		--  SELECT si.StockItemID,
+    		--  si.StockItemName
+    		--  FROM Warehouse.StockItems AS si
+    		--  INNER JOIN FREETEXTTABLE(Warehouse.StockItems, SearchDetails, @SearchText, @MaximumRowsToReturn) AS ft
+    		--  ON si.StockItemID = ft.[KEY]
+    		--  ORDER BY ft.[RANK]
+    		--  FOR JSON AUTO, ROOT(N''StockItems'');
+    		-- END;';
+    		-- 		EXECUTE (@SQL);
 
-     SET @SQL = N'DROP PROCEDURE IF EXISTS Website.SearchForStockItemsByTags;';
-     EXECUTE (@SQL);
+    		-- 		SET @SQL = N'DROP PROCEDURE IF EXISTS Website.SearchForStockItemsByTags;';
+    		-- 		EXECUTE (@SQL);
 
-     SET @SQL = N'
-    CREATE PROCEDURE Website.SearchForStockItemsByTags
-    @SearchText nvarchar(1000),
-    @MaximumRowsToReturn int
-    WITH EXECUTE AS OWNER
-    AS
-    BEGIN
-     SELECT si.StockItemID,
-     si.StockItemName
-     FROM Warehouse.StockItems AS si
-     INNER JOIN FREETEXTTABLE(Warehouse.StockItems, Tags, @SearchText, @MaximumRowsToReturn) AS ft
-     ON si.StockItemID = ft.[KEY]
-     ORDER BY ft.[RANK]
-     FOR JSON AUTO, ROOT(N''StockItems'');
-    END;';
-     EXECUTE (@SQL);
+    		-- 		SET @SQL = N'
+    		-- CREATE PROCEDURE Website.SearchForStockItemsByTags
+    		-- @SearchText nvarchar(1000),
+    		-- @MaximumRowsToReturn int
+    		-- WITH EXECUTE AS OWNER
+    		-- AS
+    		-- BEGIN
+    		--  SELECT si.StockItemID,
+    		--  si.StockItemName
+    		--  FROM Warehouse.StockItems AS si
+    		--  INNER JOIN FREETEXTTABLE(Warehouse.StockItems, Tags, @SearchText, @MaximumRowsToReturn) AS ft
+    		--  ON si.StockItemID = ft.[KEY]
+    		--  ORDER BY ft.[RANK]
+    		--  FOR JSON AUTO, ROOT(N''StockItems'');
+    		-- END;';
+    		-- 		EXECUTE (@SQL);
 
-     PRINT N'Full text successfully enabled';
-     END;
+    		PRINT N'Full text successfully enabled';
+    	END;
     END;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080257_CreateStoredProcedures')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
 BEGIN
-    IF EXISTS (
-    	SELECT type_desc
-    	FROM sys.procedures
-    	WHERE NAME = 'Configuration_ApplyPartitioning'
-    		AND type = 'P'
-    	)
-    	DROP PROCEDURE [Application].Configuration_ApplyPartitioning
+    SET ANSI_NULLS ON
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080257_CreateStoredProcedures')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
+BEGIN
+    SET QUOTED_IDENTIFIER ON
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
+BEGIN
+    IF EXISTS (
+    	SELECT type_desc
+    FROM sys.procedures
+    WHERE NAME = 'Configuration_ApplyPartitioning'
+    	AND type = 'P'
+    	)
+    	DROP PROCEDURE [Application].Configuration_ApplyPartitioning;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
 BEGIN
     CREATE PROCEDURE [Application].Configuration_ApplyPartitioning
-    WITH EXECUTE AS OWNER
+    WITH
+    	EXECUTE AS OWNER
     AS
     BEGIN
-     SET NOCOUNT ON;
-     SET XACT_ABORT ON;
+    	SET NOCOUNT ON;
+    	SET XACT_ABORT ON;
 
-     IF SERVERPROPERTY(N'IsXTPSupported') = 0 -- TODO Check for a better way to check for partitioning
-     BEGIN -- Currently versions that support in-memory OLTP also support partitions
-     PRINT N'Warning: Partitions are not supported in this edition.';
-     END ELSE BEGIN -- if partitions are permitted
-
-     BEGIN TRAN;
-
-     DECLARE @SQL nvarchar(max) = N'';
-
-     IF NOT EXISTS (SELECT 1 FROM sys.partition_functions WHERE name = N'PF_TransactionDateTime')
+    	IF SERVERPROPERTY(N'IsXTPSupported') = 0 -- TODO Check for a better way to check for partitioning
      BEGIN
-     SET @SQL = N'
+    		-- Currently versions that support in-memory OLTP also support partitions
+    		PRINT N'Warning: Partitions are not supported in this edition.';
+    	END ELSE BEGIN
+    		-- if partitions are permitted
+
+    		BEGIN TRAN;
+
+    		DECLARE @SQL nvarchar(max) = N'';
+
+    		IF NOT EXISTS (SELECT 1
+    		FROM sys.partition_functions
+    		WHERE name = N'PF_TransactionDateTime')
+     BEGIN
+    			SET @SQL = N'
     CREATE PARTITION FUNCTION PF_TransactionDateTime(datetime)
     AS RANGE RIGHT
     FOR VALUES (N''20140101'', N''20150101'', N''20160101'', N''20170101'');';
-     EXECUTE (@SQL);
-     END;
+    			EXECUTE (@SQL);
+    		END;
 
-     IF NOT EXISTS (SELECT 1 FROM sys.partition_functions WHERE name = N'PF_TransactionDate')
+    		IF NOT EXISTS (SELECT 1
+    		FROM sys.partition_functions
+    		WHERE name = N'PF_TransactionDate')
      BEGIN
-     SET @SQL = N'
+    			SET @SQL = N'
     CREATE PARTITION FUNCTION PF_TransactionDate(date)
     AS RANGE RIGHT
     FOR VALUES (N''20140101'', N''20150101'', N''20160101'', N''20170101'');';
-     EXECUTE (@SQL);
-     END;
+    			EXECUTE (@SQL);
+    		END;
 
-     IF NOT EXISTS (SELECT * FROM sys.partition_schemes WHERE name = N'PS_TransactionDateTime')
+    		IF NOT EXISTS (SELECT *
+    		FROM sys.partition_schemes
+    		WHERE name = N'PS_TransactionDateTime')
      BEGIN
 
-     -- for Azure DB, assign to primary filegroup
-     IF SERVERPROPERTY('EngineEdition') = 5
+    			-- for Azure DB, assign to primary filegroup
+    			IF SERVERPROPERTY('EngineEdition') = 5
      SET @SQL = N'
     CREATE PARTITION SCHEME PS_TransactionDateTime
     AS PARTITION PF_TransactionDateTime
     ALL TO ([PRIMARY]);';
-     -- for other engine editions, assign to user data filegroup
-     IF SERVERPROPERTY('EngineEdition') != 5
+    			-- for other engine editions, assign to user data filegroup
+    			IF SERVERPROPERTY('EngineEdition') != 5
      SET @SQL = N'
     CREATE PARTITION SCHEME PS_TransactionDateTime
     AS PARTITION PF_TransactionDateTime
     ALL TO ([USERDATA]);';
 
-     EXECUTE (@SQL);
-     END;
+    			EXECUTE (@SQL);
+    		END;
 
-     IF NOT EXISTS (SELECT 1 FROM sys.partition_schemes WHERE name = N'PS_TransactionDate')
+    		IF NOT EXISTS (SELECT 1
+    		FROM sys.partition_schemes
+    		WHERE name = N'PS_TransactionDate')
      BEGIN
-     -- for Azure DB, assign to primary filegroup
-     IF SERVERPROPERTY('EngineEdition') = 5
+    			-- for Azure DB, assign to primary filegroup
+    			IF SERVERPROPERTY('EngineEdition') = 5
      SET @SQL = N'
     CREATE PARTITION SCHEME PS_TransactionDate
     AS PARTITION PF_TransactionDate
     ALL TO ([PRIMARY]);';
-     -- for other engine editions, assign to user data filegroup
-     IF SERVERPROPERTY('EngineEdition') != 5
+    			-- for other engine editions, assign to user data filegroup
+    			IF SERVERPROPERTY('EngineEdition') != 5
      SET @SQL = N'
     CREATE PARTITION SCHEME PS_TransactionDate
     AS PARTITION PF_TransactionDate
     ALL TO ([USERDATA]);';
 
-     EXECUTE (@SQL);
-     END;
+    			EXECUTE (@SQL);
+    		END;
 
-     IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = N'CX_Sales_CustomerTransactions')
+    		IF NOT EXISTS (SELECT 1
+    		FROM sys.indexes
+    		WHERE name = N'CX_Sales_CustomerTransactions')
      BEGIN
-     SET @SQL = N'
+    			SET @SQL = N'
     ALTER TABLE Sales.CustomerTransactions
     DROP CONSTRAINT PK_Sales_CustomerTransactions;';
-     EXECUTE (@SQL);
+    			EXECUTE (@SQL);
 
-     SET @SQL = N'
+    			SET @SQL = N'
     ALTER TABLE Sales.CustomerTransactions
     ADD CONSTRAINT PK_Sales_CustomerTransactions PRIMARY KEY NONCLUSTERED
     (
     	CustomerTransactionID
     );';
-     EXECUTE (@SQL);
+    			EXECUTE (@SQL);
 
-     SET @SQL = N'
+    			SET @SQL = N'
     CREATE CLUSTERED INDEX CX_Sales_CustomerTransactions
     ON Sales.CustomerTransactions
     (
     	TransactionDate
     )
     ON PS_TransactionDate(TransactionDate);';
-     EXECUTE (@SQL);
+    			EXECUTE (@SQL);
 
-     SET @SQL = N'
+    			SET @SQL = N'
     CREATE INDEX FK_Sales_CustomerTransactions_CustomerID
     ON Sales.CustomerTransactions
     (
@@ -2776,9 +2930,9 @@ BEGIN
     )
     WITH (DROP_EXISTING = ON)
     ON PS_TransactionDate(TransactionDate);';
-     EXECUTE (@SQL);
+    			EXECUTE (@SQL);
 
-     SET @SQL = N'
+    			SET @SQL = N'
     CREATE INDEX FK_Sales_CustomerTransactions_InvoiceID
     ON Sales.CustomerTransactions
     (
@@ -2786,9 +2940,9 @@ BEGIN
     )
     WITH (DROP_EXISTING = ON)
     ON PS_TransactionDate(TransactionDate);';
-     EXECUTE (@SQL);
+    			EXECUTE (@SQL);
 
-     SET @SQL = N'
+    			SET @SQL = N'
     CREATE INDEX FK_Sales_CustomerTransactions_PaymentMethodID
     ON Sales.CustomerTransactions
     (
@@ -2796,9 +2950,9 @@ BEGIN
     )
     WITH (DROP_EXISTING = ON)
     ON PS_TransactionDate(TransactionDate);';
-     EXECUTE (@SQL);
+    			EXECUTE (@SQL);
 
-     SET @SQL = N'
+    			SET @SQL = N'
     CREATE INDEX FK_Sales_CustomerTransactions_TransactionTypeID
     ON Sales.CustomerTransactions
     (
@@ -2806,9 +2960,9 @@ BEGIN
     )
     WITH (DROP_EXISTING = ON)
     ON PS_TransactionDate(TransactionDate);';
-     EXECUTE (@SQL);
+    			EXECUTE (@SQL);
 
-     SET @SQL = N'
+    			SET @SQL = N'
     CREATE INDEX IX_Sales_CustomerTransactions_IsFinalized
     ON Sales.CustomerTransactions
     (
@@ -2816,34 +2970,36 @@ BEGIN
     )
     WITH (DROP_EXISTING = ON)
     ON PS_TransactionDate(TransactionDate);';
-     EXECUTE (@SQL);
-     END;
+    			EXECUTE (@SQL);
+    		END;
 
-     IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = N'CX_Purchasing_SupplierTransactions')
+    		IF NOT EXISTS (SELECT 1
+    		FROM sys.indexes
+    		WHERE name = N'CX_Purchasing_SupplierTransactions')
      BEGIN
-     SET @SQL = N'
+    			SET @SQL = N'
     ALTER TABLE Purchasing.SupplierTransactions
     DROP CONSTRAINT PK_Purchasing_SupplierTransactions;';
-     EXECUTE (@SQL);
+    			EXECUTE (@SQL);
 
-     SET @SQL = N'
+    			SET @SQL = N'
     ALTER TABLE Purchasing.SupplierTransactions
     ADD CONSTRAINT PK_Purchasing_SupplierTransactions PRIMARY KEY NONCLUSTERED
     (
     	SupplierTransactionID
     );';
-     EXECUTE (@SQL);
+    			EXECUTE (@SQL);
 
-     SET @SQL = N'
+    			SET @SQL = N'
     CREATE CLUSTERED INDEX CX_Purchasing_SupplierTransactions
     ON Purchasing.SupplierTransactions
     (
     	TransactionDate
     )
     ON PS_TransactionDate(TransactionDate);';
-     EXECUTE (@SQL);
+    			EXECUTE (@SQL);
 
-     SET @SQL = N'
+    			SET @SQL = N'
     CREATE INDEX FK_Purchasing_SupplierTransactions_PaymentMethodID
     ON Purchasing.SupplierTransactions
     (
@@ -2851,9 +3007,9 @@ BEGIN
     )
     WITH (DROP_EXISTING = ON)
     ON PS_TransactionDate(TransactionDate);';
-     EXECUTE (@SQL);
+    			EXECUTE (@SQL);
 
-     SET @SQL = N'
+    			SET @SQL = N'
     CREATE INDEX FK_Purchasing_SupplierTransactions_PurchaseOrderID
     ON Purchasing.SupplierTransactions
     (
@@ -2861,9 +3017,9 @@ BEGIN
     )
     WITH (DROP_EXISTING = ON)
     ON PS_TransactionDate(TransactionDate);';
-     EXECUTE (@SQL);
+    			EXECUTE (@SQL);
 
-     SET @SQL = N'
+    			SET @SQL = N'
     CREATE INDEX FK_Purchasing_SupplierTransactions_SupplierID
     ON Purchasing.SupplierTransactions
     (
@@ -2871,9 +3027,9 @@ BEGIN
     )
     WITH (DROP_EXISTING = ON)
     ON PS_TransactionDate(TransactionDate);';
-     EXECUTE (@SQL);
+    			EXECUTE (@SQL);
 
-     SET @SQL = N'
+    			SET @SQL = N'
     CREATE INDEX FK_Purchasing_SupplierTransactions_TransactionTypeID
     ON Purchasing.SupplierTransactions
     (
@@ -2881,9 +3037,9 @@ BEGIN
     )
     WITH (DROP_EXISTING = ON)
     ON PS_TransactionDate(TransactionDate);';
-     EXECUTE (@SQL);
+    			EXECUTE (@SQL);
 
-     SET @SQL = N'
+    			SET @SQL = N'
     CREATE INDEX IX_Purchasing_SupplierTransactions_IsFinalized
     ON Purchasing.SupplierTransactions
     (
@@ -2891,21 +3047,1070 @@ BEGIN
     )
     WITH (DROP_EXISTING = ON)
     ON PS_TransactionDate(TransactionDate);';
-     EXECUTE (@SQL);
-     END;
+    			EXECUTE (@SQL);
+    		END;
 
-     COMMIT;
+    		COMMIT;
 
-     PRINT N'Partitioning successfully enabled';
-     END;
+    		PRINT N'Partitioning successfully enabled';
+    	END;
     END;
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20221120080257_CreateStoredProcedures')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
 BEGIN
-    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-    VALUES (N'20221120080257_CreateStoredProcedures', N'6.0.11');
+    SET ANSI_NULLS ON
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
+BEGIN
+    SET QUOTED_IDENTIFIER ON
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
+BEGIN
+    IF EXISTS (
+    	SELECT type_desc
+    	FROM sys.procedures
+    	WHERE NAME = 'Configuration_ApplyRowLevelSecurity'
+    		AND type = 'P'
+    	)
+    	DROP PROCEDURE [Application].[Configuration_ApplyRowLevelSecurity];
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
+BEGIN
+    CREATE PROCEDURE [Application].[Configuration_ApplyRowLevelSecurity]
+    WITH EXECUTE AS OWNER
+    AS
+    BEGIN
+        SET NOCOUNT ON;
+        SET XACT_ABORT ON;
+
+        DECLARE @SQL nvarchar(max);
+
+        BEGIN TRY;
+
+            SET @SQL = N'DROP SECURITY POLICY IF EXISTS [Application].FilterCustomersBySalesTerritoryRole;';
+            EXECUTE (@SQL);
+
+            SET @SQL = N'DROP FUNCTION IF EXISTS [Application].DetermineCustomerAccess;';
+            EXECUTE (@SQL);
+
+            SET @SQL = N'
+    CREATE FUNCTION [Application].DetermineCustomerAccess(@CityID int)
+    RETURNS TABLE
+    WITH SCHEMABINDING
+    AS
+    RETURN (SELECT 1 AS AccessResult
+            WHERE IS_ROLEMEMBER(N''db_owner'') <> 0
+            OR IS_ROLEMEMBER((SELECT sp.SalesTerritory
+                              FROM [Application].Cities AS c
+                              INNER JOIN [Application].StateProvinces AS sp
+                              ON c.StateProvinceID = sp.StateProvinceID
+                              WHERE c.CityID = @CityID) + N'' Sales'') <> 0
+    	    OR (ORIGINAL_LOGIN() = N''Website''
+    		    AND EXISTS (SELECT 1
+    		                FROM [Application].Cities AS c
+    				        INNER JOIN [Application].StateProvinces AS sp
+    				        ON c.StateProvinceID = sp.StateProvinceID
+    				        WHERE c.CityID = @CityID
+    				        AND sp.SalesTerritory = SESSION_CONTEXT(N''SalesTerritory''))));';
+            EXECUTE (@SQL);
+
+            SET @SQL = N'
+    CREATE SECURITY POLICY [Application].FilterCustomersBySalesTerritoryRole
+    ADD FILTER PREDICATE [Application].DetermineCustomerAccess(DeliveryCityID)
+    ON Sales.Customers,
+    ADD BLOCK PREDICATE [Application].DetermineCustomerAccess(DeliveryCityID)
+    ON Sales.Customers AFTER UPDATE;';
+            EXECUTE (@SQL);
+
+            PRINT N'Successfully applied row level security';
+        END TRY
+        BEGIN CATCH
+            PRINT N'Unable to apply row level security';
+    		PRINT ERROR_MESSAGE();
+            THROW 51000, N'Unable to apply row level security', 1;
+        END CATCH;
+    END;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
+BEGIN
+    SET ANSI_NULLS ON
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
+BEGIN
+    SET QUOTED_IDENTIFIER ON
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
+BEGIN
+    IF EXISTS (
+    	SELECT type_desc
+    	FROM sys.procedures
+    	WHERE NAME = 'Configuration_RemoveAuditing'
+    		AND type = 'P'
+    	)
+    	DROP PROCEDURE [Application].[Configuration_RemoveAuditing];
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
+BEGIN
+    CREATE PROCEDURE [Application].[Configuration_RemoveAuditing]
+    AS
+    BEGIN
+        SET NOCOUNT ON;
+        SET XACT_ABORT ON;
+
+        DECLARE @AreDatabaseAuditSpecificationsSupported bit = 0;
+        DECLARE @SQL nvarchar(max);
+
+        -- TODO !! - currently no separate test for audit
+        -- but same editions with XTP support database audit specs
+        IF SERVERPROPERTY(N'IsXTPSupported') <> 0 SET @AreDatabaseAuditSpecificationsSupported = 1;
+
+        BEGIN TRY;
+
+            IF @AreDatabaseAuditSpecificationsSupported <> 0
+            BEGIN
+                IF EXISTS (SELECT 1 FROM sys.database_audit_specifications WHERE name = N'WWI_DatabaseAuditSpecification')
+                BEGIN
+                    SET @SQL = N'
+    DROP DATABASE AUDIT SPECIFICATION WWI_DatabaseAuditSpecification;';
+                    EXECUTE (@SQL);
+                END;
+            END;
+
+            IF EXISTS (SELECT 1 FROM sys.server_audit_specifications WHERE name = N'WWI_ServerAuditSpecification')
+            BEGIN
+                SET @SQL = N'
+    USE master;
+
+    DROP SERVER AUDIT SPECIFICATION WWI_ServerAuditSpecification;';
+                EXECUTE (@SQL);
+            END;
+
+            IF EXISTS (SELECT 1 FROM sys.server_audits WHERE name = N'WWI_Audit')
+            BEGIN
+                SET @SQL = N'
+    USE master;
+
+    DROP SERVER AUDIT [WWI_Audit];';
+                EXECUTE (@SQL);
+
+            END;
+
+        END TRY
+        BEGIN CATCH
+            PRINT N'Unable to remove audit';
+            THROW;
+        END CATCH;
+    END;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
+BEGIN
+    SET ANSI_NULLS ON
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
+BEGIN
+    SET QUOTED_IDENTIFIER ON
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
+BEGIN
+    IF EXISTS (
+    	SELECT type_desc
+    	FROM sys.procedures
+    	WHERE NAME = 'Configuration_RemoveRowLevelSecurity'
+    		AND type = 'P'
+    	)
+    	DROP PROCEDURE [Application].[Configuration_RemoveRowLevelSecurity];
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
+BEGIN
+    CREATE PROCEDURE [Application].[Configuration_RemoveRowLevelSecurity]
+    WITH EXECUTE AS OWNER
+    AS
+    BEGIN
+        SET NOCOUNT ON;
+        SET XACT_ABORT ON;
+
+        DECLARE @SQL nvarchar(max);
+
+        BEGIN TRY;
+
+            SET @SQL = N'DROP SECURITY POLICY IF EXISTS [Application].FilterCustomersBySalesTerritoryRole;';
+            EXECUTE (@SQL);
+
+            SET @SQL = N'DROP FUNCTION IF EXISTS [Application].DetermineCustomerAccess;';
+            EXECUTE (@SQL);
+
+            PRINT N'Successfully removed row level security';
+        END TRY
+        BEGIN CATCH
+            PRINT N'Unable to remove row level security';
+            THROW 51000, N'Unable to remove row level security', 1;
+        END CATCH;
+    END;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
+BEGIN
+    SET ANSI_NULLS ON
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
+BEGIN
+    SET QUOTED_IDENTIFIER ON
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
+BEGIN
+    IF EXISTS (
+    	SELECT type_desc
+    	FROM sys.procedures
+    	WHERE NAME = 'DeactivateTemporalTablesBeforeDataLoad'
+    		AND type = 'P'
+    	)
+    	DROP PROCEDURE [Application].[DeactivateTemporalTablesBeforeDataLoad];
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
+BEGIN
+    CREATE PROCEDURE [Application].[DeactivateTemporalTablesBeforeDataLoad]
+    AS BEGIN
+        -- Disables the temporal nature of the temporal tables before a simulated data load
+        SET NOCOUNT ON;
+     
+        IF EXISTS (SELECT 1 FROM sys.procedures WHERE name = N'Configuration_RemoveRowLevelSecurity')
+        BEGIN
+            EXEC [Application].Configuration_RemoveRowLevelSecurity;
+        END;
+     
+        DECLARE @SQL nvarchar(max) = N'';
+        DECLARE @CrLf nvarchar(2) = NCHAR(13) + NCHAR(10);
+        DECLARE @Indent nvarchar(4) = N'    ';
+        DECLARE @SchemaName sysname;
+        DECLARE @TableName sysname;
+        DECLARE @NormalColumnList nvarchar(max);
+        DECLARE @NormalColumnListWithDPrefix nvarchar(max);
+        DECLARE @PrimaryKeyColumn sysname;
+        DECLARE @TemporalFromColumnName sysname = N'ValidFrom';
+        DECLARE @TemporalToColumnName sysname = N'ValidTo';
+        DECLARE @TemporalTableSuffix nvarchar(max) = N'Archive';
+        DECLARE @LastEditedByColumnName sysname;
+     
+        ALTER TABLE [Application].[Cities] SET (SYSTEM_VERSIONING = OFF);
+        ALTER TABLE [Application].[Cities] DROP PERIOD FOR SYSTEM_TIME;
+     
+        ALTER TABLE [Application].[Countries] SET (SYSTEM_VERSIONING = OFF);
+        ALTER TABLE [Application].[Countries] DROP PERIOD FOR SYSTEM_TIME;
+     
+        ALTER TABLE [Application].[DeliveryMethods] SET (SYSTEM_VERSIONING = OFF);
+        ALTER TABLE [Application].[DeliveryMethods] DROP PERIOD FOR SYSTEM_TIME;
+     
+        ALTER TABLE [Application].[PaymentMethods] SET (SYSTEM_VERSIONING = OFF);
+        ALTER TABLE [Application].[PaymentMethods] DROP PERIOD FOR SYSTEM_TIME;
+     
+        ALTER TABLE [Application].[People] SET (SYSTEM_VERSIONING = OFF);
+        ALTER TABLE [Application].[People] DROP PERIOD FOR SYSTEM_TIME;
+     
+        ALTER TABLE [Application].[StateProvinces] SET (SYSTEM_VERSIONING = OFF);
+        ALTER TABLE [Application].[StateProvinces] DROP PERIOD FOR SYSTEM_TIME;
+     
+        ALTER TABLE [Application].[TransactionTypes] SET (SYSTEM_VERSIONING = OFF);
+        ALTER TABLE [Application].[TransactionTypes] DROP PERIOD FOR SYSTEM_TIME;
+     
+        ALTER TABLE [Purchasing].[SupplierCategories] SET (SYSTEM_VERSIONING = OFF);
+        ALTER TABLE [Purchasing].[SupplierCategories] DROP PERIOD FOR SYSTEM_TIME;
+     
+        ALTER TABLE [Purchasing].[Suppliers] SET (SYSTEM_VERSIONING = OFF);
+        ALTER TABLE [Purchasing].[Suppliers] DROP PERIOD FOR SYSTEM_TIME;
+     
+        ALTER TABLE [Sales].[BuyingGroups] SET (SYSTEM_VERSIONING = OFF);
+        ALTER TABLE [Sales].[BuyingGroups] DROP PERIOD FOR SYSTEM_TIME;
+     
+        ALTER TABLE [Sales].[CustomerCategories] SET (SYSTEM_VERSIONING = OFF);
+        ALTER TABLE [Sales].[CustomerCategories] DROP PERIOD FOR SYSTEM_TIME;
+     
+        ALTER TABLE [Sales].[Customers] SET (SYSTEM_VERSIONING = OFF);
+        ALTER TABLE [Sales].[Customers] DROP PERIOD FOR SYSTEM_TIME;
+     
+        ALTER TABLE [Warehouse].[ColdRoomTemperatures] SET (SYSTEM_VERSIONING = OFF);
+        ALTER TABLE [Warehouse].[ColdRoomTemperatures] DROP PERIOD FOR SYSTEM_TIME;
+     
+        ALTER TABLE [Warehouse].[Colors] SET (SYSTEM_VERSIONING = OFF);
+        ALTER TABLE [Warehouse].[Colors] DROP PERIOD FOR SYSTEM_TIME;
+     
+        ALTER TABLE [Warehouse].[PackageTypes] SET (SYSTEM_VERSIONING = OFF);
+        ALTER TABLE [Warehouse].[PackageTypes] DROP PERIOD FOR SYSTEM_TIME;
+     
+        ALTER TABLE [Warehouse].[StockGroups] SET (SYSTEM_VERSIONING = OFF);
+        ALTER TABLE [Warehouse].[StockGroups] DROP PERIOD FOR SYSTEM_TIME;
+     
+        ALTER TABLE [Warehouse].[StockItems] SET (SYSTEM_VERSIONING = OFF);
+        ALTER TABLE [Warehouse].[StockItems] DROP PERIOD FOR SYSTEM_TIME;
+     
+        SET @SQL = N'';
+        SET @SchemaName = N'Application';
+        SET @TableName = N'Cities';
+        SET @PrimaryKeyColumn = N'CityID';
+        SET @LastEditedByColumnName = N'LastEditedBy';
+        SET @NormalColumnList = N' [CityID], [CityName], [StateProvinceID], [Location], [LatestRecordedPopulation],';
+        SET @NormalColumnListWithDPrefix = N' d.[CityID], d.[CityName], d.[StateProvinceID], d.[Location], d.[LatestRecordedPopulation],';
+     
+        SET @SQL = N'DROP TRIGGER IF EXISTS ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify];'
+        EXECUTE (@SQL);
+     
+        SET @SQL = N'CREATE TRIGGER ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify]' + @CrLf
+                  + N'ON ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName) + @CrLf
+                  + N'AFTER INSERT, UPDATE' + @CrLf
+                  + N'AS' + @CrLf
+                  + N'BEGIN' + @CrLf
+                  + @Indent + N'SET NOCOUNT ON;' + @CrLf + @CrLf
+                  + @Indent + N'IF NOT UPDATE(' + QUOTENAME(@TemporalFromColumnName) + N')' + @CrLf
+                  + @Indent + N'BEGIN' + @CrLf
+                  + @Indent + @Indent + N'THROW 51000, ''' + QUOTENAME(@TemporalFromColumnName)
+                                      + N' must be updated when simulating data loads'', 1;' + @CrLf
+                  + @Indent + @Indent + N'ROLLBACK TRAN;' + @CrLf
+                  + @Indent + N'END;' + @Crlf + @CrLf
+                  + @Indent + N'INSERT ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName + N'_' + @TemporalTableSuffix) + @CrLf
+                  + @Indent + @Indent + N'(' + @NormalColumnList + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + QUOTENAME(@TemporalFromColumnName) + N',' + QUOTENAME(@TemporalToColumnName) + N')' + @CrLf
+                  + @Indent + N'SELECT' + @NormalColumnListWithDPrefix + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN N'd.' + QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + N' d.' + QUOTENAME(@TemporalFromColumnName) + N', i.' + QUOTENAME(@TemporalFromColumnName) + @CrLf
+                  + @Indent + N'FROM inserted AS i' + @CrLf
+                  + @Indent + N'INNER JOIN deleted AS d' + @CrLf
+                  + @Indent + N'ON i.' + QUOTENAME(@PrimaryKeyColumn) + N' = d.' + QUOTENAME(@PrimaryKeyColumn) + N';' + @CrLf
+                  + N'END;';
+        IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = @TableName AND is_memory_optimized <> 0)
+        BEGIN
+            EXECUTE (@SQL);
+        END;
+     
+        SET @SQL = N'';
+        SET @SchemaName = N'Application';
+        SET @TableName = N'Countries';
+        SET @PrimaryKeyColumn = N'CountryID';
+        SET @LastEditedByColumnName = N'LastEditedBy';
+        SET @NormalColumnList = N' [CountryID], [CountryName], [FormalName], [IsoAlpha3Code], [IsoNumericCode], [CountryType], [LatestRecordedPopulation], [Continent], [Region], [Subregion], [Border],';
+        SET @NormalColumnListWithDPrefix = N' d.[CountryID], d.[CountryName], d.[FormalName], d.[IsoAlpha3Code], d.[IsoNumericCode], d.[CountryType], d.[LatestRecordedPopulation], d.[Continent], d.[Region], d.[Subregion], d.[Border],';
+     
+        SET @SQL = N'DROP TRIGGER IF EXISTS ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify];'
+        EXECUTE (@SQL);
+     
+        SET @SQL = N'CREATE TRIGGER ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify]' + @CrLf
+                  + N'ON ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName) + @CrLf
+                  + N'AFTER INSERT, UPDATE' + @CrLf
+                  + N'AS' + @CrLf
+                  + N'BEGIN' + @CrLf
+                  + @Indent + N'SET NOCOUNT ON;' + @CrLf + @CrLf
+                  + @Indent + N'IF NOT UPDATE(' + QUOTENAME(@TemporalFromColumnName) + N')' + @CrLf
+                  + @Indent + N'BEGIN' + @CrLf
+                  + @Indent + @Indent + N'THROW 51000, ''' + QUOTENAME(@TemporalFromColumnName)
+                                      + N' must be updated when simulating data loads'', 1;' + @CrLf
+                  + @Indent + @Indent + N'ROLLBACK TRAN;' + @CrLf
+                  + @Indent + N'END;' + @Crlf + @CrLf
+                  + @Indent + N'INSERT ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName + N'_' + @TemporalTableSuffix) + @CrLf
+                  + @Indent + @Indent + N'(' + @NormalColumnList + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + QUOTENAME(@TemporalFromColumnName) + N',' + QUOTENAME(@TemporalToColumnName) + N')' + @CrLf
+                  + @Indent + N'SELECT' + @NormalColumnListWithDPrefix + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN N'd.' + QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + N' d.' + QUOTENAME(@TemporalFromColumnName) + N', i.' + QUOTENAME(@TemporalFromColumnName) + @CrLf
+                  + @Indent + N'FROM inserted AS i' + @CrLf
+                  + @Indent + N'INNER JOIN deleted AS d' + @CrLf
+                  + @Indent + N'ON i.' + QUOTENAME(@PrimaryKeyColumn) + N' = d.' + QUOTENAME(@PrimaryKeyColumn) + N';' + @CrLf
+                  + N'END;';
+        IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = @TableName AND is_memory_optimized <> 0)
+        BEGIN
+            EXECUTE (@SQL);
+        END;
+     
+        SET @SQL = N'';
+        SET @SchemaName = N'Application';
+        SET @TableName = N'DeliveryMethods';
+        SET @PrimaryKeyColumn = N'DeliveryMethodID';
+        SET @LastEditedByColumnName = N'LastEditedBy';
+        SET @NormalColumnList = N' [DeliveryMethodID], [DeliveryMethodName],';
+        SET @NormalColumnListWithDPrefix = N' d.[DeliveryMethodID], d.[DeliveryMethodName],';
+     
+        SET @SQL = N'DROP TRIGGER IF EXISTS ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify];'
+        EXECUTE (@SQL);
+     
+        SET @SQL = N'CREATE TRIGGER ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify]' + @CrLf
+                  + N'ON ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName) + @CrLf
+                  + N'AFTER INSERT, UPDATE' + @CrLf
+                  + N'AS' + @CrLf
+                  + N'BEGIN' + @CrLf
+                  + @Indent + N'SET NOCOUNT ON;' + @CrLf + @CrLf
+                  + @Indent + N'IF NOT UPDATE(' + QUOTENAME(@TemporalFromColumnName) + N')' + @CrLf
+                  + @Indent + N'BEGIN' + @CrLf
+                  + @Indent + @Indent + N'THROW 51000, ''' + QUOTENAME(@TemporalFromColumnName)
+                                      + N' must be updated when simulating data loads'', 1;' + @CrLf
+                  + @Indent + @Indent + N'ROLLBACK TRAN;' + @CrLf
+                  + @Indent + N'END;' + @Crlf + @CrLf
+                  + @Indent + N'INSERT ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName + N'_' + @TemporalTableSuffix) + @CrLf
+                  + @Indent + @Indent + N'(' + @NormalColumnList + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + QUOTENAME(@TemporalFromColumnName) + N',' + QUOTENAME(@TemporalToColumnName) + N')' + @CrLf
+                  + @Indent + N'SELECT' + @NormalColumnListWithDPrefix + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN N'd.' + QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + N' d.' + QUOTENAME(@TemporalFromColumnName) + N', i.' + QUOTENAME(@TemporalFromColumnName) + @CrLf
+                  + @Indent + N'FROM inserted AS i' + @CrLf
+                  + @Indent + N'INNER JOIN deleted AS d' + @CrLf
+                  + @Indent + N'ON i.' + QUOTENAME(@PrimaryKeyColumn) + N' = d.' + QUOTENAME(@PrimaryKeyColumn) + N';' + @CrLf
+                  + N'END;';
+        IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = @TableName AND is_memory_optimized <> 0)
+        BEGIN
+            EXECUTE (@SQL);
+        END;
+     
+        SET @SQL = N'';
+        SET @SchemaName = N'Application';
+        SET @TableName = N'PaymentMethods';
+        SET @PrimaryKeyColumn = N'PaymentMethodID';
+        SET @LastEditedByColumnName = N'LastEditedBy';
+        SET @NormalColumnList = N' [PaymentMethodID], [PaymentMethodName],';
+        SET @NormalColumnListWithDPrefix = N' d.[PaymentMethodID], d.[PaymentMethodName],';
+     
+        SET @SQL = N'DROP TRIGGER IF EXISTS ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify];'
+        EXECUTE (@SQL);
+     
+        SET @SQL = N'CREATE TRIGGER ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify]' + @CrLf
+                  + N'ON ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName) + @CrLf
+                  + N'AFTER INSERT, UPDATE' + @CrLf
+                  + N'AS' + @CrLf
+                  + N'BEGIN' + @CrLf
+                  + @Indent + N'SET NOCOUNT ON;' + @CrLf + @CrLf
+                  + @Indent + N'IF NOT UPDATE(' + QUOTENAME(@TemporalFromColumnName) + N')' + @CrLf
+                  + @Indent + N'BEGIN' + @CrLf
+                  + @Indent + @Indent + N'THROW 51000, ''' + QUOTENAME(@TemporalFromColumnName)
+                                      + N' must be updated when simulating data loads'', 1;' + @CrLf
+                  + @Indent + @Indent + N'ROLLBACK TRAN;' + @CrLf
+                  + @Indent + N'END;' + @Crlf + @CrLf
+                  + @Indent + N'INSERT ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName + N'_' + @TemporalTableSuffix) + @CrLf
+                  + @Indent + @Indent + N'(' + @NormalColumnList + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + QUOTENAME(@TemporalFromColumnName) + N',' + QUOTENAME(@TemporalToColumnName) + N')' + @CrLf
+                  + @Indent + N'SELECT' + @NormalColumnListWithDPrefix + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN N'd.' + QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + N' d.' + QUOTENAME(@TemporalFromColumnName) + N', i.' + QUOTENAME(@TemporalFromColumnName) + @CrLf
+                  + @Indent + N'FROM inserted AS i' + @CrLf
+                  + @Indent + N'INNER JOIN deleted AS d' + @CrLf
+                  + @Indent + N'ON i.' + QUOTENAME(@PrimaryKeyColumn) + N' = d.' + QUOTENAME(@PrimaryKeyColumn) + N';' + @CrLf
+                  + N'END;';
+        IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = @TableName AND is_memory_optimized <> 0)
+        BEGIN
+            EXECUTE (@SQL);
+        END;
+     
+        SET @SQL = N'';
+        SET @SchemaName = N'Application';
+        SET @TableName = N'People';
+        SET @PrimaryKeyColumn = N'PersonID';
+        SET @LastEditedByColumnName = N'LastEditedBy';
+        SET @NormalColumnList = N' [PersonID], [FullName], [PreferredName], [SearchName], [IsPermittedToLogon], [LogonName], [IsExternalLogonProvider], [HashedPassword], [IsSystemUser], [IsEmployee], [IsSalesperson], [UserPreferences], [PhoneNumber], [FaxNumber], [EmailAddress], [Photo], [CustomFields], [OtherLanguages],';
+        SET @NormalColumnListWithDPrefix = N' d.[PersonID], d.[FullName], d.[PreferredName], d.[SearchName], d.[IsPermittedToLogon], d.[LogonName], d.[IsExternalLogonProvider], d.[HashedPassword], d.[IsSystemUser], d.[IsEmployee], d.[IsSalesperson], d.[UserPreferences], d.[PhoneNumber], d.[FaxNumber], d.[EmailAddress], d.[Photo], d.[CustomFields], d.[OtherLanguages],';
+     
+        SET @SQL = N'DROP TRIGGER IF EXISTS ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify];'
+        EXECUTE (@SQL);
+     
+        SET @SQL = N'CREATE TRIGGER ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify]' + @CrLf
+                  + N'ON ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName) + @CrLf
+                  + N'AFTER INSERT, UPDATE' + @CrLf
+                  + N'AS' + @CrLf
+                  + N'BEGIN' + @CrLf
+                  + @Indent + N'SET NOCOUNT ON;' + @CrLf + @CrLf
+                  + @Indent + N'IF NOT UPDATE(' + QUOTENAME(@TemporalFromColumnName) + N')' + @CrLf
+                  + @Indent + N'BEGIN' + @CrLf
+                  + @Indent + @Indent + N'THROW 51000, ''' + QUOTENAME(@TemporalFromColumnName)
+                                      + N' must be updated when simulating data loads'', 1;' + @CrLf
+                  + @Indent + @Indent + N'ROLLBACK TRAN;' + @CrLf
+                  + @Indent + N'END;' + @Crlf + @CrLf
+                  + @Indent + N'INSERT ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName + N'_' + @TemporalTableSuffix) + @CrLf
+                  + @Indent + @Indent + N'(' + @NormalColumnList + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + QUOTENAME(@TemporalFromColumnName) + N',' + QUOTENAME(@TemporalToColumnName) + N')' + @CrLf
+                  + @Indent + N'SELECT' + @NormalColumnListWithDPrefix + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN N'd.' + QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + N' d.' + QUOTENAME(@TemporalFromColumnName) + N', i.' + QUOTENAME(@TemporalFromColumnName) + @CrLf
+                  + @Indent + N'FROM inserted AS i' + @CrLf
+                  + @Indent + N'INNER JOIN deleted AS d' + @CrLf
+                  + @Indent + N'ON i.' + QUOTENAME(@PrimaryKeyColumn) + N' = d.' + QUOTENAME(@PrimaryKeyColumn) + N';' + @CrLf
+                  + N'END;';
+        IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = @TableName AND is_memory_optimized <> 0)
+        BEGIN
+            EXECUTE (@SQL);
+        END;
+     
+        SET @SQL = N'';
+        SET @SchemaName = N'Application';
+        SET @TableName = N'StateProvinces';
+        SET @PrimaryKeyColumn = N'StateProvinceID';
+        SET @LastEditedByColumnName = N'LastEditedBy';
+        SET @NormalColumnList = N' [StateProvinceID], [StateProvinceCode], [StateProvinceName], [CountryID], [SalesTerritory], [Border], [LatestRecordedPopulation],';
+        SET @NormalColumnListWithDPrefix = N' d.[StateProvinceID], d.[StateProvinceCode], d.[StateProvinceName], d.[CountryID], d.[SalesTerritory], d.[Border], d.[LatestRecordedPopulation],';
+     
+        SET @SQL = N'DROP TRIGGER IF EXISTS ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify];'
+        EXECUTE (@SQL);
+     
+        SET @SQL = N'CREATE TRIGGER ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify]' + @CrLf
+                  + N'ON ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName) + @CrLf
+                  + N'AFTER INSERT, UPDATE' + @CrLf
+                  + N'AS' + @CrLf
+                  + N'BEGIN' + @CrLf
+                  + @Indent + N'SET NOCOUNT ON;' + @CrLf + @CrLf
+                  + @Indent + N'IF NOT UPDATE(' + QUOTENAME(@TemporalFromColumnName) + N')' + @CrLf
+                  + @Indent + N'BEGIN' + @CrLf
+                  + @Indent + @Indent + N'THROW 51000, ''' + QUOTENAME(@TemporalFromColumnName)
+                                      + N' must be updated when simulating data loads'', 1;' + @CrLf
+                  + @Indent + @Indent + N'ROLLBACK TRAN;' + @CrLf
+                  + @Indent + N'END;' + @Crlf + @CrLf
+                  + @Indent + N'INSERT ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName + N'_' + @TemporalTableSuffix) + @CrLf
+                  + @Indent + @Indent + N'(' + @NormalColumnList + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + QUOTENAME(@TemporalFromColumnName) + N',' + QUOTENAME(@TemporalToColumnName) + N')' + @CrLf
+                  + @Indent + N'SELECT' + @NormalColumnListWithDPrefix + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN N'd.' + QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + N' d.' + QUOTENAME(@TemporalFromColumnName) + N', i.' + QUOTENAME(@TemporalFromColumnName) + @CrLf
+                  + @Indent + N'FROM inserted AS i' + @CrLf
+                  + @Indent + N'INNER JOIN deleted AS d' + @CrLf
+                  + @Indent + N'ON i.' + QUOTENAME(@PrimaryKeyColumn) + N' = d.' + QUOTENAME(@PrimaryKeyColumn) + N';' + @CrLf
+                  + N'END;';
+        IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = @TableName AND is_memory_optimized <> 0)
+        BEGIN
+            EXECUTE (@SQL);
+        END;
+     
+        SET @SQL = N'';
+        SET @SchemaName = N'Application';
+        SET @TableName = N'TransactionTypes';
+        SET @PrimaryKeyColumn = N'TransactionTypeID';
+        SET @LastEditedByColumnName = N'LastEditedBy';
+        SET @NormalColumnList = N' [TransactionTypeID], [TransactionTypeName],';
+        SET @NormalColumnListWithDPrefix = N' d.[TransactionTypeID], d.[TransactionTypeName],';
+     
+        SET @SQL = N'DROP TRIGGER IF EXISTS ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify];'
+        EXECUTE (@SQL);
+     
+        SET @SQL = N'CREATE TRIGGER ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify]' + @CrLf
+                  + N'ON ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName) + @CrLf
+                  + N'AFTER INSERT, UPDATE' + @CrLf
+                  + N'AS' + @CrLf
+                  + N'BEGIN' + @CrLf
+                  + @Indent + N'SET NOCOUNT ON;' + @CrLf + @CrLf
+                  + @Indent + N'IF NOT UPDATE(' + QUOTENAME(@TemporalFromColumnName) + N')' + @CrLf
+                  + @Indent + N'BEGIN' + @CrLf
+                  + @Indent + @Indent + N'THROW 51000, ''' + QUOTENAME(@TemporalFromColumnName)
+                                      + N' must be updated when simulating data loads'', 1;' + @CrLf
+                  + @Indent + @Indent + N'ROLLBACK TRAN;' + @CrLf
+                  + @Indent + N'END;' + @Crlf + @CrLf
+                  + @Indent + N'INSERT ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName + N'_' + @TemporalTableSuffix) + @CrLf
+                  + @Indent + @Indent + N'(' + @NormalColumnList + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + QUOTENAME(@TemporalFromColumnName) + N',' + QUOTENAME(@TemporalToColumnName) + N')' + @CrLf
+                  + @Indent + N'SELECT' + @NormalColumnListWithDPrefix + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN N'd.' + QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + N' d.' + QUOTENAME(@TemporalFromColumnName) + N', i.' + QUOTENAME(@TemporalFromColumnName) + @CrLf
+                  + @Indent + N'FROM inserted AS i' + @CrLf
+                  + @Indent + N'INNER JOIN deleted AS d' + @CrLf
+                  + @Indent + N'ON i.' + QUOTENAME(@PrimaryKeyColumn) + N' = d.' + QUOTENAME(@PrimaryKeyColumn) + N';' + @CrLf
+                  + N'END;';
+        IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = @TableName AND is_memory_optimized <> 0)
+        BEGIN
+            EXECUTE (@SQL);
+        END;
+     
+        SET @SQL = N'';
+        SET @SchemaName = N'Purchasing';
+        SET @TableName = N'SupplierCategories';
+        SET @PrimaryKeyColumn = N'SupplierCategoryID';
+        SET @LastEditedByColumnName = N'LastEditedBy';
+        SET @NormalColumnList = N' [SupplierCategoryID], [SupplierCategoryName],';
+        SET @NormalColumnListWithDPrefix = N' d.[SupplierCategoryID], d.[SupplierCategoryName],';
+     
+        SET @SQL = N'DROP TRIGGER IF EXISTS ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify];'
+        EXECUTE (@SQL);
+     
+        SET @SQL = N'CREATE TRIGGER ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify]' + @CrLf
+                  + N'ON ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName) + @CrLf
+                  + N'AFTER INSERT, UPDATE' + @CrLf
+                  + N'AS' + @CrLf
+                  + N'BEGIN' + @CrLf
+                  + @Indent + N'SET NOCOUNT ON;' + @CrLf + @CrLf
+                  + @Indent + N'IF NOT UPDATE(' + QUOTENAME(@TemporalFromColumnName) + N')' + @CrLf
+                  + @Indent + N'BEGIN' + @CrLf
+                  + @Indent + @Indent + N'THROW 51000, ''' + QUOTENAME(@TemporalFromColumnName)
+                                      + N' must be updated when simulating data loads'', 1;' + @CrLf
+                  + @Indent + @Indent + N'ROLLBACK TRAN;' + @CrLf
+                  + @Indent + N'END;' + @Crlf + @CrLf
+                  + @Indent + N'INSERT ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName + N'_' + @TemporalTableSuffix) + @CrLf
+                  + @Indent + @Indent + N'(' + @NormalColumnList + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + QUOTENAME(@TemporalFromColumnName) + N',' + QUOTENAME(@TemporalToColumnName) + N')' + @CrLf
+                  + @Indent + N'SELECT' + @NormalColumnListWithDPrefix + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN N'd.' + QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + N' d.' + QUOTENAME(@TemporalFromColumnName) + N', i.' + QUOTENAME(@TemporalFromColumnName) + @CrLf
+                  + @Indent + N'FROM inserted AS i' + @CrLf
+                  + @Indent + N'INNER JOIN deleted AS d' + @CrLf
+                  + @Indent + N'ON i.' + QUOTENAME(@PrimaryKeyColumn) + N' = d.' + QUOTENAME(@PrimaryKeyColumn) + N';' + @CrLf
+                  + N'END;';
+        IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = @TableName AND is_memory_optimized <> 0)
+        BEGIN
+            EXECUTE (@SQL);
+        END;
+     
+        SET @SQL = N'';
+        SET @SchemaName = N'Purchasing';
+        SET @TableName = N'Suppliers';
+        SET @PrimaryKeyColumn = N'SupplierID';
+        SET @LastEditedByColumnName = N'LastEditedBy';
+        SET @NormalColumnList = N' [SupplierID], [SupplierName], [SupplierCategoryID], [PrimaryContactPersonID], [AlternateContactPersonID], [DeliveryMethodID], [DeliveryCityID], [PostalCityID], [SupplierReference], [BankAccountName], [BankAccountBranch], [BankAccountCode], [BankAccountNumber], [BankInternationalCode], [PaymentDays], [InternalComments], [PhoneNumber], [FaxNumber], [WebsiteURL], [DeliveryAddressLine1], [DeliveryAddressLine2], [DeliveryPostalCode], [DeliveryLocation], [PostalAddressLine1], [PostalAddressLine2], [PostalPostalCode],';
+        SET @NormalColumnListWithDPrefix = N' d.[SupplierID], d.[SupplierName], d.[SupplierCategoryID], d.[PrimaryContactPersonID], d.[AlternateContactPersonID], d.[DeliveryMethodID], d.[DeliveryCityID], d.[PostalCityID], d.[SupplierReference], d.[BankAccountName], d.[BankAccountBranch], d.[BankAccountCode], d.[BankAccountNumber], d.[BankInternationalCode], d.[PaymentDays], d.[InternalComments], d.[PhoneNumber], d.[FaxNumber], d.[WebsiteURL], d.[DeliveryAddressLine1], d.[DeliveryAddressLine2], d.[DeliveryPostalCode], d.[DeliveryLocation], d.[PostalAddressLine1], d.[PostalAddressLine2], d.[PostalPostalCode],';
+     
+        SET @SQL = N'DROP TRIGGER IF EXISTS ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify];'
+        EXECUTE (@SQL);
+     
+        SET @SQL = N'CREATE TRIGGER ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify]' + @CrLf
+                  + N'ON ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName) + @CrLf
+                  + N'AFTER INSERT, UPDATE' + @CrLf
+                  + N'AS' + @CrLf
+                  + N'BEGIN' + @CrLf
+                  + @Indent + N'SET NOCOUNT ON;' + @CrLf + @CrLf
+                  + @Indent + N'IF NOT UPDATE(' + QUOTENAME(@TemporalFromColumnName) + N')' + @CrLf
+                  + @Indent + N'BEGIN' + @CrLf
+                  + @Indent + @Indent + N'THROW 51000, ''' + QUOTENAME(@TemporalFromColumnName)
+                                      + N' must be updated when simulating data loads'', 1;' + @CrLf
+                  + @Indent + @Indent + N'ROLLBACK TRAN;' + @CrLf
+                  + @Indent + N'END;' + @Crlf + @CrLf
+                  + @Indent + N'INSERT ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName + N'_' + @TemporalTableSuffix) + @CrLf
+                  + @Indent + @Indent + N'(' + @NormalColumnList + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + QUOTENAME(@TemporalFromColumnName) + N',' + QUOTENAME(@TemporalToColumnName) + N')' + @CrLf
+                  + @Indent + N'SELECT' + @NormalColumnListWithDPrefix + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN N'd.' + QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + N' d.' + QUOTENAME(@TemporalFromColumnName) + N', i.' + QUOTENAME(@TemporalFromColumnName) + @CrLf
+                  + @Indent + N'FROM inserted AS i' + @CrLf
+                  + @Indent + N'INNER JOIN deleted AS d' + @CrLf
+                  + @Indent + N'ON i.' + QUOTENAME(@PrimaryKeyColumn) + N' = d.' + QUOTENAME(@PrimaryKeyColumn) + N';' + @CrLf
+                  + N'END;';
+        IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = @TableName AND is_memory_optimized <> 0)
+        BEGIN
+            EXECUTE (@SQL);
+        END;
+     
+        SET @SQL = N'';
+        SET @SchemaName = N'Sales';
+        SET @TableName = N'BuyingGroups';
+        SET @PrimaryKeyColumn = N'BuyingGroupID';
+        SET @LastEditedByColumnName = N'LastEditedBy';
+        SET @NormalColumnList = N' [BuyingGroupID], [BuyingGroupName],';
+        SET @NormalColumnListWithDPrefix = N' d.[BuyingGroupID], d.[BuyingGroupName],';
+     
+        SET @SQL = N'DROP TRIGGER IF EXISTS ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify];'
+        EXECUTE (@SQL);
+     
+        SET @SQL = N'CREATE TRIGGER ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify]' + @CrLf
+                  + N'ON ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName) + @CrLf
+                  + N'AFTER INSERT, UPDATE' + @CrLf
+                  + N'AS' + @CrLf
+                  + N'BEGIN' + @CrLf
+                  + @Indent + N'SET NOCOUNT ON;' + @CrLf + @CrLf
+                  + @Indent + N'IF NOT UPDATE(' + QUOTENAME(@TemporalFromColumnName) + N')' + @CrLf
+                  + @Indent + N'BEGIN' + @CrLf
+                  + @Indent + @Indent + N'THROW 51000, ''' + QUOTENAME(@TemporalFromColumnName)
+                                      + N' must be updated when simulating data loads'', 1;' + @CrLf
+                  + @Indent + @Indent + N'ROLLBACK TRAN;' + @CrLf
+                  + @Indent + N'END;' + @Crlf + @CrLf
+                  + @Indent + N'INSERT ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName + N'_' + @TemporalTableSuffix) + @CrLf
+                  + @Indent + @Indent + N'(' + @NormalColumnList + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + QUOTENAME(@TemporalFromColumnName) + N',' + QUOTENAME(@TemporalToColumnName) + N')' + @CrLf
+                  + @Indent + N'SELECT' + @NormalColumnListWithDPrefix + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN N'd.' + QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + N' d.' + QUOTENAME(@TemporalFromColumnName) + N', i.' + QUOTENAME(@TemporalFromColumnName) + @CrLf
+                  + @Indent + N'FROM inserted AS i' + @CrLf
+                  + @Indent + N'INNER JOIN deleted AS d' + @CrLf
+                  + @Indent + N'ON i.' + QUOTENAME(@PrimaryKeyColumn) + N' = d.' + QUOTENAME(@PrimaryKeyColumn) + N';' + @CrLf
+                  + N'END;';
+        IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = @TableName AND is_memory_optimized <> 0)
+        BEGIN
+            EXECUTE (@SQL);
+        END;
+     
+        SET @SQL = N'';
+        SET @SchemaName = N'Sales';
+        SET @TableName = N'CustomerCategories';
+        SET @PrimaryKeyColumn = N'CustomerCategoryID';
+        SET @LastEditedByColumnName = N'LastEditedBy';
+        SET @NormalColumnList = N' [CustomerCategoryID], [CustomerCategoryName],';
+        SET @NormalColumnListWithDPrefix = N' d.[CustomerCategoryID], d.[CustomerCategoryName],';
+     
+        SET @SQL = N'DROP TRIGGER IF EXISTS ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify];'
+        EXECUTE (@SQL);
+     
+        SET @SQL = N'CREATE TRIGGER ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify]' + @CrLf
+                  + N'ON ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName) + @CrLf
+                  + N'AFTER INSERT, UPDATE' + @CrLf
+                  + N'AS' + @CrLf
+                  + N'BEGIN' + @CrLf
+                  + @Indent + N'SET NOCOUNT ON;' + @CrLf + @CrLf
+                  + @Indent + N'IF NOT UPDATE(' + QUOTENAME(@TemporalFromColumnName) + N')' + @CrLf
+                  + @Indent + N'BEGIN' + @CrLf
+                  + @Indent + @Indent + N'THROW 51000, ''' + QUOTENAME(@TemporalFromColumnName)
+                                      + N' must be updated when simulating data loads'', 1;' + @CrLf
+                  + @Indent + @Indent + N'ROLLBACK TRAN;' + @CrLf
+                  + @Indent + N'END;' + @Crlf + @CrLf
+                  + @Indent + N'INSERT ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName + N'_' + @TemporalTableSuffix) + @CrLf
+                  + @Indent + @Indent + N'(' + @NormalColumnList + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + QUOTENAME(@TemporalFromColumnName) + N',' + QUOTENAME(@TemporalToColumnName) + N')' + @CrLf
+                  + @Indent + N'SELECT' + @NormalColumnListWithDPrefix + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN N'd.' + QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + N' d.' + QUOTENAME(@TemporalFromColumnName) + N', i.' + QUOTENAME(@TemporalFromColumnName) + @CrLf
+                  + @Indent + N'FROM inserted AS i' + @CrLf
+                  + @Indent + N'INNER JOIN deleted AS d' + @CrLf
+                  + @Indent + N'ON i.' + QUOTENAME(@PrimaryKeyColumn) + N' = d.' + QUOTENAME(@PrimaryKeyColumn) + N';' + @CrLf
+                  + N'END;';
+        IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = @TableName AND is_memory_optimized <> 0)
+        BEGIN
+            EXECUTE (@SQL);
+        END;
+     
+        SET @SQL = N'';
+        SET @SchemaName = N'Sales';
+        SET @TableName = N'Customers';
+        SET @PrimaryKeyColumn = N'CustomerID';
+        SET @LastEditedByColumnName = N'LastEditedBy';
+        SET @NormalColumnList = N' [CustomerID], [CustomerName], [BillToCustomerID], [CustomerCategoryID], [BuyingGroupID], [PrimaryContactPersonID], [AlternateContactPersonID], [DeliveryMethodID], [DeliveryCityID], [PostalCityID], [CreditLimit], [AccountOpenedDate], [StandardDiscountPercentage], [IsStatementSent], [IsOnCreditHold], [PaymentDays], [PhoneNumber], [FaxNumber], [DeliveryRun], [RunPosition], [WebsiteURL], [DeliveryAddressLine1], [DeliveryAddressLine2], [DeliveryPostalCode], [DeliveryLocation], [PostalAddressLine1], [PostalAddressLine2], [PostalPostalCode],';
+        SET @NormalColumnListWithDPrefix = N' d.[CustomerID], d.[CustomerName], d.[BillToCustomerID], d.[CustomerCategoryID], d.[BuyingGroupID], d.[PrimaryContactPersonID], d.[AlternateContactPersonID], d.[DeliveryMethodID], d.[DeliveryCityID], d.[PostalCityID], d.[CreditLimit], d.[AccountOpenedDate], d.[StandardDiscountPercentage], d.[IsStatementSent], d.[IsOnCreditHold], d.[PaymentDays], d.[PhoneNumber], d.[FaxNumber], d.[DeliveryRun], d.[RunPosition], d.[WebsiteURL], d.[DeliveryAddressLine1], d.[DeliveryAddressLine2], d.[DeliveryPostalCode], d.[DeliveryLocation], d.[PostalAddressLine1], d.[PostalAddressLine2], d.[PostalPostalCode],';
+     
+        SET @SQL = N'DROP TRIGGER IF EXISTS ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify];'
+        EXECUTE (@SQL);
+     
+        SET @SQL = N'CREATE TRIGGER ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify]' + @CrLf
+                  + N'ON ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName) + @CrLf
+                  + N'AFTER INSERT, UPDATE' + @CrLf
+                  + N'AS' + @CrLf
+                  + N'BEGIN' + @CrLf
+                  + @Indent + N'SET NOCOUNT ON;' + @CrLf + @CrLf
+                  + @Indent + N'IF NOT UPDATE(' + QUOTENAME(@TemporalFromColumnName) + N')' + @CrLf
+                  + @Indent + N'BEGIN' + @CrLf
+                  + @Indent + @Indent + N'THROW 51000, ''' + QUOTENAME(@TemporalFromColumnName)
+                                      + N' must be updated when simulating data loads'', 1;' + @CrLf
+                  + @Indent + @Indent + N'ROLLBACK TRAN;' + @CrLf
+                  + @Indent + N'END;' + @Crlf + @CrLf
+                  + @Indent + N'INSERT ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName + N'_' + @TemporalTableSuffix) + @CrLf
+                  + @Indent + @Indent + N'(' + @NormalColumnList + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + QUOTENAME(@TemporalFromColumnName) + N',' + QUOTENAME(@TemporalToColumnName) + N')' + @CrLf
+                  + @Indent + N'SELECT' + @NormalColumnListWithDPrefix + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN N'd.' + QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + N' d.' + QUOTENAME(@TemporalFromColumnName) + N', i.' + QUOTENAME(@TemporalFromColumnName) + @CrLf
+                  + @Indent + N'FROM inserted AS i' + @CrLf
+                  + @Indent + N'INNER JOIN deleted AS d' + @CrLf
+                  + @Indent + N'ON i.' + QUOTENAME(@PrimaryKeyColumn) + N' = d.' + QUOTENAME(@PrimaryKeyColumn) + N';' + @CrLf
+                  + N'END;';
+        IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = @TableName AND is_memory_optimized <> 0)
+        BEGIN
+            EXECUTE (@SQL);
+        END;
+     
+        SET @SQL = N'';
+        SET @SchemaName = N'Warehouse';
+        SET @TableName = N'ColdRoomTemperatures';
+        SET @PrimaryKeyColumn = N'ColdRoomTemperatureID';
+        SET @LastEditedByColumnName = N'';
+        SET @NormalColumnList = N' [ColdRoomTemperatureID], [ColdRoomSensorNumber], [RecordedWhen], [Temperature],';
+        SET @NormalColumnListWithDPrefix = N' d.[ColdRoomTemperatureID], d.[ColdRoomSensorNumber], d.[RecordedWhen], d.[Temperature],';
+     
+        SET @SQL = N'DROP TRIGGER IF EXISTS ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify];'
+        EXECUTE (@SQL);
+     
+        SET @SQL = N'CREATE TRIGGER ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify]' + @CrLf
+                  + N'ON ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName) + @CrLf
+                  + N'AFTER INSERT, UPDATE' + @CrLf
+                  + N'AS' + @CrLf
+                  + N'BEGIN' + @CrLf
+                  + @Indent + N'SET NOCOUNT ON;' + @CrLf + @CrLf
+                  + @Indent + N'IF NOT UPDATE(' + QUOTENAME(@TemporalFromColumnName) + N')' + @CrLf
+                  + @Indent + N'BEGIN' + @CrLf
+                  + @Indent + @Indent + N'THROW 51000, ''' + QUOTENAME(@TemporalFromColumnName)
+                                      + N' must be updated when simulating data loads'', 1;' + @CrLf
+                  + @Indent + @Indent + N'ROLLBACK TRAN;' + @CrLf
+                  + @Indent + N'END;' + @Crlf + @CrLf
+                  + @Indent + N'INSERT ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName + N'_' + @TemporalTableSuffix) + @CrLf
+                  + @Indent + @Indent + N'(' + @NormalColumnList + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + QUOTENAME(@TemporalFromColumnName) + N',' + QUOTENAME(@TemporalToColumnName) + N')' + @CrLf
+                  + @Indent + N'SELECT' + @NormalColumnListWithDPrefix + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN N'd.' + QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + N' d.' + QUOTENAME(@TemporalFromColumnName) + N', i.' + QUOTENAME(@TemporalFromColumnName) + @CrLf
+                  + @Indent + N'FROM inserted AS i' + @CrLf
+                  + @Indent + N'INNER JOIN deleted AS d' + @CrLf
+                  + @Indent + N'ON i.' + QUOTENAME(@PrimaryKeyColumn) + N' = d.' + QUOTENAME(@PrimaryKeyColumn) + N';' + @CrLf
+                  + N'END;';
+        IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = @TableName AND is_memory_optimized <> 0)
+        BEGIN
+            EXECUTE (@SQL);
+        END;
+     
+        SET @SQL = N'';
+        SET @SchemaName = N'Warehouse';
+        SET @TableName = N'Colors';
+        SET @PrimaryKeyColumn = N'ColorID';
+        SET @LastEditedByColumnName = N'LastEditedBy';
+        SET @NormalColumnList = N' [ColorID], [ColorName],';
+        SET @NormalColumnListWithDPrefix = N' d.[ColorID], d.[ColorName],';
+     
+        SET @SQL = N'DROP TRIGGER IF EXISTS ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify];'
+        EXECUTE (@SQL);
+     
+        SET @SQL = N'CREATE TRIGGER ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify]' + @CrLf
+                  + N'ON ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName) + @CrLf
+                  + N'AFTER INSERT, UPDATE' + @CrLf
+                  + N'AS' + @CrLf
+                  + N'BEGIN' + @CrLf
+                  + @Indent + N'SET NOCOUNT ON;' + @CrLf + @CrLf
+                  + @Indent + N'IF NOT UPDATE(' + QUOTENAME(@TemporalFromColumnName) + N')' + @CrLf
+                  + @Indent + N'BEGIN' + @CrLf
+                  + @Indent + @Indent + N'THROW 51000, ''' + QUOTENAME(@TemporalFromColumnName)
+                                      + N' must be updated when simulating data loads'', 1;' + @CrLf
+                  + @Indent + @Indent + N'ROLLBACK TRAN;' + @CrLf
+                  + @Indent + N'END;' + @Crlf + @CrLf
+                  + @Indent + N'INSERT ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName + N'_' + @TemporalTableSuffix) + @CrLf
+                  + @Indent + @Indent + N'(' + @NormalColumnList + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + QUOTENAME(@TemporalFromColumnName) + N',' + QUOTENAME(@TemporalToColumnName) + N')' + @CrLf
+                  + @Indent + N'SELECT' + @NormalColumnListWithDPrefix + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN N'd.' + QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + N' d.' + QUOTENAME(@TemporalFromColumnName) + N', i.' + QUOTENAME(@TemporalFromColumnName) + @CrLf
+                  + @Indent + N'FROM inserted AS i' + @CrLf
+                  + @Indent + N'INNER JOIN deleted AS d' + @CrLf
+                  + @Indent + N'ON i.' + QUOTENAME(@PrimaryKeyColumn) + N' = d.' + QUOTENAME(@PrimaryKeyColumn) + N';' + @CrLf
+                  + N'END;';
+        IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = @TableName AND is_memory_optimized <> 0)
+        BEGIN
+            EXECUTE (@SQL);
+        END;
+     
+        SET @SQL = N'';
+        SET @SchemaName = N'Warehouse';
+        SET @TableName = N'PackageTypes';
+        SET @PrimaryKeyColumn = N'PackageTypeID';
+        SET @LastEditedByColumnName = N'LastEditedBy';
+        SET @NormalColumnList = N' [PackageTypeID], [PackageTypeName],';
+        SET @NormalColumnListWithDPrefix = N' d.[PackageTypeID], d.[PackageTypeName],';
+     
+        SET @SQL = N'DROP TRIGGER IF EXISTS ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify];'
+        EXECUTE (@SQL);
+     
+        SET @SQL = N'CREATE TRIGGER ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify]' + @CrLf
+                  + N'ON ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName) + @CrLf
+                  + N'AFTER INSERT, UPDATE' + @CrLf
+                  + N'AS' + @CrLf
+                  + N'BEGIN' + @CrLf
+                  + @Indent + N'SET NOCOUNT ON;' + @CrLf + @CrLf
+                  + @Indent + N'IF NOT UPDATE(' + QUOTENAME(@TemporalFromColumnName) + N')' + @CrLf
+                  + @Indent + N'BEGIN' + @CrLf
+                  + @Indent + @Indent + N'THROW 51000, ''' + QUOTENAME(@TemporalFromColumnName)
+                                      + N' must be updated when simulating data loads'', 1;' + @CrLf
+                  + @Indent + @Indent + N'ROLLBACK TRAN;' + @CrLf
+                  + @Indent + N'END;' + @Crlf + @CrLf
+                  + @Indent + N'INSERT ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName + N'_' + @TemporalTableSuffix) + @CrLf
+                  + @Indent + @Indent + N'(' + @NormalColumnList + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + QUOTENAME(@TemporalFromColumnName) + N',' + QUOTENAME(@TemporalToColumnName) + N')' + @CrLf
+                  + @Indent + N'SELECT' + @NormalColumnListWithDPrefix + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN N'd.' + QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + N' d.' + QUOTENAME(@TemporalFromColumnName) + N', i.' + QUOTENAME(@TemporalFromColumnName) + @CrLf
+                  + @Indent + N'FROM inserted AS i' + @CrLf
+                  + @Indent + N'INNER JOIN deleted AS d' + @CrLf
+                  + @Indent + N'ON i.' + QUOTENAME(@PrimaryKeyColumn) + N' = d.' + QUOTENAME(@PrimaryKeyColumn) + N';' + @CrLf
+                  + N'END;';
+        IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = @TableName AND is_memory_optimized <> 0)
+        BEGIN
+            EXECUTE (@SQL);
+        END;
+     
+        SET @SQL = N'';
+        SET @SchemaName = N'Warehouse';
+        SET @TableName = N'StockGroups';
+        SET @PrimaryKeyColumn = N'StockGroupID';
+        SET @LastEditedByColumnName = N'LastEditedBy';
+        SET @NormalColumnList = N' [StockGroupID], [StockGroupName],';
+        SET @NormalColumnListWithDPrefix = N' d.[StockGroupID], d.[StockGroupName],';
+     
+        SET @SQL = N'DROP TRIGGER IF EXISTS ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify];'
+        EXECUTE (@SQL);
+     
+        SET @SQL = N'CREATE TRIGGER ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify]' + @CrLf
+                  + N'ON ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName) + @CrLf
+                  + N'AFTER INSERT, UPDATE' + @CrLf
+                  + N'AS' + @CrLf
+                  + N'BEGIN' + @CrLf
+                  + @Indent + N'SET NOCOUNT ON;' + @CrLf + @CrLf
+                  + @Indent + N'IF NOT UPDATE(' + QUOTENAME(@TemporalFromColumnName) + N')' + @CrLf
+                  + @Indent + N'BEGIN' + @CrLf
+                  + @Indent + @Indent + N'THROW 51000, ''' + QUOTENAME(@TemporalFromColumnName)
+                                      + N' must be updated when simulating data loads'', 1;' + @CrLf
+                  + @Indent + @Indent + N'ROLLBACK TRAN;' + @CrLf
+                  + @Indent + N'END;' + @Crlf + @CrLf
+                  + @Indent + N'INSERT ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName + N'_' + @TemporalTableSuffix) + @CrLf
+                  + @Indent + @Indent + N'(' + @NormalColumnList + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + QUOTENAME(@TemporalFromColumnName) + N',' + QUOTENAME(@TemporalToColumnName) + N')' + @CrLf
+                  + @Indent + N'SELECT' + @NormalColumnListWithDPrefix + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN N'd.' + QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + N' d.' + QUOTENAME(@TemporalFromColumnName) + N', i.' + QUOTENAME(@TemporalFromColumnName) + @CrLf
+                  + @Indent + N'FROM inserted AS i' + @CrLf
+                  + @Indent + N'INNER JOIN deleted AS d' + @CrLf
+                  + @Indent + N'ON i.' + QUOTENAME(@PrimaryKeyColumn) + N' = d.' + QUOTENAME(@PrimaryKeyColumn) + N';' + @CrLf
+                  + N'END;';
+        IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = @TableName AND is_memory_optimized <> 0)
+        BEGIN
+            EXECUTE (@SQL);
+        END;
+     
+        SET @SQL = N'';
+        SET @SchemaName = N'Warehouse';
+        SET @TableName = N'StockItems';
+        SET @PrimaryKeyColumn = N'StockItemID';
+        SET @LastEditedByColumnName = N'LastEditedBy';
+        SET @NormalColumnList = N' [StockItemID], [StockItemName], [SupplierID], [ColorID], [UnitPackageID], [OuterPackageID], [Brand], [Size], [LeadTimeDays], [QuantityPerOuter], [IsChillerStock], [Barcode], [TaxRate], [UnitPrice], [RecommendedRetailPrice], [TypicalWeightPerUnit], [MarketingComments], [InternalComments], [Photo], [CustomFields], [Tags], [SearchDetails],';
+        SET @NormalColumnListWithDPrefix = N' d.[StockItemID], d.[StockItemName], d.[SupplierID], d.[ColorID], d.[UnitPackageID], d.[OuterPackageID], d.[Brand], d.[Size], d.[LeadTimeDays], d.[QuantityPerOuter], d.[IsChillerStock], d.[Barcode], d.[TaxRate], d.[UnitPrice], d.[RecommendedRetailPrice], d.[TypicalWeightPerUnit], d.[MarketingComments], d.[InternalComments], d.[Photo], d.[CustomFields], d.[Tags], d.[SearchDetails],';
+     
+        SET @SQL = N'DROP TRIGGER IF EXISTS ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify];'
+        EXECUTE (@SQL);
+     
+        SET @SQL = N'CREATE TRIGGER ' + QUOTENAME(@SchemaName) + N'.[TR_' + @SchemaName + N'_' + @TableName + N'_DataLoad_Modify]' + @CrLf
+                  + N'ON ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName) + @CrLf
+                  + N'AFTER INSERT, UPDATE' + @CrLf
+                  + N'AS' + @CrLf
+                  + N'BEGIN' + @CrLf
+                  + @Indent + N'SET NOCOUNT ON;' + @CrLf + @CrLf
+                  + @Indent + N'IF NOT UPDATE(' + QUOTENAME(@TemporalFromColumnName) + N')' + @CrLf
+                  + @Indent + N'BEGIN' + @CrLf
+                  + @Indent + @Indent + N'THROW 51000, ''' + QUOTENAME(@TemporalFromColumnName)
+                                      + N' must be updated when simulating data loads'', 1;' + @CrLf
+                  + @Indent + @Indent + N'ROLLBACK TRAN;' + @CrLf
+                  + @Indent + N'END;' + @Crlf + @CrLf
+                  + @Indent + N'INSERT ' + QUOTENAME(@SchemaName) + N'.' + QUOTENAME(@TableName + N'_' + @TemporalTableSuffix) + @CrLf
+                  + @Indent + @Indent + N'(' + @NormalColumnList + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + QUOTENAME(@TemporalFromColumnName) + N',' + QUOTENAME(@TemporalToColumnName) + N')' + @CrLf
+                  + @Indent + N'SELECT' + @NormalColumnListWithDPrefix + CASE WHEN COALESCE(@LastEditedByColumnName, N'') <> N'' THEN N'd.' + QUOTENAME(@LastEditedByColumnName) + N', ' ELSE N'' END
+                                      + N' d.' + QUOTENAME(@TemporalFromColumnName) + N', i.' + QUOTENAME(@TemporalFromColumnName) + @CrLf
+                  + @Indent + N'FROM inserted AS i' + @CrLf
+                  + @Indent + N'INNER JOIN deleted AS d' + @CrLf
+                  + @Indent + N'ON i.' + QUOTENAME(@PrimaryKeyColumn) + N' = d.' + QUOTENAME(@PrimaryKeyColumn) + N';' + @CrLf
+                  + N'END;';
+        IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = @TableName AND is_memory_optimized <> 0)
+        BEGIN
+            EXECUTE (@SQL);
+        END;
+     
+    END;
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
+BEGIN
+    SET ANSI_NULLS ON
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
+BEGIN
+    SET QUOTED_IDENTIFIER ON
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
+BEGIN
+    IF EXISTS (
+    	SELECT type_desc
+    	FROM sys.procedures
+    	WHERE NAME = 'ReactivateTemporalTablesAfterDataLoad'
+    		AND type = 'P'
+    	)
+    	DROP PROCEDURE [Application].[ReactivateTemporalTablesAfterDataLoad];
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'CreateStoredProcedures')
+BEGIN
+    CREATE PROCEDURE [Application].[ReactivateTemporalTablesAfterDataLoad]
+    AS BEGIN
+        -- Re-enables the temporal nature of the temporal tables after a simulated data load
+        SET NOCOUNT ON;
+     
+        IF EXISTS (SELECT 1 FROM sys.procedures WHERE name = N'Configuration_ApplyRowLevelSecurity')
+        BEGIN
+            EXEC [Application].Configuration_ApplyRowLevelSecurity;
+        END;
+     
+        DROP TRIGGER IF EXISTS [Application].[TR_Application_Cities_DataLoad_Modify];
+        ALTER TABLE [Application].[Cities] ADD PERIOD FOR SYSTEM_TIME([ValidFrom], [ValidTo]);
+        ALTER TABLE [Application].[Cities] SET (SYSTEM_VERSIONING = ON (HISTORY_TABLE = [Application].[Cities_Archive], DATA_CONSISTENCY_CHECK = ON));
+     
+        DROP TRIGGER IF EXISTS [Application].[TR_Application_Countries_DataLoad_Modify];
+        ALTER TABLE [Application].[Countries] ADD PERIOD FOR SYSTEM_TIME([ValidFrom], [ValidTo]);
+        ALTER TABLE [Application].[Countries] SET (SYSTEM_VERSIONING = ON (HISTORY_TABLE = [Application].[Countries_Archive], DATA_CONSISTENCY_CHECK = ON));
+     
+        DROP TRIGGER IF EXISTS [Application].[TR_Application_DeliveryMethods_DataLoad_Modify];
+        ALTER TABLE [Application].[DeliveryMethods] ADD PERIOD FOR SYSTEM_TIME([ValidFrom], [ValidTo]);
+        ALTER TABLE [Application].[DeliveryMethods] SET (SYSTEM_VERSIONING = ON (HISTORY_TABLE = [Application].[DeliveryMethods_Archive], DATA_CONSISTENCY_CHECK = ON));
+     
+        DROP TRIGGER IF EXISTS [Application].[TR_Application_PaymentMethods_DataLoad_Modify];
+        ALTER TABLE [Application].[PaymentMethods] ADD PERIOD FOR SYSTEM_TIME([ValidFrom], [ValidTo]);
+        ALTER TABLE [Application].[PaymentMethods] SET (SYSTEM_VERSIONING = ON (HISTORY_TABLE = [Application].[PaymentMethods_Archive], DATA_CONSISTENCY_CHECK = ON));
+     
+        DROP TRIGGER IF EXISTS [Application].[TR_Application_People_DataLoad_Modify];
+        ALTER TABLE [Application].[People] ADD PERIOD FOR SYSTEM_TIME([ValidFrom], [ValidTo]);
+        ALTER TABLE [Application].[People] SET (SYSTEM_VERSIONING = ON (HISTORY_TABLE = [Application].[People_Archive], DATA_CONSISTENCY_CHECK = ON));
+     
+        DROP TRIGGER IF EXISTS [Application].[TR_Application_StateProvinces_DataLoad_Modify];
+        ALTER TABLE [Application].[StateProvinces] ADD PERIOD FOR SYSTEM_TIME([ValidFrom], [ValidTo]);
+        ALTER TABLE [Application].[StateProvinces] SET (SYSTEM_VERSIONING = ON (HISTORY_TABLE = [Application].[StateProvinces_Archive], DATA_CONSISTENCY_CHECK = ON));
+     
+        DROP TRIGGER IF EXISTS [Application].[TR_Application_TransactionTypes_DataLoad_Modify];
+        ALTER TABLE [Application].[TransactionTypes] ADD PERIOD FOR SYSTEM_TIME([ValidFrom], [ValidTo]);
+        ALTER TABLE [Application].[TransactionTypes] SET (SYSTEM_VERSIONING = ON (HISTORY_TABLE = [Application].[TransactionTypes_Archive], DATA_CONSISTENCY_CHECK = ON));
+     
+        DROP TRIGGER IF EXISTS [Purchasing].[TR_Purchasing_SupplierCategories_DataLoad_Modify];
+        ALTER TABLE [Purchasing].[SupplierCategories] ADD PERIOD FOR SYSTEM_TIME([ValidFrom], [ValidTo]);
+        ALTER TABLE [Purchasing].[SupplierCategories] SET (SYSTEM_VERSIONING = ON (HISTORY_TABLE = [Purchasing].[SupplierCategories_Archive], DATA_CONSISTENCY_CHECK = ON));
+     
+        DROP TRIGGER IF EXISTS [Purchasing].[TR_Purchasing_Suppliers_DataLoad_Modify];
+        ALTER TABLE [Purchasing].[Suppliers] ADD PERIOD FOR SYSTEM_TIME([ValidFrom], [ValidTo]);
+        ALTER TABLE [Purchasing].[Suppliers] SET (SYSTEM_VERSIONING = ON (HISTORY_TABLE = [Purchasing].[Suppliers_Archive], DATA_CONSISTENCY_CHECK = ON));
+     
+        DROP TRIGGER IF EXISTS [Sales].[TR_Sales_BuyingGroups_DataLoad_Modify];
+        ALTER TABLE [Sales].[BuyingGroups] ADD PERIOD FOR SYSTEM_TIME([ValidFrom], [ValidTo]);
+        ALTER TABLE [Sales].[BuyingGroups] SET (SYSTEM_VERSIONING = ON (HISTORY_TABLE = [Sales].[BuyingGroups_Archive], DATA_CONSISTENCY_CHECK = ON));
+     
+        DROP TRIGGER IF EXISTS [Sales].[TR_Sales_CustomerCategories_DataLoad_Modify];
+        ALTER TABLE [Sales].[CustomerCategories] ADD PERIOD FOR SYSTEM_TIME([ValidFrom], [ValidTo]);
+        ALTER TABLE [Sales].[CustomerCategories] SET (SYSTEM_VERSIONING = ON (HISTORY_TABLE = [Sales].[CustomerCategories_Archive], DATA_CONSISTENCY_CHECK = ON));
+     
+        DROP TRIGGER IF EXISTS [Sales].[TR_Sales_Customers_DataLoad_Modify];
+        ALTER TABLE [Sales].[Customers] ADD PERIOD FOR SYSTEM_TIME([ValidFrom], [ValidTo]);
+        ALTER TABLE [Sales].[Customers] SET (SYSTEM_VERSIONING = ON (HISTORY_TABLE = [Sales].[Customers_Archive], DATA_CONSISTENCY_CHECK = ON));
+     
+        DROP TRIGGER IF EXISTS [Warehouse].[TR_Warehouse_ColdRoomTemperatures_DataLoad_Modify];
+        ALTER TABLE [Warehouse].[ColdRoomTemperatures] ADD PERIOD FOR SYSTEM_TIME([ValidFrom], [ValidTo]);
+        ALTER TABLE [Warehouse].[ColdRoomTemperatures] SET (SYSTEM_VERSIONING = ON (HISTORY_TABLE = [Warehouse].[ColdRoomTemperatures_Archive], DATA_CONSISTENCY_CHECK = ON));
+     
+        DROP TRIGGER IF EXISTS [Warehouse].[TR_Warehouse_Colors_DataLoad_Modify];
+        ALTER TABLE [Warehouse].[Colors] ADD PERIOD FOR SYSTEM_TIME([ValidFrom], [ValidTo]);
+        ALTER TABLE [Warehouse].[Colors] SET (SYSTEM_VERSIONING = ON (HISTORY_TABLE = [Warehouse].[Colors_Archive], DATA_CONSISTENCY_CHECK = ON));
+     
+        DROP TRIGGER IF EXISTS [Warehouse].[TR_Warehouse_PackageTypes_DataLoad_Modify];
+        ALTER TABLE [Warehouse].[PackageTypes] ADD PERIOD FOR SYSTEM_TIME([ValidFrom], [ValidTo]);
+        ALTER TABLE [Warehouse].[PackageTypes] SET (SYSTEM_VERSIONING = ON (HISTORY_TABLE = [Warehouse].[PackageTypes_Archive], DATA_CONSISTENCY_CHECK = ON));
+     
+        DROP TRIGGER IF EXISTS [Warehouse].[TR_Warehouse_StockGroups_DataLoad_Modify];
+        ALTER TABLE [Warehouse].[StockGroups] ADD PERIOD FOR SYSTEM_TIME([ValidFrom], [ValidTo]);
+        ALTER TABLE [Warehouse].[StockGroups] SET (SYSTEM_VERSIONING = ON (HISTORY_TABLE = [Warehouse].[StockGroups_Archive], DATA_CONSISTENCY_CHECK = ON));
+     
+        DROP TRIGGER IF EXISTS [Warehouse].[TR_Warehouse_StockItems_DataLoad_Modify];
+        ALTER TABLE [Warehouse].[StockItems] ADD PERIOD FOR SYSTEM_TIME([ValidFrom], [ValidTo]);
+        ALTER TABLE [Warehouse].[StockItems] SET (SYSTEM_VERSIONING = ON (HISTORY_TABLE = [Warehouse].[StockItems_Archive], DATA_CONSISTENCY_CHECK = ON));
+     
+    END;
 END;
 GO
 

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Remove="Persistence\EntityConfigurations\SupplierEntityConfiguration.cs~RF44da2843.TMP" />
+    <None Remove="Persistence\StoredProcedures\CustomMigrations\CreateStoredProcedures.cs~RF64ac07f4.TMP" />
   </ItemGroup>
 
   <ItemGroup>

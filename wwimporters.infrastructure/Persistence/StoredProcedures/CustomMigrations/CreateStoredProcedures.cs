@@ -3,7 +3,7 @@ using System.IO;
 
 #nullable disable
 
-namespace wwimporters.efmigrations.Migrations
+namespace wwimporters.infrastructure.Persistence.StoredProcedures.CustomMigrations
 {
     public partial class CreateStoredProcedures : Migration
     {
@@ -16,15 +16,11 @@ namespace wwimporters.efmigrations.Migrations
             }
         }
 
+        //Down() may not be necessary
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            string[] spNames =
-            {
-                "Configuration_ApplyPartitioning",
-                "Configuration_ApplyFullTextIndexing"
-            };
 
-            foreach ( string name in spNames )
+            foreach ( string name in new StoredProcedureNames().AllStoredProcedures )
             {
                 migrationBuilder.Sql($"DROP PROCEDURE [Application].{name};");
             }

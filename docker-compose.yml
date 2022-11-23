@@ -2,8 +2,11 @@ version: "3"
 
 services:
   db:
-    container_name: sql-server-wwimporters
-    image: mcr.microsoft.com/mssql/server:2019-CU15-ubuntu-20.04
+    container_name: sql-wwimporters
+    image: ${DOCKER_REGISTRY-}db
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - '1435:1433'
     environment:

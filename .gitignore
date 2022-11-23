@@ -3,7 +3,8 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-# Ignore Docker drive folder
+# Ignore Dockerfile & Docker drive folder
+Dockerfile
 drive/
 
 # User-specific files
