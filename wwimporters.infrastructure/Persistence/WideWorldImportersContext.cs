@@ -22,7 +22,40 @@ namespace wwimporters.infrastructure.Persistence
         {
 
         }
-
+        public virtual DbSet<BuyingGroup> BuyingGroups => Set<BuyingGroup>();
+        public virtual DbSet<City> Cities => Set<City>();
+        public virtual DbSet<ColdRoomTemperature> ColdRoomTemperatures => Set<ColdRoomTemperature>();
+        public virtual DbSet<Color> Colors => Set<Color>();
+        public virtual DbSet<Country> Countries => Set<Country>();
+        public virtual DbSet<Customer> Customers => Set<Customer>();
+        public virtual DbSet<Customer1> Customers1 => Set<Customer1>();
+        public virtual DbSet<CustomerCategory> CustomerCategories => Set<CustomerCategory>();
+        public virtual DbSet<CustomerTransaction> CustomerTransactions => Set<CustomerTransaction>();
+        public virtual DbSet<DeliveryMethod> DeliveryMethods => Set<DeliveryMethod>();
+        public virtual DbSet<Invoice> Invoices => Set<Invoice>();
+        public virtual DbSet<InvoiceLine> InvoiceLines => Set<InvoiceLine>();
+        public virtual DbSet<Order> Orders => Set<Order>();
+        public virtual DbSet<OrderLine> OrderLines => Set<OrderLine>();
+        public virtual DbSet<PackageType> PackageTypes => Set<PackageType>();
+        public virtual DbSet<PaymentMethod> PaymentMethods => Set<PaymentMethod>();
+        public virtual DbSet<Person> People => Set<Person>();
+        public virtual DbSet<PurchaseOrder> PurchaseOrders => Set<PurchaseOrder>();
+        public virtual DbSet<PurchaseOrderLine> PurchaseOrderLines => Set<PurchaseOrderLine>();
+        public virtual DbSet<SpecialDeal> SpecialDeals => Set<SpecialDeal>();
+        public virtual DbSet<StateProvince> StateProvinces => Set<StateProvince>();
+        public virtual DbSet<StockGroup> StockGroups => Set<StockGroup>();
+        public virtual DbSet<StockItem> StockItems => Set<StockItem>();
+        public virtual DbSet<StockItemHolding> StockItemHoldings => Set<StockItemHolding>();
+        public virtual DbSet<StockItemStockGroup> StockItemStockGroups => Set<StockItemStockGroup>();
+        public virtual DbSet<StockItemTransaction> StockItemTransactions => Set<StockItemTransaction>();
+        public virtual DbSet<Supplier> Suppliers => Set<Supplier>();
+        public virtual DbSet<Supplier1> Suppliers1 => Set<Supplier1>();
+        public virtual DbSet<SupplierCategory> SupplierCategories => Set<SupplierCategory>();
+        public virtual DbSet<SupplierTransaction> SupplierTransactions => Set<SupplierTransaction>();
+        public virtual DbSet<SystemParameter> SystemParameters => Set<SystemParameter>();
+        public virtual DbSet<TransactionType> TransactionTypes => Set<TransactionType>();
+        public virtual DbSet<VehicleTemperature> VehicleTemperatures => Set<VehicleTemperature>();
+        public virtual DbSet<VehicleTemperature1> VehicleTemperatures1 => Set<VehicleTemperature1>();
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             
@@ -32,7 +65,7 @@ namespace wwimporters.infrastructure.Persistence
         {
             modelBuilder.UseCollation("Latin1_General_100_CI_AS");
 
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(WideWorldImportersContext).Assembly);
 
             OnModelCreatingPartial(modelBuilder);
         }
